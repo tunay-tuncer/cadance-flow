@@ -1,0 +1,27 @@
+{
+    "navbar":{
+        "studioText": "BACK TO STUDIO",
+        "helpText": "SUPPORT",
+        "loginText": "LOG IN"
+    },
+    "leftContainerText":{
+        "header": "Visualize the Future of Design",
+        "span": "in Real Time",
+        "paragraph": "Your architectural visualization, from wireframe to 4K, tracked and delivered in our streamlined client ecosystem",
+        "button":"GET YOUR FLOW"
+    },
+    "rightContainerText":{
+        "projectDashboardText": "Your Project Dashboard",
+        "projectPhaseText": "Project Phase:",
+        "nextStepText": "Next Milestone:",
+        "approvalText": "Approval Required:",
+        "clientInputText":"Client Input",
+        "strategyAndMoodText":"Strategy and Mood",
+        "drawingText":"2D Drawings",
+        "modellingText":"3D Modelling",
+        "texturingAndLightingText":"Texturing and Lighting",
+        "renderingText":"Rendering",
+        "postProductionText":"Post Production",
+        "submitionText":"Submition"
+    }
+}

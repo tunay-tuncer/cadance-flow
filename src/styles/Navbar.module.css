@@ -1,0 +1,54 @@
+.navContainer {
+    /* position: fixed;
+    top: 0;
+    left: 0; */
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 4rem;
+    color: var(--textWhite);
+    text-decoration: none;
+    list-style: none;
+    background: none;
+    z-index: 10;
+}
+
+.navContainer span {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.navContainer .logo {
+    font-weight: 300;
+    font-size: 2rem;
+}
+
+.navContainer a {
+    font-size: 1.25rem;
+    color: var(--textWhite);
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+
+.navContainer a:hover,
+.rightNavContainer button:hover {
+    color: var(--accent);
+    scale: 0.975;
+}
+
+.rightNavContainer {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.rightNavContainer button {
+    border: none;
+    background: none;
+    color: var(--textWhite);
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: 0.4s ease;
+}

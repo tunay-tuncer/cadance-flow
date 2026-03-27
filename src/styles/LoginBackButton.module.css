@@ -1,0 +1,29 @@
+.backButtonDiv {
+    position: absolute;
+    left: 4rem;
+    top: 1.5rem;
+    width: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-size: 1.5rem;
+    transition: 0.4s ease;
+    cursor: pointer;
+    color: var(--textWhite);
+}
+
+.backButtonDiv:hover>.backButton {
+    scale: 1.1;
+    animation: backAnimation 1s infinite;
+    color: var(--accent);
+}
+
+@keyframes backAnimation {
+    0% {
+        transform: translateX(50%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}

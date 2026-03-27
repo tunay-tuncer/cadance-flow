@@ -1,0 +1,249 @@
+@property --degree {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    /* match JS initial degree (0%) */
+    inherits: false;
+}
+
+.heroMainContainer {
+    padding: 4rem 0 4rem 4rem;
+    width: 100%;
+    height: calc(100vh - 6rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.leftContainer {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    height: 30rem;
+}
+
+.leftContainer h1 {
+    font-size: 4.5rem;
+    font-weight: 600;
+}
+
+.leftContainer span {
+    font-size: 4.5rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.leftContainer p {
+    margin-top: 2rem;
+    font-size: 1.25rem;
+    font-weight: 200;
+}
+
+.leftContainerButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    height: 5rem;
+    border-radius: 1rem;
+    background: var(--textWhite);
+    font-size: 1.75rem;
+    font-weight: 500;
+    border: none;
+    box-shadow: var(--boxShadow1);
+
+    transition: 0.4s ease;
+    cursor: pointer;
+}
+
+.leftContainerButton:hover {
+    scale: 0.975;
+    box-shadow: var(--boxShadow1Hover);
+    color: var(--accent);
+}
+
+.rightContainer {
+    width: 40%;
+    height: 30rem;
+    background: var(--bgDark);
+    border: 6px solid var(--textWhite);
+    border-right: none;
+    border-radius: 2rem 0 0rem 2rem;
+    box-shadow: var(--boxShadow1);
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 3rem 0 3rem 3rem;
+}
+
+.rightContainer h1 {
+    width: 100%;
+    font-weight: 600;
+    font-size: 1.75rem;
+}
+
+.contentContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.5rem;
+}
+
+.progressBar {
+    position: relative;
+    height: 100%;
+}
+
+.outerDiv {
+    position: relative;
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*
+     * Fixed gradient: only two stops — accent fills from 0 to --degree,
+     * then the track color fills the rest. The previous 3-stop version
+     * created a double-edge artifact.
+     */
+    background: conic-gradient(var(--accent) 0deg, var(--accent) var(--degree), #333 var(--degree));
+    /*
+     * Transition the registered custom property directly.
+     * Because @property declares it as <angle>, the browser can interpolate it.
+     * Duration matches the JS interval (4s) so the arc animates the full step.
+     */
+    transition: --degree 1.8s ease-in-out;
+}
+
+.innerDiv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(1.5rem, 1.5rem);
+    height: calc(100% - 3rem);
+    aspect-ratio: 1;
+    background-color: var(--bgDark);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.progressTextContainer {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+.progressTextContainer p {
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.progressTextContainer span {
+    font-size: 1.5rem;
+}
+
+.stepsContainer {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.phaseContainer {
+    width: 100%;
+    height: 33%;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    border-radius: 5rem 0 0 5rem;
+    padding-inline: 1rem 2rem;
+}
+
+/*
+ * Border animation only on the first phaseContainer (current phase).
+ * animation-fill-mode: forwards so it holds the final box-shadow state
+ * instead of snapping back, giving a cleaner look between intervals.
+ */
+.phaseContainer:first-child {
+    border: 3px solid var(--textWhite);
+    border-right: 0;
+    animation: borderAnimation 3s ease-in-out forwards;
+}
+
+@keyframes borderAnimation {
+    0% {
+        box-shadow: none;
+    }
+
+    60%,
+    100% {
+        box-shadow: var(--boxShadow1);
+    }
+}
+
+/*
+ * svgAnimation: pulse in and hold — synced to the 4s interval.
+ * animation-fill-mode: forwards keeps it at the highlighted state
+ * until the key prop change retriggers it on the next step.
+ */
+
+.svgContainer {
+    height: calc(100% - 2rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--grayDark);
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: none;
+}
+
+
+@keyframes svgAnimation {
+    0% {
+        background-color: var(--grayDark);
+        transform: scale(1);
+    }
+
+    30% {
+        background-color: var(--accent);
+        transform: scale(1.08);
+    }
+
+    60%,
+    100% {
+        background-color: var(--accent);
+        transform: scale(1.05);
+    }
+}
+
+.phaseContainer:first-child .svgContainer {
+    animation: svgAnimation 3s ease-in-out forwards;
+}
+
+.phaseTextContainer p {
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--lightGray);
+}
+
+.phaseTextContainer h3 {
+    font-size: 1.25rem;
+}

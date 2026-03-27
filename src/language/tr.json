@@ -1,0 +1,28 @@
+{
+    "navbar":{ 
+        "studioText": "STÜDYOYA DÖN",
+        "helpText": "YARDIM",
+        "loginText": "GİRİŞ YAP"
+    }
+    ,
+    "leftContainerText":{
+        "header": "Tasarımın Geleceğine Tanıklık Edin",
+        "span": "Anlık  Verilerle",
+        "paragraph": "Mimari görselleştirme çalışmalarınız, eskizden 4K çözünürlüğe kadar, modern müşteri ekosistemimiz içinde takip edilip teslim edilir",
+        "button":"AKIŞA KATILIN"
+    },
+    "rightContainerText":{
+        "projectDashboardText": "Proje Kontrol Paneliniz",
+        "projectPhaseText": "Proje Aşaması:",
+        "nextStepText": "Sonraki Hedef:",
+        "approvalText": "Onay Gereken:",
+        "clientInputText":"Müşteri Doneleri",
+        "strategyAndMoodText":"Müşteri Doneleri",
+        "drawingText":"2D Çizimler",
+        "modellingText":"3D Modelleme",
+        "texturingAndLightingText":"Doku ve Işıklandırma",
+        "renderingText":"Render Süreci",
+        "postProductionText":"Post-Prodüksiyon",
+        "submitionText":"Teslimat"
+    }
+}

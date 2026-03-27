@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --bgDark: #0d0d12;
+  --textWhite: #ffffff;
+  --gridWhite: rgba(255, 255, 255, 0.1);
+  --accent: #2972f5;
+  --lightGray: #808080;
+  --grayDark: #373737;
+  --boxShadow1: 0 0 20px 4px rgba(66, 135, 245, 0.8),
+    0 0 30px 5px rgba(66, 135, 245, 0.4);
+  --boxShadow1Hover: 0 0 25px 8px rgba(66, 135, 245, 0.9),
+    0 0 40px 8px rgba(66, 135, 245, 0.5);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Montserrat, sans-serif;
+
+  /* GRID */
+  background-color: var(--bgDark);
+  background-image:
+    linear-gradient(to right, var(--gridWhite) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--gridWhite) 1px, transparent 1px);
+  color: var(--textWhite);
+  background-size: 320px 320px;
+  background-position: left top;
+}
+
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 0.4rem;
+  position: absolute;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  margin-top: 4rem;
+  margin-bottom: 10px;
+  height: 100%;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent);
+}
