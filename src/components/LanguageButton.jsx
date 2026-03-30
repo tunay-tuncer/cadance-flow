@@ -1,21 +1,23 @@
-import { useContext } from "react"
-import { ProjectContext } from "../context/ProjectContext"
-import styles from "../styles/Navbar.module.css"
-
-import turkishTexts from "../language/tr.json";
-import englishgTexts from "../language/en.json";
+import { useContext } from "react";
+import { ProjectContext } from "../context/ProjectContext";
+import styles from "../styles/Navbar.module.css";
 
 const LanguageButton = () => {
-    const { currentLang, setcurrentLang } = useContext(ProjectContext);
+    const { langCode, setLangCode } = useContext(ProjectContext);
 
     const handleLanguageChange = (e) => {
         e.preventDefault();
-        setcurrentLang(prev => prev == turkishTexts ? englishgTexts : turkishTexts);
-    }
+        setLangCode(prev => (prev === 'tr' ? 'en' : 'tr'));
+    };
 
     return (
-        <button className={styles.languageButton} onClick={(e) => handleLanguageChange(e)}>{currentLang == turkishTexts ? "TR" : "EN"}</button>
-    )
-}
+        <button
+            className={styles.languageButton}
+            onClick={handleLanguageChange}
+        >
+            {langCode === 'tr' ? "TR" : "EN"}
+        </button>
+    );
+};
 
-export default LanguageButton
+export default LanguageButton;

@@ -1,8 +1,8 @@
-import styles from "../styles/Hero.module.css";
+import styles from "../../styles/Hero.module.css";
 import HeroRightContainer from "./HeroRightContainer";
 import { useContext } from "react";
 import { Link } from "react-router"
-import { ProjectContext } from "../context/ProjectContext";
+import { ProjectContext } from "../../context/ProjectContext";
 
 const Hero = () => {
     const { currentLang } = useContext(ProjectContext);

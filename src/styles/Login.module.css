@@ -1,0 +1,164 @@
+.loginMainContainer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 4rem;
+    gap: 5rem;
+}
+
+.leftContainer {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 2rem;
+    padding-inline: 8rem;
+}
+
+.imageContainer {
+    width: 30%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 2rem;
+}
+
+.imageContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+span {
+    font-weight: 300;
+}
+
+.inputContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+input {
+    width: 100%;
+    height: 4rem;
+    padding-inline: 1rem;
+    background: var(--bgDark);
+    border: 3px solid var(--textWhite);
+    border-radius: 0.5rem;
+    box-shadow: var(--boxShadow1);
+    outline: none;
+    color: var(--textWhite);
+    transition: 0.4s ease;
+    font-size: 1.25rem;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: var(--boxShadow1Hover);
+}
+
+.deleteButton {
+    position: absolute;
+    right: 1rem;
+    top: 0rem;
+    transform: translateY(50%);
+    font-size: 2rem;
+    aspect-ratio: 1;
+    padding: 0.125rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+
+.deleteButton:hover {
+    background: var(--accent);
+}
+
+.trackButton {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: var(--textWhite);
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: 0.4s ease;
+}
+
+.trackButton:hover {
+    scale: 0.97;
+}
+
+.signInContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.signInButtonsContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginButton {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.4s ease;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border: none;
+    background-color: var(--textWhite);
+    color: var(--accent);
+}
+
+.loginButton:hover {
+    scale: 0.97;
+    box-shadow: var(--boxShadow1);
+}
+
+.redirectContainer {
+    width: 100%;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.redirectContainer a {
+    color: var(--accent);
+    transition: 0.4s ease;
+}
+
+.redirectContainer a:hover {
+    color: var(--textWhite);
+    font-weight: 700;
+}
+
+.logoImg {
+    height: 100%;
+}
+
+.logoImg:hover {
+    filter: brightness(120%);
+}

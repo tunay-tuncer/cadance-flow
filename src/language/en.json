@@ -23,5 +23,17 @@
         "renderingText":"Rendering",
         "postProductionText":"Post Production",
         "submitionText":"Submition"
+    },
+    "flowPageNavbarItems":{
+        "topNavItems": {
+            "dashboard":"DASHBOARD",
+            "ongoingProjects":"ONGOING PROJECTS",
+            "completedProjects":"COMPLETED PROJECTS"
+        },
+        "bottomNavItems": {
+            "support": "SUPPORT",
+            "settings": "SETTINGS",
+            "exit": "EXIT TO HOMEPAGE"
+        }
     }
 }

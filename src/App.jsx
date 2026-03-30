@@ -1,21 +1,29 @@
+//DEPENDENCIES
 import { Routes, Route } from 'react-router'
+import { ProjectContextProvider } from './context/ProjectContext';
+import { AuthContextProvider } from './context/AuthContext';
+//PAGES
 import Home from "./Pages/Home";
 import Support from "./Pages/Support";
-import { ProjectContextProvider } from './context/ProjectContext';
-import CursorGlow from "./components/CursorGlow";
 import Login from './Pages/Login';
+import Dashboard from './Pages/Dashboard';
+//COMPONENTS
+import CursorGlow from "./components/CursorGlow";
 
 function App() {
 
   return (
-    <ProjectContextProvider>
-      <CursorGlow />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/support' element={<Support />} />
-        <Route path='/login' element={<Login />} />
-      </Routes>
-    </ProjectContextProvider>
+    <AuthContextProvider>
+      <ProjectContextProvider>
+        <CursorGlow />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/support' element={<Support />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+        </Routes>
+      </ProjectContextProvider>
+    </AuthContextProvider>
   )
 }
 

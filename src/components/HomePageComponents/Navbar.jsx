@@ -1,11 +1,11 @@
-import { Link } from "react-router"
-import { useContext } from "react"
-import { ProjectContext } from "../context/ProjectContext"
-import styles from "../styles/Navbar.module.css"
-import LanguageButton from "./LanguageButton"
+import { Link } from "react-router";
+import { useContext } from "react";
+import { ProjectContext } from "../../context/ProjectContext"
+import styles from "../../styles/Navbar.module.css"
+import LanguageButton from "../LanguageButton"
 
 const Navbar = () => {
-    const { navbarItems, currentLang } = useContext(ProjectContext)
+    const { navbarItems } = useContext(ProjectContext)
 
     return (
         <nav className={styles.navContainer}>

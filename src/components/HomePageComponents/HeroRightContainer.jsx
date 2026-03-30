@@ -1,6 +1,6 @@
-import styles from "../styles/Hero.module.css";
+import styles from "../../styles/Hero.module.css";
 import { useEffect, useState, useRef, useContext } from "react";
-import { ProjectContext } from "../context/ProjectContext";
+import { ProjectContext } from "../../context/ProjectContext";
 
 //REACT ICONS
 import { HiMiniPencilSquare } from "react-icons/hi2";
@@ -150,7 +150,7 @@ const HeroRightContainer = () => {
                         </div>
                         <div className={styles.phaseTextContainer}>
                             <p>{currentLang.rightContainerText.approvalText}:</p>
-                            <h3>Texturing and Lighting</h3>
+                            <h3>Wallpaint hue</h3>
                         </div>
                     </div>
 

@@ -1,7 +1,7 @@
 {
     "navbar":{ 
         "studioText": "STÜDYOYA DÖN",
-        "helpText": "YARDIM",
+        "helpText": "DESTEK",
         "loginText": "GİRİŞ YAP"
     }
     ,
@@ -24,5 +24,17 @@
         "renderingText":"Render Süreci",
         "postProductionText":"Post-Prodüksiyon",
         "submitionText":"Teslimat"
+    },
+    "flowPageNavbarItems":{
+        "topNavItems": {
+            "dashboard":"KONTROL PANELİ",
+            "ongoingProjects":"DEVAM EDEN PROJELER",
+            "completedProjects":"TAMAMLANMIŞ PROJELER"
+        },
+        "bottomNavItems": {
+            "support": "DESTEK",
+            "settings": "AYARLAR",
+            "exit": "ANA SAYFAYA DÖN"
+        }
     }
 }
