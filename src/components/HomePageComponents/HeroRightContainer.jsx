@@ -32,14 +32,14 @@ const HeroRightContainer = () => {
     const isResetting = useRef(false);
 
     const allSteps = [
-        { stepName: currentLang.rightContainerText.clientInputText, percentageVal: 0, icon: <LuFileInput /> },
-        { stepName: currentLang.rightContainerText.strategyAndMoodText, percentageVal: 15, icon: <FaRegNoteSticky /> },
-        { stepName: currentLang.rightContainerText.drawingText, percentageVal: 10, icon: <HiMiniPencilSquare /> },
-        { stepName: currentLang.rightContainerText.modellingText, percentageVal: 20, icon: <TbHexagon3D /> },
-        { stepName: currentLang.rightContainerText.texturingAndLightingText, percentageVal: 15, icon: <TbTexture /> },
-        { stepName: currentLang.rightContainerText.renderingText, percentageVal: 15, icon: <LuClapperboard /> },
-        { stepName: currentLang.rightContainerText.postProductionText, percentageVal: 15, icon: <IoCameraOutline /> },
-        { stepName: currentLang.rightContainerText.submitionText, percentageVal: 10, icon: <BsSendArrowUp /> },
+        { stepName: currentLang.hero.rightContainerText.clientInputText, percentageVal: 0, icon: <LuFileInput /> },
+        { stepName: currentLang.hero.rightContainerText.strategyAndMoodText, percentageVal: 15, icon: <FaRegNoteSticky /> },
+        { stepName: currentLang.hero.rightContainerText.drawingText, percentageVal: 10, icon: <HiMiniPencilSquare /> },
+        { stepName: currentLang.hero.rightContainerText.modellingText, percentageVal: 20, icon: <TbHexagon3D /> },
+        { stepName: currentLang.hero.rightContainerText.texturingAndLightingText, percentageVal: 15, icon: <TbTexture /> },
+        { stepName: currentLang.hero.rightContainerText.renderingText, percentageVal: 15, icon: <LuClapperboard /> },
+        { stepName: currentLang.hero.rightContainerText.postProductionText, percentageVal: 15, icon: <IoCameraOutline /> },
+        { stepName: currentLang.hero.rightContainerText.submitionText, percentageVal: 10, icon: <BsSendArrowUp /> },
     ];
 
     // Keep degree in sync with percentage
@@ -103,7 +103,7 @@ const HeroRightContainer = () => {
 
     return (
         <div className={styles.rightContainer}>
-            <h1>{currentLang.rightContainerText.projectDashboardText}</h1>
+            <h1>{currentLang.hero.rightContainerText.projectDashboardText}</h1>
 
             <div className={styles.contentContainer}>
 
@@ -129,7 +129,7 @@ const HeroRightContainer = () => {
                             {allSteps[currentStep].icon}
                         </div>
                         <div className={styles.phaseTextContainer}>
-                            <p>{currentLang.rightContainerText.projectPhaseText}</p>
+                            <p>{currentLang.hero.rightContainerText.projectPhaseText}</p>
                             <h3>{allSteps[currentStep].stepName}</h3>
                         </div>
                     </div>
@@ -139,7 +139,7 @@ const HeroRightContainer = () => {
                             {allSteps[nextStep].icon}
                         </div>
                         <div className={styles.phaseTextContainer}>
-                            <p>{currentLang.rightContainerText.nextStepText}</p>
+                            <p>{currentLang.hero.rightContainerText.nextStepText}</p>
                             <h3>{allSteps[nextStep].stepName}</h3>
                         </div>
                     </div>
@@ -149,7 +149,7 @@ const HeroRightContainer = () => {
                             <TbExclamationCircle />
                         </div>
                         <div className={styles.phaseTextContainer}>
-                            <p>{currentLang.rightContainerText.approvalText}:</p>
+                            <p>{currentLang.hero.rightContainerText.approvalText}:</p>
                             <h3>Wallpaint hue</h3>
                         </div>
                     </div>

@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import styles from "../styles/LoginBackButton.module.css"
 import { IoMdArrowBack } from "react-icons/io";
 
-const LoginBackButton = () => {
+const LoginPageBackButton = () => {
     return (
         <Link className={styles.backButtonDiv} to={"/"}>
             <IoMdArrowBack className={styles.backButton} />
@@ -10,4 +10,4 @@ const LoginBackButton = () => {
     )
 }
 
-export default LoginBackButton
+export default LoginPageBackButton

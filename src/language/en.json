@@ -4,12 +4,13 @@
         "helpText": "SUPPORT",
         "loginText": "LOG IN"
     },
-    "leftContainerText":{
+    "hero":{ 
+        "leftContainerText":{
         "header": "Visualize the Future of Design",
         "span": "in Real Time",
         "paragraph": "Your architectural visualization, from wireframe to 4K, tracked and delivered in our streamlined client ecosystem",
         "button":"GET YOUR FLOW"
-    },
+        },
     "rightContainerText":{
         "projectDashboardText": "Your Project Dashboard",
         "projectPhaseText": "Project Phase:",
@@ -23,12 +24,21 @@
         "renderingText":"Rendering",
         "postProductionText":"Post Production",
         "submitionText":"Submition"
+        }
     },
+
+    "login":{
+        "placeholder":"Enter your project tracking number",
+        "flowButton":"GET YOUR FLOW",
+        "signInText":"Sign in to access all projects!",
+        "loginButton":"LOGIN / SIGN UP"
+    },
+
     "flowPageNavbarItems":{
         "topNavItems": {
             "dashboard":"DASHBOARD",
-            "ongoingProjects":"ONGOING PROJECTS",
-            "completedProjects":"COMPLETED PROJECTS"
+            "archive":"ARCHIVE",
+            "media":"MEDIA"
         },
         "bottomNavItems": {
             "support": "SUPPORT",

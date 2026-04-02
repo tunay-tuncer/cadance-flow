@@ -1,0 +1,119 @@
+.minimizedNav,
+.fullNav {
+    position: relative;
+    height: calc(100vh - 4rem);
+    border: 1px solid var(--textWhite);
+    border-radius: 1rem;
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    background: var(--bgDark);
+    transition: width 0.4s ease;
+}
+
+.minimizedNav {
+    width: 5rem;
+}
+
+.fullNav {
+    width: 22rem;
+    padding: 2rem;
+}
+
+.minimizeBtn {
+    position: absolute;
+    border: 1px solid var(--textWhite);
+    color: var(--textWhite);
+    background: var(--bgDark);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    top: 50%;
+    transform: translate(50%, -50%);
+    cursor: pointer;
+    transition: 0.4s ease;
+    z-index: 10;
+}
+
+.minimizeBtn:hover {
+    background: var(--accent);
+    scale: 1.25;
+}
+
+.logoContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fullNav .logoContainer {
+    justify-content: flex-start;
+}
+
+.logo {
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+}
+
+.logoContainer h1,
+.logoContainer span {
+    font-size: 1.5rem;
+}
+
+.logoContainer h1 {
+    margin-left: 1rem;
+    white-space: nowrap;
+}
+
+.navGroup a {
+    text-decoration: none;
+    color: var(--textWhite);
+}
+
+ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--textWhite);
+    padding-bottom: 1rem;
+    list-style: none;
+}
+
+ul a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: 0.4s ease;
+}
+
+.fullNav ul a {
+    justify-content: flex-start;
+}
+
+ul svg {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+ul a:hover {
+    background: var(--accent);
+    scale: 0.97;
+}
+
+.active {
+    background: var(--accent);
+}

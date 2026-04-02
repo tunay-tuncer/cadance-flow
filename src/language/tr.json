@@ -3,33 +3,43 @@
         "studioText": "STÜDYOYA DÖN",
         "helpText": "DESTEK",
         "loginText": "GİRİŞ YAP"
-    }
-    ,
-    "leftContainerText":{
-        "header": "Tasarımın Geleceğine Tanıklık Edin",
-        "span": "Anlık  Verilerle",
-        "paragraph": "Mimari görselleştirme çalışmalarınız, eskizden 4K çözünürlüğe kadar, modern müşteri ekosistemimiz içinde takip edilip teslim edilir",
-        "button":"AKIŞA KATILIN"
     },
-    "rightContainerText":{
-        "projectDashboardText": "Proje Kontrol Paneliniz",
-        "projectPhaseText": "Proje Aşaması:",
-        "nextStepText": "Sonraki Hedef:",
-        "approvalText": "Onay Gereken:",
-        "clientInputText":"Müşteri Doneleri",
-        "strategyAndMoodText":"Müşteri Doneleri",
-        "drawingText":"2D Çizimler",
-        "modellingText":"3D Modelleme",
-        "texturingAndLightingText":"Doku ve Işıklandırma",
-        "renderingText":"Render Süreci",
-        "postProductionText":"Post-Prodüksiyon",
-        "submitionText":"Teslimat"
+
+    "hero":{
+        "leftContainerText":{
+            "header": "Tasarımın Geleceğine Tanıklık Edin",
+            "span": "Anlık  Verilerle",
+            "paragraph": "Mimari görselleştirme çalışmalarınız, eskizden 4K çözünürlüğe kadar, modern müşteri ekosistemimiz içinde takip edilip teslim edilir",
+            "button":"AKIŞA KATILIN"
+        },
+        "rightContainerText":{
+            "projectDashboardText": "Proje Kontrol Paneliniz",
+            "projectPhaseText": "Proje Aşaması:",
+            "nextStepText": "Sonraki Hedef:",
+            "approvalText": "Onay Gereken:",
+            "clientInputText":"Müşteri Doneleri",
+            "strategyAndMoodText":"Müşteri Doneleri",
+            "drawingText":"2D Çizimler",
+            "modellingText":"3D Modelleme",
+            "texturingAndLightingText":"Doku ve Işıklandırma",
+            "renderingText":"Render Süreci",
+            "postProductionText":"Post-Prodüksiyon",
+            "submitionText":"Teslimat"
+        }
     },
+
+    "login":{
+        "placeholder":"Proje takip numaranızı girin",
+        "flowButton":"AKIŞA KATIL",
+        "signInText":"Tüm projelere erişmek için giriş yapın!",
+        "loginButton":"GİRİŞ YAP / ÜYE OL"
+    },
+
     "flowPageNavbarItems":{
         "topNavItems": {
             "dashboard":"KONTROL PANELİ",
-            "ongoingProjects":"DEVAM EDEN PROJELER",
-            "completedProjects":"TAMAMLANMIŞ PROJELER"
+            "archive":"ARŞİV",
+            "media": "MEDYA"
         },
         "bottomNavItems": {
             "support": "DESTEK",

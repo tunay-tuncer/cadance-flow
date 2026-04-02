@@ -44,6 +44,10 @@
 }
 
 .rightNavContainer button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
     border: none;
     background: none;
     color: var(--textWhite);
