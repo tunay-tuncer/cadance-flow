@@ -1,10 +1,11 @@
-import LogoutButton from "../components/LogoutButton"
+import Navbar from "../components/FlowPageComponents/Navbar";
+import styles from "../styles/FlowDashboard.module.css";
 
 const Dashboard = () => {
     return (
-        <div>
-            <h1>Dashboard</h1>
-            <LogoutButton />
+        <div className={styles.dashboardContainer}>
+            <Navbar />
+
         </div>
     )
 }

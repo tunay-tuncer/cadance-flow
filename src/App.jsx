@@ -7,7 +7,8 @@ import Home from "./Pages/Home";
 import Support from "./Pages/Support";
 import Login from './Pages/Login';
 import Dashboard from './Pages/Dashboard';
-//COMPONENTS
+//LAYOUT & COMPONENTS
+import FlowPageWrapper from './wrappers/FlowPageWrapper';
 import CursorGlow from "./components/CursorGlow";
 
 function App() {

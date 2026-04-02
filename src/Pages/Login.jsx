@@ -1,9 +1,10 @@
 //DEPENDENCIES
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router";
 import { useAuth0 } from "@auth0/auth0-react";
+import { ProjectContext } from "../context/ProjectContext";
 //COMPONENTS
-import LoginBackButton from "../components/LoginBackButton";
+import LoginBackButton from "../components/LoginPageBackButton";
 import LoginButton from "../components/LoginButton";
 import signUpImage from "../assets/S3PNGPost.png";
 // import cadanceBlueLogo from "../assets/CadanceBlueGlassLogo.png";
@@ -16,6 +17,7 @@ import { IoMdClose } from "react-icons/io";
 const Login = () => {
     const [projectTrackingNumber, setProjectTrackingNumber] = useState("");
     const { isAuthenticated } = useAuth0();
+    const { currentLang } = useContext(ProjectContext);
 
     return (
         <div className={styles.loginMainContainer}>
@@ -26,17 +28,17 @@ const Login = () => {
                 <div className={styles.inputContainer}>
                     <input
                         type="text"
-                        placeholder="Enter your project tracking number"
+                        placeholder={currentLang.login.placeholder}
                         className={styles.projectTrackingInput}
                         value={projectTrackingNumber}
                         onChange={(e) => setProjectTrackingNumber(e.target.value)}
                     />
-                    <Link className={styles.trackButton}>GET YOUR FLOW</Link>
+                    <Link className={styles.trackButton}>{currentLang.login.flowButton}</Link>
                     <IoMdClose className={styles.deleteButton} onClick={() => setProjectTrackingNumber("")} />
                 </div>
 
                 <div className={styles.signInContainer}>
-                    {!isAuthenticated && <p>Sign in to access all projects!</p>}
+                    {!isAuthenticated && <p>{currentLang.login.signInText}</p>}
                     <div className={styles.signInButtonsContainer}>
                         <LoginButton />
                     </div>

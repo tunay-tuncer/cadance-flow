@@ -11,10 +11,10 @@ const Hero = () => {
     return (
         <div className={styles.heroMainContainer}>
             <div className={styles.leftContainer}>
-                <h1>{currentLang.leftContainerText.header}</h1>
-                <span className={styles.headerBlue}>{currentLang.leftContainerText.span}</span>
-                <p className={styles.leftContainerParagraph}>{currentLang.leftContainerText.paragraph}</p>
-                <Link to={"./login"} className={styles.leftContainerButton}>{currentLang.leftContainerText.button}</Link>
+                <h1>{currentLang.hero.leftContainerText.header}</h1>
+                <span className={styles.headerBlue}>{currentLang.hero.leftContainerText.span}</span>
+                <p className={styles.leftContainerParagraph}>{currentLang.hero.leftContainerText.paragraph}</p>
+                <Link to={"./login"} className={styles.leftContainerButton}>{currentLang.hero.leftContainerText.button}</Link>
             </div>
             <HeroRightContainer />
         </div>

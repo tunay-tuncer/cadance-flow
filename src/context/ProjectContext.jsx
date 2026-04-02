@@ -25,12 +25,6 @@ export const ProjectContextProvider = ({ children }) => {
         { name: currentLang.navbar.loginText, id: "login", path: "/login" }
     ]
 
-    // const flowPageNavbarItems = [
-    //     { name: currentLang.flowPageNavbarItems.topNavItems.dashboard, id: "backToStudio", path: "https://www.cadancestudio.com" },
-    //     { name: currentLang.flowPageNavbarItems.topNavItems.ongoingProjects, id: "support", path: "/support" },
-    //     { name: currentLang.flowPageNavbarItems.topNavItems.completedProjects, id: "login", path: "/login" }
-    // ]
-
 
     return (
         <ProjectContext.Provider value={{ selectedNavItem, setSelectedNavItem, currentLang, langCode, setLangCode, navbarItems }}>
