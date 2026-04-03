@@ -2,10 +2,11 @@
 import { NavLink } from "react-router"; // or "react-router-dom"
 import { useContext, useState } from "react"
 import { ProjectContext } from "../../context/ProjectContext";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0, User } from "@auth0/auth0-react";
 import styles from "../../styles/FlowNavbar.module.css"
 //COMPONENTS
 import LogoutButton from "../LogoutButton";
+import UserProfile from "../UserProfile";
 //REACT ICONS
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
@@ -26,14 +27,14 @@ const Navbar = () => {
     const [isMinimized, setIsMinimized] = useState(false);
 
     const flowPageNavbarTopItems = [
-        { name: currentLang.flowPageNavbarItems.topNavItems.dashboard, id: "dashboard", path: "./", icon: <RxDashboard /> },
-        { name: currentLang.flowPageNavbarItems.topNavItems.archive, id: "archive", path: "./archive", icon: <FiArchive /> },
-        { name: currentLang.flowPageNavbarItems.topNavItems.media, id: "media", path: "./media", icon: <MdOutlinePermMedia /> }
+        { name: currentLang.flowPageNavbarItems.topNavItems.dashboard, id: "dashboard", path: "/dashboard", icon: <RxDashboard /> },
+        { name: currentLang.flowPageNavbarItems.topNavItems.archive, id: "archive", path: "/dashboard/archive", icon: <FiArchive /> },
+        { name: currentLang.flowPageNavbarItems.topNavItems.media, id: "media", path: "/dashboard/media", icon: <MdOutlinePermMedia /> }
     ]
 
     const flowPageNavbarBottomItems = [
-        { name: currentLang.flowPageNavbarItems.bottomNavItems.support, id: "dashboard", path: "./support", icon: <BiSupport /> },
-        { name: currentLang.flowPageNavbarItems.bottomNavItems.settings, id: "archive", path: "./settings", icon: <LuSettings /> },
+        { name: currentLang.flowPageNavbarItems.bottomNavItems.support, id: "dashboard", path: "/dashboard/support", icon: <BiSupport /> },
+        { name: currentLang.flowPageNavbarItems.bottomNavItems.settings, id: "archive", path: "/dashboard/settings", icon: <LuSettings /> },
         { name: currentLang.flowPageNavbarItems.bottomNavItems.exit, id: "exit", path: "/", icon: <BiExit /> }
     ]
 
@@ -60,7 +61,7 @@ const Navbar = () => {
             </div>
             <ul className={styles.navGroup}>
                 {flowPageNavbarTopItems.map((navItem) => (
-                    <NavLink key={navItem.id} to={navItem.path} className={({ isActive }) =>
+                    <NavLink key={navItem.id} to={navItem.path} end={navItem.path === "/dashboard"} className={({ isActive }) =>
                         isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
                     }>
                         {navItem.icon}
@@ -76,6 +77,7 @@ const Navbar = () => {
                     </NavLink>
                 ))}
             </ul>
+            <UserProfile isMinimized={isMinimized} />
             <LogoutButton />
         </nav>
     )

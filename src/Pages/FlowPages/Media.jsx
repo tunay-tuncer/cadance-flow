@@ -1,12 +1,12 @@
 import Loader from "../../components/Loader"
 
-const Archive = () => {
+const Media = () => {
     return (
         <div>
-            <h1>ARCHIVE</h1>
+            <h1>MEDIA</h1>
             <Loader />
         </div>
     )
 }
 
-export default Archive
+export default Media
