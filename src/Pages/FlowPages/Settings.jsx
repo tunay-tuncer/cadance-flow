@@ -1,8 +1,11 @@
-import React from 'react'
+import LanguageButton from "../../components/LanguageButton"
 
 const Settings = () => {
     return (
-        <div>Settings</div>
+        <div>
+            <h1>SETTINGS</h1>
+            <LanguageButton />
+        </div>
     )
 }
 

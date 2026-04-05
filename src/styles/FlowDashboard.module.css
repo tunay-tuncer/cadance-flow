@@ -1,7 +1,7 @@
 .dashboardContainer {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 2rem;
 }
 
 .infoMainContainer {
@@ -12,26 +12,69 @@
 }
 
 .infoMainContainer h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
 }
 
 .infoContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    column-gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto 1fr 1fr;
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+    background: var(--gridWhite);
+    padding: 1px;
+    overflow: hidden;
 }
 
-.infoContainer li {
-    height: 10rem;
+.infoElement:nth-child(1) {
+    grid-area: 1 / 1 / 2 / 4;
+    align-self: start;
+}
+
+.infoElement:nth-child(2) {
+    grid-area: 2 / 1 / 4 / 2;
+}
+
+.infoElement:nth-child(3) {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.infoElement:nth-child(4) {
+    grid-area: 3 / 2 / 4 / 3;
+}
+
+.infoElement:nth-child(5) {
+    grid-area: 2 / 3 / 4 / 4;
+}
+
+.infoElement:nth-child(1) span {
+    font-weight: 800 !important;
+}
+
+.logItem {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logEvent {
+    font-weight: 600;
+}
+
+.infoElement {
+    padding: 1rem;
     background: var(--bgDark);
-    border: 1px solid var(--textWhite);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 1rem;
     gap: 1rem;
-    /* color: var(--textWhite) !important; */
+}
+
+.logTime {
+    font-size: 0.75rem;
+    color: var(--lightGray);
 }
 
 .infoContainer li svg {
@@ -48,7 +91,6 @@
     font-size: 1rem;
 }
 
-
 /* RECENT PROJECTS */
 
 .projectMainContainer {
@@ -59,9 +101,9 @@
 }
 
 .projectMainContainer a {
-    border-radius: 1rem;
-    border: 2px solid var(--textWhite);
-    box-shadow: var(--boxShadow1);
+    /* border-radius: 1rem; */
+    border: 2px solid var(--gridWhite);
+
     overflow: hidden;
     transition: 0.4s ease;
     cursor: pointer;
@@ -74,6 +116,8 @@
 
 .projectMainContainer a:hover {
     scale: 1.05;
+    border: 2px solid var(--textWhite);
+    box-shadow: var(--boxShadow1);
 }
 
 .imageContainer {
@@ -84,6 +128,17 @@
 
 .projectPicture {
     width: 100%;
+}
+
+.projectNameContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.projectTypeIcon {
+    font-size: 1.5rem;
 }
 
 .projectInfoContainer {
@@ -108,7 +163,6 @@
     width: 100%;
     height: 0.75rem;
     background: var(--lightGray);
-    border-radius: 5rem;
     border: 1px solid var(--textWhite);
 }
 
@@ -117,7 +171,6 @@
     height: 0.75rem;
     width: 80%;
     background: var(--accent);
-    border-radius: 5rem;
     border: 2px solid var(--textWhite);
     box-shadow: var(--boxShadow2);
 }

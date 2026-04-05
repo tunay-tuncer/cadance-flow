@@ -45,6 +45,11 @@
             "support": "DESTEK",
             "settings": "AYARLAR",
             "exit": "ANA SAYFAYA DÖN"
-        }
+        },
+        "logOutButton": "ÇIKIŞ YAP"
+    },
+
+    "projectDashboard": {
+        "heading": "İSTATİSTİKLER"
     }
 }

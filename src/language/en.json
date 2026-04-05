@@ -44,6 +44,11 @@
             "support": "SUPPORT",
             "settings": "SETTINGS",
             "exit": "EXIT TO HOMEPAGE"
-        }
+        },
+        "logOutButton": "LOG OUT"
+    },
+
+    "projectDashboard": {
+        "heading": "PROJECT DASHBOARD"
     }
 }

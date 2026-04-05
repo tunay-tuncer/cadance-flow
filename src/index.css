@@ -32,12 +32,12 @@ body {
 
   /* GRID */
   background-color: var(--bgDark);
-  background-image:
+  color: var(--textWhite);
+  /* background-image:
     linear-gradient(to right, var(--gridWhite) 1px, transparent 1px),
     linear-gradient(to bottom, var(--gridWhite) 1px, transparent 1px);
-  color: var(--textWhite);
   background-size: 320px 320px;
-  background-position: left top;
+  background-position: left top; */
 }
 
 
