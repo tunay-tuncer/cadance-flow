@@ -1,14 +1,22 @@
-import styles from "../styles/Login.module.css";
+//DEPENDENCIES
 import { useAuth0 } from "@auth0/auth0-react";
+import { ProjectContext } from "../context/ProjectContext";
+import { useContext } from "react";
+//STYLES
+import styles from "../styles/FlowNavbar.module.css";
+//REACT ICONS
+import { BiExit } from "react-icons/bi";
 
-const LogoutButton = () => {
+const LogoutButton = ({ isMinimized }) => {
     const { logout, isAuthenticated } = useAuth0();
+    const { currentLang } = useContext(ProjectContext);
 
     return (
         isAuthenticated && (
 
-            <button className={styles.loginButton} onClick={() => logout()}>
-                LOG OUT
+            <button className={styles.logOutButton} onClick={() => logout()}>
+                {!isMinimized ?
+                    (<><BiExit /> {currentLang.flowPageNavbarItems.logOutButton} </>) : <BiExit />}
             </button>
         )
     )

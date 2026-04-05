@@ -78,7 +78,6 @@ const Navbar = () => {
                 ))}
             </ul>
             <UserProfile isMinimized={isMinimized} />
-            <LogoutButton />
         </nav>
     )
 }
