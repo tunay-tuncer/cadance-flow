@@ -1,0 +1,98 @@
+.projectMainContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+}
+
+.projectHeading {
+    align-self: start;
+}
+
+.mediaContainer {
+
+    background: red;
+}
+
+.phasesContainer {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.phaseItem {
+    position: relative;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--gridWhite);
+    cursor: pointer;
+    transition: 0.4s ease;
+    padding-inline: 1rem;
+}
+
+.phaseItem:hover {
+    scale: 1.05;
+}
+
+.phaseItem::after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 1px;
+    height: 50%;
+    background: var(--gridWhite);
+    bottom: -50%;
+    left: 50%;
+    transform: translate(50%);
+}
+
+.phaseItem:last-child::after {
+    display: none;
+}
+
+.activePhase {
+    background: var(--accent);
+    border: 1px solid var(--textWhite);
+
+    animation: pulse 1s ease-in infinite alternate;
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: end;
+}
+
+.phaseName {
+    font-weight: 700;
+}
+
+.completeText {
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: var(--lightGray);
+}
+
+.panoromaContainer {
+    background-color: green;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: var(--boxShadow1Hover);
+        scale: 1.02;
+    }
+
+    100% {
+        box-shadow: var(--boxShadow1);
+        scale: 1;
+    }
+}

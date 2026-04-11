@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { ProjectContext } from "../context/ProjectContext";
 import { useContext } from "react";
 //STYLES
-import styles from "../styles/FlowNavbar.module.css";
+import styles from "../styles/FlowSidebar.module.css";
 //REACT ICONS
 import { BiExit } from "react-icons/bi";
 

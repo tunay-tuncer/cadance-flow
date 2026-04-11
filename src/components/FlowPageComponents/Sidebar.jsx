@@ -3,9 +3,8 @@ import { NavLink } from "react-router"; // or "react-router-dom"
 import { useContext, useState } from "react"
 import { ProjectContext } from "../../context/ProjectContext";
 import { useAuth0, User } from "@auth0/auth0-react";
-import styles from "../../styles/FlowNavbar.module.css"
+import styles from "../../styles/FlowSidebar.module.css"
 //COMPONENTS
-import LogoutButton from "../LogoutButton";
 import UserProfile from "../UserProfile";
 //REACT ICONS
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
@@ -22,7 +21,7 @@ import { BiExit } from "react-icons/bi";
 //ASSETS
 import logo from "../../assets/LogoPNG.png"
 
-const Navbar = () => {
+const Sidebar = () => {
     const { currentLang } = useContext(ProjectContext);
     const [isMinimized, setIsMinimized] = useState(false);
 
@@ -43,7 +42,6 @@ const Navbar = () => {
     const handleMinimize = () => {
         setIsMinimized((prev) => !prev);
     };
-    const { loginWithRedirect, isAuthenticated } = useAuth0();
 
     return (
         <nav className={isMinimized ? styles.minimizedNav : styles.fullNav}>
@@ -82,4 +80,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default Sidebar

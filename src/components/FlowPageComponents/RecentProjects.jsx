@@ -1,47 +1,74 @@
+import { useEffect, useState } from "react";
+import { useFetchProjects } from "../../hooks/useFetchProject";
+import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router";
+//STYLES
 import styles from "../../styles/FlowDashboard.module.css";
-
+//REACT ICONS
 import { LiaPencilRulerSolid } from "react-icons/lia";
 import { TbCube3dSphere } from "react-icons/tb";
 import { MdOutlineEngineering } from "react-icons/md";
 
 const RecentProjects = () => {
-    const projects = [
-        { id: 1, name: "PROJECT 001", completion: 70, lastUpdate: "17/03/2026", pic: "https://res.cloudinary.com/dabmjz0xr/image/upload/q_auto/f_auto/v1756325858/s2_ybyf3w.png", projectType: <TbCube3dSphere /> },
-        { id: 2, name: "PROJECT 002", completion: 50, lastUpdate: "17/03/2026", pic: "https://res.cloudinary.com/dabmjz0xr/image/upload/q_auto/f_auto/v1771601832/S1.1080_sqvbmx.png", projectType: <LiaPencilRulerSolid /> },
-        { id: 3, name: "PROJECT 003", completion: 90, lastUpdate: "17/03/2026", pic: "https://res.cloudinary.com/dabmjz0xr/image/upload/q_auto/f_auto/v1756594953/s3_wx5mfj.png", projectType: <MdOutlineEngineering /> },
-    ]
+    const { user } = useAuth0();
+    const { projects } = useFetchProjects(user);
+
+    const renderProjectIcon = (type) => {
+        if (type === "viz") return <LiaPencilRulerSolid />;
+        if (type === "renovation") return <TbCube3dSphere />;
+        if (type === "drawing") return <MdOutlineEngineering />;
+        return null;
+    };
+
 
     return (
         <>
             <h1>RECENT PROJECTS</h1>
             <ul className={styles.projectMainContainer}>
-                {projects.map((project) => (
-                    <Link to={`/dashboard/project/${project.id}`} key={project.id}>
-
-                        <div className={styles.imageContainer}>
-                            <img className={styles.projectPicture} src={project.pic} alt={project.name} />
-                        </div>
-
-                        <div className={styles.projectInfoContainer}>
-                            <div className={styles.projectNameContainer}>
-                                <h2>{project.name}</h2>
-                                <div className={styles.projectTypeIcon}>{project.projectType}</div>
-                            </div>
-                            <div className={styles.progressContainer}>
-                                <div className={styles.projectProgressOuter}>
-                                    <div className={styles.progressInner} style={{ width: `${project.completion}%` }}></div>
+                {projects?.length === 0 ? (
+                    <p>NO PROJECTS FOUND</p>
+                ) : (
+                    projects.map((project) => (
+                        <li key={project.id} className={styles.projectListItem}>
+                            <Link to={`/dashboard/project/${project.id}`}>
+                                <div className={styles.imageContainer}>
+                                    <img
+                                        className={styles.projectPicture}
+                                        src={project.thumbnail_url || project.pic}
+                                        alt={project.project_name}
+                                    />
                                 </div>
-                                <p>{`${project.completion}%`}</p>
-                            </div>
-                            <p className={styles.projectLastUpdate}>{`Last Update: ${project.lastUpdate}`}</p>
-                        </div>
 
-                    </Link>
-                ))}
+                                <div className={styles.projectInfoContainer}>
+                                    <div className={styles.projectNameContainer}>
+                                        <h2>{project.project_name?.toUpperCase() || "UNTITLED"}</h2>
+                                        <div className={styles.projectTypeIcon}>
+                                            {renderProjectIcon(project.project_type)}
+                                        </div>
+                                    </div>
+
+                                    <div className={styles.progressContainer}>
+                                        <div className={styles.projectProgressOuter}>
+                                            <div
+                                                className={styles.progressInner}
+                                                style={{ width: `${project.project_progress || 0}%` }}
+                                            ></div>
+                                        </div>
+                                        <p>{`${project.project_progress || 0}%`}</p>
+                                    </div>
+
+                                    <p className={styles.projectLastUpdate}>
+                                        {/* 4. Formatting the Supabase timestamp */}
+                                        Last Update: {new Date(project.project_last_update).toLocaleDateString()}
+                                    </p>
+                                </div>
+                            </Link>
+                        </li>
+                    ))
+                )}
             </ul>
         </>
-    )
-}
+    );
+};
 
-export default RecentProjects
+export default RecentProjects;

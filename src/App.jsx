@@ -11,7 +11,7 @@ import Archive from './Pages/FlowPages/Archive';
 import Media from './Pages/FlowPages/Media';
 import FlowSupport from './Pages/FlowPages/Support';
 import Settings from './Pages/FlowPages/Settings';
-import Project from './Pages/FlowPages/Project';
+import ProjectDetailsController from './Pages/FlowPages/project/ProjectDetailsController';
 //LAYOUT & COMPONENTS
 import FlowPageWrapper from './wrappers/FlowPageWrapper';
 import CursorGlow from "./components/CursorGlow";
@@ -33,7 +33,7 @@ function App() {
             <Route path='media' element={<Media />} />
             <Route path='support' element={<FlowSupport />} />
             <Route path='settings' element={<Settings />} />
-            <Route path='project/:id' element={<Project />} />
+            <Route path='project/:projectId' element={<ProjectDetailsController />} />
           </Route>
 
         </Routes>
