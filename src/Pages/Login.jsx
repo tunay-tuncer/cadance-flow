@@ -7,20 +7,24 @@ import { ProjectContext } from "../context/ProjectContext";
 import LoginBackButton from "../components/LoginPageBackButton";
 import LoginButton from "../components/LoginButton";
 import signUpImage from "../assets/S3PNGPost.png";
-// import cadanceBlueLogo from "../assets/CadanceBlueGlassLogo.png";
+import LogoutButton from "../components/LogoutButton"
+import GridBackground from "../components/GridBackground";
+//ASSETS
 import logo from "../assets/LogoPNG.png"
 //CSS
 import styles from "../styles/Login.module.css";
 //REACT ICONS
 import { IoMdClose } from "react-icons/io";
+import { RiExpandUpDownLine } from "react-icons/ri";
 
 const Login = () => {
     const [projectTrackingNumber, setProjectTrackingNumber] = useState("");
-    const { isAuthenticated } = useAuth0();
+    const { user, isAuthenticated } = useAuth0();
     const { currentLang } = useContext(ProjectContext);
 
     return (
         <div className={styles.loginMainContainer}>
+            <GridBackground />
             <LoginBackButton />
 
             <div className={styles.leftContainer}>
@@ -36,6 +40,22 @@ const Login = () => {
                     <Link className={styles.trackButton}>{currentLang.login.flowButton}</Link>
                     <IoMdClose className={styles.deleteButton} onClick={() => setProjectTrackingNumber("")} />
                 </div>
+
+                {isAuthenticated && (
+                    <div className={styles.loggedInUserContainer}>
+
+                        <div className={styles.continueDashboardContainer}>
+                            <p>Continue as: </p>
+                            <Link to={"/dashboard"}>{user.name}</Link>
+                        </div>
+
+                        <div className={styles.logOutContainer}>
+                            <p>Change account </p>
+                            <LogoutButton />
+                        </div>
+
+                    </div>
+                )}
 
                 <div className={styles.signInContainer}>
                     {!isAuthenticated && <p>{currentLang.login.signInText}</p>}

@@ -1,13 +1,16 @@
 .loginMainContainer {
+    position: relative;
     width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
     padding: 4rem;
     gap: 5rem;
+    overflow: hidden;
 }
 
 .leftContainer {
+    position: relative;
     width: 60%;
     height: 100%;
     display: flex;
@@ -31,12 +34,12 @@
     object-position: center;
 }
 
-h1 {
+.loginMainContainer h1 {
     font-size: 3rem;
     font-weight: 700;
 }
 
-span {
+.loginMainContainer span {
     font-weight: 300;
 }
 
@@ -48,7 +51,7 @@ span {
     gap: 2rem;
 }
 
-input {
+.loginMainContainer input {
     width: 100%;
     height: 4rem;
     padding-inline: 1rem;
@@ -62,7 +65,7 @@ input {
     font-size: 1.25rem;
 }
 
-input:focus {
+.loginMainContainer input:focus {
     outline: none;
     box-shadow: var(--boxShadow1Hover);
 }
@@ -138,13 +141,52 @@ input:focus {
     box-shadow: var(--boxShadow1);
 }
 
-.redirectContainer {
+.loggedInUserContainer {
     width: 100%;
-    height: 20rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.loggedInUserContainer p {
+    font-weight: 300;
+
+}
+
+.continueDashboardContainer,
+.logOutContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.continueDashboardContainer a {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--textWhite);
+    background: var(--accent);
+    font-weight: 600;
+    transition: 0.4s ease;
+}
+
+.continueDashboardContainer a:hover {
+    scale: 0.95;
+}
+
+.redirectContainer {
+    position: absolute;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .redirectContainer a {
@@ -158,7 +200,7 @@ input:focus {
 }
 
 .logoImg {
-    height: 100%;
+    height: 5rem;
 }
 
 .logoImg:hover {
