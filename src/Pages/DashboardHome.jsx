@@ -3,17 +3,19 @@ import styles from "../styles/FlowDashboard.module.css";
 import RecentProjects from "../components/FlowPageComponents/RecentProjects";
 import { useAuth0, User } from "@auth0/auth0-react";
 import { useEffect } from "react";
-import supabaseClient from "../config/supabaseClient";
+import { useSupabase } from "../hooks/useSupabase";
 
 const DashboardHome = () => {
 
     //ADD USER TO PROFILES TABLE IF USER DOESN'T EXIST
     const { user, isAuthenticated } = useAuth0();
+    const { getClient } = useSupabase();
     useEffect(() => {
         if (isAuthenticated && user) {
             const syncProfile = async () => {
                 // 1. Check if profile exists
-                const { data } = await supabaseClient
+                const supabase = await getClient();
+                const { data } = await supabase
                     .from('profiles')
                     .select('*')
                     .eq('id', user.sub)
@@ -21,7 +23,7 @@ const DashboardHome = () => {
 
                 // 2. If it doesn't exist, create it (First-time login)
                 if (!data) {
-                    await supabaseClient.from('profiles').insert({
+                    await supabase.from('profiles').insert({
                         id: user.sub,
                         email: user.email,
                         full_name: user.name,

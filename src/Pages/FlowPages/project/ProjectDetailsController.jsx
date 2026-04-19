@@ -1,7 +1,6 @@
 import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
-import supabaseClient from "../../../config/supabaseClient";
-
+import { useSupabase } from "../../../hooks/useSupabase";
 
 import VisualizationProject from './VisualizationProject';
 import DrawingProject from './DrawingProject';
@@ -10,6 +9,7 @@ import Loader from '../../../components/Loader';
 
 const ProjectDetailsController = () => {
     const { projectId } = useParams();
+    const { getClient } = useSupabase();
     const [projectData, setProjectData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -19,29 +19,43 @@ const ProjectDetailsController = () => {
             console.log("Fetching for ID:", projectId);
             setLoading(true);
 
-            const { data, error } = await supabaseClient
-                .from('cadance_flow')
-                .select(`
-                *,
-                project_phases (*),
-                project_assets (*)
-        `)
-                .eq('id', projectId)
-                .single();
+            try {
+                const supabase = await getClient();
 
-            if (error) {
-                console.log("Supabase Error:", error);
-                setError(error.message);
-            } else {
-                setProjectData(data);
+                const { data, error: supabaseError } = await supabase
+                    .from('cadance_flow')
+                    .select(`
+                        *,
+                        project_phases (*),
+                        project_assets (
+                            *,
+                            project_comments (
+                                *,
+                                profiles (avatar_url)
+                            )
+                        )
+                    `)
+                    .eq('id', projectId)
+                    .single();
+
+                if (supabaseError) {
+                    console.error("Supabase Error:", supabaseError);
+                    setError(supabaseError.message);
+                } else {
+                    setProjectData(data);
+                }
+            } catch (err) {
+                console.error("Sistem Hatası:", err);
+                setError(err.message);
+            } finally {
+                setLoading(false);
             }
-            setLoading(false);
         };
 
         if (projectId) fetchProjectAndType();
-    }, [projectId]);
+    }, [projectId, getClient]);
 
-    if (loading) return <Loader />
+    if (loading) return <Loader />;
     if (error) return <div className="error">Error: {error}</div>;
     if (!projectData) return <div className="error">Project not found.</div>;
 

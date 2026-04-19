@@ -1,0 +1,63 @@
+.guestWrapper {
+    padding: 2rem;
+}
+
+.guestNav {
+    display: flex;
+    width: 100%;
+    height: 4rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1px;
+    margin-bottom: 2rem;
+    background: var(--gridWhite);
+    gap: 1px;
+}
+
+.logoContainer,
+.userViewContainer,
+.guestNav a,
+.userContainer {
+    width: 100%;
+    height: 100%;
+    background: var(--bgDark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 1rem;
+    gap: 1rem;
+}
+
+.logoContainer {}
+
+.logoContainer:hover>.logo {
+    scale: 1.1;
+}
+
+.logo {
+    width: 2.5rem;
+    transition: 0.4s ease;
+}
+
+.logoContainer span {
+    font-weight: 300;
+}
+
+.guestNav a {
+    color: var(--textWhite);
+}
+
+.userContainer img {
+    height: 2rem;
+}
+
+.userViewContainer {
+    position: relative;
+}
+
+.infoTooltip {
+    position: absolute;
+    top: 100%;
+    background: gray;
+    padding: 1rem;
+}

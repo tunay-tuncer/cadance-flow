@@ -1,8 +1,18 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient } from '@supabase/supabase-js';
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
+// --- YENİ: Standart/Anonim İstemci (Misafir Erişimi İçin) ---
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-export default supabaseClient;
+// --- MEVCUT: Tokenlı İstemci (Giriş Yapanlar İçin) ---
+export const getSupabase = (accessToken) => {
+    return createClient(supabaseUrl, supabaseAnonKey, {
+        global: {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        },
+    });
+};

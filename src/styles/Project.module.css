@@ -3,65 +3,141 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-
+    /* gap: 1rem; */
 }
 
-.projectHeading {
-    align-self: start;
+/* projectDetailsContainer */
+
+.projectDetailsContainer {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    background: var(--gridWhite);
+    padding: 1px;
+    gap: 1px;
 }
 
-.mediaContainer {
-
-    background: red;
-}
-
-.phasesContainer {
-    width: 20%;
-    height: 100%;
+.projectDateInfo,
+.projectName {
+    width: 100%;
+    background: var(--bgDark);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.dateText {
+    color: var(--lightGray);
+    font-weight: 300;
+}
+
+.dateValue {
+    font-weight: 700;
+}
+
+/* phasesContainer */
+
+.carouselWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 10rem;
+    /* Adjust height based on your design */
+}
+
+.phasesViewport {
+    scroll-padding: 0 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 1.5rem 0.5rem;
+    list-style: none;
+    scrollbar-width: none;
+}
+
+.phasesViewport::-webkit-scrollbar {
+    display: none;
+    /* Hides scrollbar in Chrome/Safari */
+}
+
+.arrowBtn {
+    background: var(--bgDark);
+    border: 1px solid var(--gridWhite);
+    color: white;
+    width: 40px;
+    height: calc(100% - 3rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: opacity 0.3s ease, background 0.3s ease;
+}
+
+.arrowBtn:hover {
+    background: var(--gridWhite);
+}
+
+.arrowIcon {
+    font-size: 2rem;
 }
 
 .phaseItem {
     position: relative;
-    width: 100%;
-    height: 4rem;
+    height: 100%;
     display: flex;
+    flex: 0 0 20%;
     align-items: center;
     justify-content: space-between;
     border: 1px solid var(--gridWhite);
     cursor: pointer;
-    transition: 0.4s ease;
-    padding-inline: 1rem;
+    padding-inline: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    cursor: pointer;
+    transition: transform 0.4s ease, border-color 0.3s ease;
 }
 
 .phaseItem:hover {
-    scale: 1.05;
+    transform: scale(1.03);
+    border-color: var(--textWhite);
 }
 
 .phaseItem::after {
     position: absolute;
     content: "";
     display: block;
-    width: 1px;
-    height: 50%;
+    width: 2rem;
+    height: 1px;
     background: var(--gridWhite);
-    bottom: -50%;
-    left: 50%;
-    transform: translate(50%);
+    top: 50%;
+    right: 100%;
+    transform: translateY(50%);
 }
 
-.phaseItem:last-child::after {
+.phaseItem:first-child::after {
     display: none;
 }
 
 .activePhase {
+    justify-content: center;
     background: var(--accent);
-    border: 1px solid var(--textWhite);
+    border: 1px solid #5897ff;
+    z-index: 2;
+    animation: pulse 1.5s ease-in-out infinite alternate;
+}
 
-    animation: pulse 1s ease-in infinite alternate;
+.activePhase p {
+    color: var(--textWhite);
+    text-align: center;
 }
 
 .textContainer {
@@ -73,12 +149,15 @@
 
 .phaseName {
     font-weight: 700;
+    font-size: 1rem;
 }
 
 .completeText {
     font-weight: 400;
     font-size: 0.75rem;
     color: var(--lightGray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .panoromaContainer {
@@ -87,12 +166,301 @@
 
 @keyframes pulse {
     0% {
-        box-shadow: var(--boxShadow1Hover);
-        scale: 1.02;
+        box-shadow: 0 0 0px var(--accent);
+        transform: scale(1);
     }
 
     100% {
-        box-shadow: var(--boxShadow1);
-        scale: 1;
+        box-shadow: 0 0 20px rgba(88, 151, 255, 0.4);
+        transform: scale(1.05);
     }
+}
+
+/* mediaContainer */
+
+.mediaContainer {
+    width: 100%;
+    height: calc(100vh - 18rem);
+    display: flex;
+    padding: 1px;
+    gap: 1px;
+    background: var(--gridWhite);
+}
+
+.leftContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--bgDark);
+}
+
+.assetName {
+    background: var(--bgDark);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    height: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.imageDisplayContainer {
+    position: relative;
+    height: calc(100vh - 21rem);
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.imageDisplayContainer img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.fullscreenIcon {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.4s ease;
+    z-index: 1000;
+}
+
+.fullscreenIcon:hover {
+    scale: 1.1;
+    color: var(--accent);
+    background: var(--textWhite);
+}
+
+.rightContainer {
+    background: var(--gridWhite);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-width: 350px;
+    gap: 1px;
+    overflow: hidden;
+}
+
+.toolsContainer {
+    background: var(--gridWhite);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto (1fr);
+    gap: 1px;
+}
+
+.toolsContainerItem {
+    background: var(--bgDark);
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+
+.activeTool {
+    background: var(--accent);
+}
+
+.toolsContainerItem:hover {
+    scale: 1.1;
+    background: var(--accent);
+}
+
+.toolsContainerItem p {
+    font-size: 0.75rem;
+}
+
+.imageGallery {
+    width: 100%;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: min-content;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bgDark);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gridWhite) transparent;
+}
+
+.imageContainer {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+
+.imageContainer:hover {
+    scale: 1.05;
+}
+
+.imageContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.imageContainer:hover .imageName {
+    opacity: 1;
+}
+
+.imageName {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    transition: 0.4s ease;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.imageName::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: var(--accent);
+    position: absolute;
+    z-index: -1;
+    opacity: 0.8;
+}
+
+.comment {
+    position: absolute;
+    padding: 8px;
+    border-radius: 6px;
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 5px;
+    position: absolute;
+}
+
+.draftWrapper {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.commentInputPopUp {
+    background: var(--bgDark);
+    padding: 8px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+.commentProfilePic {
+    width: 3rem !important;
+    height: 3rem !important;
+    flex-shrink: 0;
+    padding: 0.5rem;
+    background-color: var(--bgDark);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.commentTextArea {
+    width: 12rem;
+    min-height: 2rem;
+    max-height: 150px;
+    /* This matches the Math.min in JS */
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: none;
+    font-family: inherit;
+    font-size: 0.75rem;
+    outline: none;
+    overflow-y: auto;
+    display: block;
+}
+
+.inputActions {
+    height: 2rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.inputActions button {
+    border: none;
+    background: #eee;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 1.5rem;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s ease;
+}
+
+.inputActions button:hover {
+    color: var(--textWhite);
+    scale: 1.1;
+    background: var(--accent);
+}
+
+.inputActions button:last-child:hover {
+    background: red;
+}
+
+.commentBubble {
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    color: var(--textWhite);
+    background: var(--bgDark);
+    font-size: 0.75rem;
+    gap: 0.5rem;
+}
+
+.commentControls {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.deleteComment {
+    color: red;
+    transition: 0.4s ease;
+    cursor: pointer
+}
+
+.deleteComment:hover {
+    scale: 1.25;
 }

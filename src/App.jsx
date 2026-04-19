@@ -12,21 +12,27 @@ import Media from './Pages/FlowPages/Media';
 import FlowSupport from './Pages/FlowPages/Support';
 import Settings from './Pages/FlowPages/Settings';
 import ProjectDetailsController from './Pages/FlowPages/project/ProjectDetailsController';
+import PublicProjectDetails from './Pages/FlowPages/project/PublicProjectDetails';
 //LAYOUT & COMPONENTS
 import FlowPageWrapper from './wrappers/FlowPageWrapper';
 import CursorGlow from "./components/CursorGlow";
 
 function App() {
-
   return (
     <AuthContextProvider>
       <ProjectContextProvider>
         <CursorGlow />
         <Routes>
+          {/* --- 1. HERKESE AÇIK ROTALAR --- */}
           <Route path='/' element={<Home />} />
           <Route path='/support' element={<Support />} />
           <Route path='/login' element={<Login />} />
 
+          {/* MISAFIR ERIŞIMI: Dashboard dışında ve Auth0 koruması yok */}
+          <Route path='/track/:trackingCode' element={<PublicProjectDetails />} />
+
+          {/* --- 2. KORUMALI ROTALAR (Dashboard) --- */}
+          {/* Buraya sadece giriş yapmış (Authenticated) kullanıcılar girebilmeli */}
           <Route path='/dashboard' element={<FlowPageWrapper />}>
             <Route index element={<DashboardHome />} />
             <Route path='archive' element={<Archive />} />
@@ -36,6 +42,8 @@ function App() {
             <Route path='project/:projectId' element={<ProjectDetailsController />} />
           </Route>
 
+          {/* Yanlış yola girenleri ana sayfaya veya 404'e at */}
+          <Route path="*" element={<Home />} />
         </Routes>
       </ProjectContextProvider>
     </AuthContextProvider>

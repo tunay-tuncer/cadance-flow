@@ -5,6 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { ProjectContext } from "../context/ProjectContext";
 //COMPONENTS
 import LoginBackButton from "../components/LoginPageBackButton";
+import TrackButton from "../components/TrackButton";
 import LoginButton from "../components/LoginButton";
 import signUpImage from "../assets/S3PNGPost.png";
 import LogoutButton from "../components/LogoutButton"
@@ -37,7 +38,7 @@ const Login = () => {
                         value={projectTrackingNumber}
                         onChange={(e) => setProjectTrackingNumber(e.target.value)}
                     />
-                    <Link className={styles.trackButton}>{currentLang.login.flowButton}</Link>
+                    <TrackButton code={projectTrackingNumber} />
                     <IoMdClose className={styles.deleteButton} onClick={() => setProjectTrackingNumber("")} />
                 </div>
 
