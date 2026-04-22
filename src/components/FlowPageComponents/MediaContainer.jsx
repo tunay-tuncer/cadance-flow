@@ -4,18 +4,19 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { v4 as uuidv4 } from 'uuid';
 import { useSupabase } from "../../hooks/useSupabase";
 import FsImageContainer from "./FsImageContainer";
+import ToolsContainer from "./ToolsContainer";
 
 
 //REACT ICONS
-import { MdOutlineInsertComment, MdCheck, MdClose, MdFullscreen, MdFullscreenExit } from "react-icons/md";
+import { MdCheck, MdClose, MdFullscreen, MdFullscreenExit } from "react-icons/md";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 import { ImFolderDownload } from "react-icons/im";
 import { RiUserLine } from "react-icons/ri";
-import { BsFillShieldLockFill } from "react-icons/bs";
 
 const MediaContainer = ({ project, isPublic }) => {
-    const imageRef = useRef(null);
+    const imageRef = useRef(null);       // container div → for pin positioning
+    const imgElRef = useRef(null);       // img element → for naturalWidth/naturalHeight
     const textAreaRef = useRef(null);
     const [currentImage, setCurrentImage] = useState(0);
     const [currentImageId, setCurrentImageId] = useState("");
@@ -28,6 +29,9 @@ const MediaContainer = ({ project, isPublic }) => {
     const { user, isAuthenticated } = useAuth0();
     const { getClient } = useSupabase();
 
+    const [isDrafting, setIsDrafting] = useState(false);
+    const [draftText, setDraftText] = useState("");
+
     useEffect(() => {
 
         if (project.project_assets[currentImage]) {
@@ -37,16 +41,6 @@ const MediaContainer = ({ project, isPublic }) => {
     }, [currentImage, project.project_assets]);
 
 
-    const toolsContainerItems = [
-        { id: "comment", icon: <MdOutlineInsertComment />, name: "Add Comment", onclick: () => setIsCommenting((prev) => !prev) },
-        { id: "deleteComment", icon: <FaRegTrashAlt />, name: "Delete All Comments", onclick: () => deleteAllComments() },
-        { id: "download", icon: <FiDownload />, name: "Download Selected", onclick: () => downloadSingleImage(project.project_assets[currentImage].url, project.project_assets[currentImage].file_name) },
-        { id: "downloadAll", icon: <ImFolderDownload />, name: "Download All", onclick: () => handleElse() },
-    ]
-
-    const [isDrafting, setIsDrafting] = useState(false);
-    const [draftText, setDraftText] = useState("");
-
     const allComments = project.project_assets.flatMap(asset => asset.project_comments || []);
     const [comments, setComments] = useState(allComments);
 
@@ -55,22 +49,65 @@ const MediaContainer = ({ project, isPublic }) => {
         return phase ? phase.name : "Unassigned";
     };
 
-    const deleteAllComments = () => {
-        const remainingComments = comments.filter(c => c.image !== currentImageId);
-        setComments(remainingComments);
+    const deleteAllComments = async () => {
+        const confirmDelete = window.confirm("Bu görsele ait TÜM yorumları silmek istediğinize emin misiniz? Bu işlem geri alınamaz.");
 
+        if (!confirmDelete) return;
+        try {
+            const supabase = await getClient();
+            const { error } = await supabase
+                .from('project_comments')
+                .delete()
+                .eq("asset_id", currentImageId)
+
+            if (error) throw error;
+            setComments(prev => prev.filter(c => c.asset_id !== currentImageId));
+        } catch (err) {
+            console.error("Yorumlar silinirken hata oluştu:", error.message);
+            alert("Silme işlemi başarısız oldu: " + error.message);
+        }
     };
 
-    const handleElse = () => {
-        return
-    }
+    const getImageRect = () => {
+        if (!imageRef.current || !imgElRef.current) return null;
+
+        const container = imageRef.current.getBoundingClientRect();
+        const { naturalWidth, naturalHeight } = imgElRef.current;
+
+        const containerAspect = container.width / container.height;
+        const imageAspect = naturalWidth / naturalHeight;
+
+        let renderedWidth, renderedHeight, offsetX, offsetY;
+
+        if (imageAspect > containerAspect) {
+            // Letterboxed top/bottom
+            renderedWidth = container.width;
+            renderedHeight = container.width / imageAspect;
+            offsetX = 0;
+            offsetY = (container.height - renderedHeight) / 2;
+        } else {
+            // Pillarboxed left/right
+            renderedHeight = container.height;
+            renderedWidth = container.height * imageAspect;
+            offsetX = (container.width - renderedWidth) / 2;
+            offsetY = 0;
+        }
+
+        return { renderedWidth, renderedHeight, offsetX, offsetY, container };
+    };
 
     const handleMouseMove = (e) => {
-        if (!isCommenting || !imageRef.current || isDrafting) return;
+        if (!isCommenting || isDrafting) return;
+        const result = getImageRect();
+        if (!result) return;
 
-        const rect = imageRef.current.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        const { renderedWidth, renderedHeight, offsetX, offsetY, container } = result;
+
+        const rawX = e.clientX - container.left - offsetX;
+        const rawY = e.clientY - container.top - offsetY;
+
+        const x = Math.min(Math.max((rawX / renderedWidth) * 100, 0), 100);
+        const y = Math.min(Math.max((rawY / renderedHeight) * 100, 0), 100);
 
         setPreviewPos({ x, y });
     };
@@ -79,6 +116,18 @@ const MediaContainer = ({ project, isPublic }) => {
         if (!isCommenting || isDrafting) return;
 
         setIsDrafting(true);
+    };
+
+    const getPinStyle = (left, top) => {
+        const result = getImageRect();
+        if (!result) return { left: `${left}%`, top: `${top}%` };
+
+        const { renderedWidth, renderedHeight, offsetX, offsetY, container } = result;
+
+        return {
+            left: `${offsetX + (parseFloat(left) / 100) * renderedWidth}px`,
+            top: `${offsetY + (parseFloat(top) / 100) * renderedHeight}px`,
+        };
     };
 
     const confirmComment = async (e) => {
@@ -129,7 +178,6 @@ const MediaContainer = ({ project, isPublic }) => {
 
     };
 
-
     const toggleComment = (id) => {
         setOpenCommentIds((prev) =>
             prev.includes(id)
@@ -163,26 +211,6 @@ const MediaContainer = ({ project, isPublic }) => {
         document.body.style.overflow = 'hidden';
     }
 
-    const downloadSingleImage = async (imageUrl, fileName) => {
-        try {
-            const response = await fetch(imageUrl);
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
-
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = fileName || 'cadance-flow-export.jpg';
-
-            document.body.appendChild(link);
-            link.click();
-
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
-        } catch (error) {
-            console.error("İndirme hatası:", error);
-        }
-    };
-
 
     return (
         <div className={styles.mediaContainer}>
@@ -190,9 +218,9 @@ const MediaContainer = ({ project, isPublic }) => {
             <div className={styles.leftContainer}>
                 <p className={styles.assetName}>{`${project.project_assets[currentImage].file_name} - ${getPhaseName(project.project_assets[currentImage])}`}</p>
 
-                <div className={styles.imageDisplayContainer} onMouseMove={handleMouseMove}>
+                <div className={styles.imageDisplayContainer} ref={imageRef} onMouseMove={handleMouseMove}>
 
-                    <img ref={imageRef} src={project.project_assets[currentImage].url} alt="" onClick={handleImageClick} />
+                    <img ref={imgElRef} src={project.project_assets[currentImage].url} alt="" onClick={handleImageClick} />
 
                     <MdFullscreen className={styles.fullscreenIcon} onClick={() => openFullscreen()} />
 
@@ -202,8 +230,7 @@ const MediaContainer = ({ project, isPublic }) => {
                             className={styles.draftWrapper}
                             style={{
                                 position: 'absolute',
-                                left: `${previewPos.x}%`,
-                                top: `${previewPos.y}%`,
+                                ...getPinStyle(previewPos.x, previewPos.y),
                                 pointerEvents: isDrafting ? 'auto' : 'none',
                                 flexDirection: previewPos.x > 65 ? "row-reverse" : "row",
                                 transform: previewPos.x > 65 ? "translateX(-100%)" : "",
@@ -245,8 +272,7 @@ const MediaContainer = ({ project, isPublic }) => {
                                     key={c.id}
                                     className={styles.comment}
                                     style={{
-                                        left: `${c.left}%`,
-                                        top: `${c.top}%`,
+                                        ...getPinStyle(c.left, c.top),
                                         flexDirection: isRightEdge ? "row-reverse" : "row",
                                         zIndex: isOpen ? 90 : 10,
                                         pointerEvents: 'auto',
@@ -287,38 +313,11 @@ const MediaContainer = ({ project, isPublic }) => {
                 </div>
             </div>
 
-            <div className={styles.rightContainer}>
+            <ToolsContainer project={project} setIsCommenting={setIsCommenting} isCommenting={isCommenting} deleteAllComments={deleteAllComments} currentImage={currentImage} setCurrentImage={setCurrentImage} getPhaseName={getPhaseName} />
 
-                <div className={styles.toolsContainer}>
-                    {toolsContainerItems.map((item) => (
-                        <div key={item.id} className={`
-                            ${styles.toolsContainerItem} 
-                            ${(isCommenting && item.id === "comment") ? styles.activeTool : ""} 
-                            ${!isAuthenticated ? styles.disabledTool : ""}`} onClick={!isAuthenticated ? () => alert("Lütfen giriş yapın!") : item.onclick}>
-                            {item.icon}
-                            <p>{item.name}</p>
-                            {!isAuthenticated && <BsFillShieldLockFill className={styles.lockIcon} />}
-                        </div>
-                    ))}
-                </div>
-
-                <div className={styles.imageGallery}>
-                    {project.project_assets.map((asset, index) => (
-                        <div key={asset.id} className={styles.imageContainer} onClick={() => setCurrentImage(index)}>
-
-                            <img src={asset.url} alt="" />
-
-                            <p className={styles.imageName}>{`${project.project_assets[currentImage].file_name} - ${getPhaseName(project.project_assets[index])}`}</p>
-
-                        </div>
-                    ))}
-                </div>
-
-                {isFsOpen && (
-                    <FsImageContainer image={project.project_assets[currentImage]} isFsOpen={isFsOpen} setIsFsOpen={setIsFsOpen} />
-                )}
-
-            </div>
+            {isFsOpen && (
+                <FsImageContainer image={project.project_assets[currentImage]} isFsOpen={isFsOpen} setIsFsOpen={setIsFsOpen} />
+            )}
 
         </div>
     )
