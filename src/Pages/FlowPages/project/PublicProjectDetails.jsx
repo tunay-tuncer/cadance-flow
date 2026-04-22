@@ -1,7 +1,8 @@
 import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
-// Dikkat: Burada kendi oluşturduğun standart supabase client'ını import etmelisin
-// Genellikle src/supabaseClient.js gibi bir yerdedir.
+import { useAuth0 } from "@auth0/auth0-react";
+
+import { useSupabase } from "../../../hooks/useSupabase";
 import { supabase } from "../../../config/supabaseClient"
 
 import FlowPageGuestWrapper from '../../../wrappers/FlowPageGuestWrapper';
@@ -16,40 +17,57 @@ const PublicProjectDetails = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const { isAuthenticated } = useAuth0();
+    const { getClient } = useSupabase(); // Yetkili client
+
     useEffect(() => {
-        const fetchPublicProject = async () => {
+        const handleContextMenu = (e) => {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        };
+        document.addEventListener('contextmenu', handleContextMenu);
+
+        return () => {
+            document.removeEventListener('contextmenu', handleContextMenu);
+        };
+    }, []);
+
+
+    useEffect(() => {
+        const fetchProject = async () => {
             setLoading(true);
             try {
-                // Burada getClient() kullanmıyoruz! 
-                // Çünkü anonim kullanıcıda token yok.
-                const { data, error: supabaseError } = await supabase
+                // EĞER giriş yapmışsa yetkili client, yapmamışsa standart client kullan
+                const client = isAuthenticated ? await getClient() : supabase;
+
+                const { data, error } = await client
                     .from('cadance_flow')
                     .select(`
+                    *,
+                    project_phases (*),
+                    project_assets (
                         *,
-                        project_phases (*),
-                        project_assets (*)
-                    `)
-                    .eq('tracking_number', trackingCode) // Takip numarasıyla eşleştiriyoruz
+                        project_comments (
+                            *,
+                            profiles (*)
+                        )
+                    )
+                `)
+                    .eq('tracking_number', trackingCode)
                     .single();
 
-                if (supabaseError) {
-                    console.error("Sorgu Hatası:", supabaseError);
-                    setError("Proje bulunamadı veya geçersiz takip kodu.");
-                } else {
-                    setProjectData(data);
-                }
+                if (data) setProjectData(data);
             } catch (err) {
-                console.error("Sistem Hatası:", err);
-                setError("Bir bağlantı hatası oluştu.");
+                console.error(err);
             } finally {
                 setLoading(false);
             }
         };
 
-        if (trackingCode) {
-            fetchPublicProject();
-        }
-    }, [trackingCode]);
+        fetchProject();
+    }, [trackingCode, isAuthenticated]);
+
 
     if (loading) return <Loader />;
     if (error) return <div className="error-container">{error}</div>;

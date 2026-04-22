@@ -1,8 +1,9 @@
 //DEPENDENCIES
-import { useState, useContext } from "react";
-import { Link } from "react-router";
+import { useState, useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router";
 import { useAuth0 } from "@auth0/auth0-react";
 import { ProjectContext } from "../context/ProjectContext";
+
 //COMPONENTS
 import LoginBackButton from "../components/LoginPageBackButton";
 import TrackButton from "../components/TrackButton";
@@ -19,9 +20,40 @@ import { IoMdClose } from "react-icons/io";
 import { RiExpandUpDownLine } from "react-icons/ri";
 
 const Login = () => {
+
     const [projectTrackingNumber, setProjectTrackingNumber] = useState("");
+    const [error, setError] = useState(""); // Hata mesajı için yeni state
     const { user, isAuthenticated } = useAuth0();
     const { currentLang } = useContext(ProjectContext);
+    const navigate = useNavigate();
+
+    const handleTrack = () => {
+        // Hata durumlarını kontrol edelim
+        if (!projectTrackingNumber) {
+            setError("Lütfen bir takip kodu giriniz."); // Veya currentLang'den çekebilirsin
+        } else if (projectTrackingNumber.length <= 4) {
+            setError("Takip kodu en az 5 karakter olmalıdır.");
+
+        } else if (projectTrackingNumber[0] != "C" && projectTrackingNumber[1] != "F") { setError("Lütfen geçerli bir takip kodu giriniz.") }
+        else {
+            setError(""); // Hata yoksa temizle
+            navigate(`/track/${projectTrackingNumber}`);
+        }
+    };
+
+    // Input değiştiğinde hatayı temizle (User-friendly dokunuş)
+    const handleInputChange = (e) => {
+        setProjectTrackingNumber(e.target.value);
+        if (error) setError("");
+    };
+
+    useEffect(() => {
+        const handleEnter = (e) => {
+            if (e.key === 'Enter') { handleTrack() };
+        };
+        window.addEventListener('keydown', handleEnter);
+        return () => window.removeEventListener('keydown', handleEnter);
+    }, [projectTrackingNumber]); // projectTrackingNumber eklendi (Closure hatası için)
 
     return (
         <div className={styles.loginMainContainer}>
@@ -30,17 +62,26 @@ const Login = () => {
 
             <div className={styles.leftContainer}>
                 <h1>CADANCE <span>FLOW</span></h1>
-                <div className={styles.inputContainer}>
+
+                <div className={`${styles.inputContainer} ${error ? styles.inputError : ""}`}>
                     <input
                         type="text"
                         placeholder={currentLang.login.placeholder}
                         className={styles.projectTrackingInput}
                         value={projectTrackingNumber}
-                        onChange={(e) => setProjectTrackingNumber(e.target.value)}
+                        onChange={handleInputChange}
                     />
-                    <TrackButton code={projectTrackingNumber} />
-                    <IoMdClose className={styles.deleteButton} onClick={() => setProjectTrackingNumber("")} />
+                    <TrackButton code={projectTrackingNumber} handleTrack={handleTrack} />
+                    <IoMdClose
+                        className={styles.deleteButton}
+                        onClick={() => {
+                            setProjectTrackingNumber("");
+                            setError("");
+                        }}
+                    />
+                    {error && <p className={styles.errorMessage}>{error}</p>}
                 </div>
+                {/* Dinamik Hata Mesajı */}
 
                 {isAuthenticated && (
                     <div className={styles.loggedInUserContainer}>

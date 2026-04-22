@@ -15,7 +15,6 @@ function Loader() {
                 width: 200px;
                 aspect-ratio: 1;
                 z-index: 99;
-                transform: translateY(-50%);
             }
 
             .loader1, .loader2, .loader3, .loader4 {

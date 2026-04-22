@@ -6,7 +6,7 @@ import { FaCheck } from "react-icons/fa";
 import { MdArrowLeft, MdArrowRight } from "react-icons/md";
 
 
-const VisualizationProject = ({ project }) => {
+const VisualizationProject = ({ project, isPublic }) => {
     console.log(project);
     const [phases, setPhases] = useState(project.project_phases);
 
@@ -98,7 +98,7 @@ const VisualizationProject = ({ project }) => {
                 </button>
             </div>
 
-            <MediaContainer project={project} />
+            <MediaContainer project={project} isPublic={isPublic} />
 
             <div className={styles.panoromaContainer}></div>
 

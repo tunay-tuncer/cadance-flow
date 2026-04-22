@@ -3,6 +3,8 @@ import styles from "../../styles/Project.module.css"
 import { useAuth0 } from "@auth0/auth0-react";
 import { v4 as uuidv4 } from 'uuid';
 import { useSupabase } from "../../hooks/useSupabase";
+import FsImageContainer from "./FsImageContainer";
+
 
 //REACT ICONS
 import { MdOutlineInsertComment, MdCheck, MdClose, MdFullscreen, MdFullscreenExit } from "react-icons/md";
@@ -10,12 +12,14 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 import { ImFolderDownload } from "react-icons/im";
 import { RiUserLine } from "react-icons/ri";
+import { BsFillShieldLockFill } from "react-icons/bs";
 
-const MediaContainer = ({ project }) => {
+const MediaContainer = ({ project, isPublic }) => {
     const imageRef = useRef(null);
     const textAreaRef = useRef(null);
     const [currentImage, setCurrentImage] = useState(0);
     const [currentImageId, setCurrentImageId] = useState("");
+    const [isFsOpen, setIsFsOpen] = useState(false);
 
     const [previewPos, setPreviewPos] = useState({ x: 0, y: 0 });
     const [isCommenting, setIsCommenting] = useState(false);
@@ -36,14 +40,14 @@ const MediaContainer = ({ project }) => {
     const toolsContainerItems = [
         { id: "comment", icon: <MdOutlineInsertComment />, name: "Add Comment", onclick: () => setIsCommenting((prev) => !prev) },
         { id: "deleteComment", icon: <FaRegTrashAlt />, name: "Delete All Comments", onclick: () => deleteAllComments() },
-        { id: "download", icon: <FiDownload />, name: "Download Selected", onclick: () => handleElse() },
+        { id: "download", icon: <FiDownload />, name: "Download Selected", onclick: () => downloadSingleImage(project.project_assets[currentImage].url, project.project_assets[currentImage].file_name) },
         { id: "downloadAll", icon: <ImFolderDownload />, name: "Download All", onclick: () => handleElse() },
     ]
 
     const [isDrafting, setIsDrafting] = useState(false);
     const [draftText, setDraftText] = useState("");
 
-    const allComments = project.project_assets.flatMap(asset => asset.project_comments);
+    const allComments = project.project_assets.flatMap(asset => asset.project_comments || []);
     const [comments, setComments] = useState(allComments);
 
     const getPhaseName = (asset) => {
@@ -80,6 +84,7 @@ const MediaContainer = ({ project }) => {
     const confirmComment = async (e) => {
         e.stopPropagation();
         if (!draftText.trim()) return;
+        if (!isAuthenticated) return;
 
         try {
             const supabase = await getClient();
@@ -99,12 +104,11 @@ const MediaContainer = ({ project }) => {
             const { data, error } = await supabase
                 .from('project_comments')
                 .insert([newComment])
-                .select('*, profiles(avatar_url, full_name)') // Eklenen veriyi profil bilgisiyle geri al
+                .select('*, profiles(avatar_url, full_name)')
                 .single();
 
             if (error) throw error;
 
-            // This is where your Supabase "INSERT" logic will eventually go
             setComments((prev) => [...prev, data]);
 
             setDraftText("");
@@ -153,6 +157,33 @@ const MediaContainer = ({ project }) => {
         }
     }
 
+    const openFullscreen = () => {
+        setIsFsOpen(true);
+
+        document.body.style.overflow = 'hidden';
+    }
+
+    const downloadSingleImage = async (imageUrl, fileName) => {
+        try {
+            const response = await fetch(imageUrl);
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = fileName || 'cadance-flow-export.jpg';
+
+            document.body.appendChild(link);
+            link.click();
+
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+        } catch (error) {
+            console.error("İndirme hatası:", error);
+        }
+    };
+
+
     return (
         <div className={styles.mediaContainer}>
 
@@ -163,7 +194,7 @@ const MediaContainer = ({ project }) => {
 
                     <img ref={imageRef} src={project.project_assets[currentImage].url} alt="" onClick={handleImageClick} />
 
-                    <MdFullscreen className={styles.fullscreenIcon} />
+                    <MdFullscreen className={styles.fullscreenIcon} onClick={() => openFullscreen()} />
 
                     {/* THE GHOST PIN: Only shows when in commenting mode */}
                     {isCommenting && (
@@ -203,7 +234,7 @@ const MediaContainer = ({ project }) => {
                         </div>
                     )}
 
-                    {comments.
+                    {isAuthenticated && comments.
                         filter((c) => c.asset_id === currentImageId)
                         .map((c) => {
                             const isOpen = openCommentIds.includes(c.id); // Check the array
@@ -226,17 +257,15 @@ const MediaContainer = ({ project }) => {
                                         className={styles.commentProfilePic}
                                         src={c.profiles?.avatar_url}
                                         alt="user"
+                                        referrerPolicy="no-referrer"
                                         onClick={(e) => {
                                             e.stopPropagation();
-                                            toggleComment(c.id); // Use the new toggle function
+                                            toggleComment(c.id);
                                         }}
                                     />) : (<RiUserLine className={styles.commentProfilePic} onClick={(e) => {
                                         e.stopPropagation();
-                                        toggleComment(c.id); // Use the new toggle function
+                                        toggleComment(c.id);
                                     }} />)}
-
-
-
 
 
                                     {isOpen && (
@@ -262,9 +291,13 @@ const MediaContainer = ({ project }) => {
 
                 <div className={styles.toolsContainer}>
                     {toolsContainerItems.map((item) => (
-                        <div key={item.id} className={`${styles.toolsContainerItem} ${isCommenting && item.id === "comment" && styles.activeTool}`} onClick={item.onclick}>
+                        <div key={item.id} className={`
+                            ${styles.toolsContainerItem} 
+                            ${(isCommenting && item.id === "comment") ? styles.activeTool : ""} 
+                            ${!isAuthenticated ? styles.disabledTool : ""}`} onClick={!isAuthenticated ? () => alert("Lütfen giriş yapın!") : item.onclick}>
                             {item.icon}
                             <p>{item.name}</p>
+                            {!isAuthenticated && <BsFillShieldLockFill className={styles.lockIcon} />}
                         </div>
                     ))}
                 </div>
@@ -280,6 +313,10 @@ const MediaContainer = ({ project }) => {
                         </div>
                     ))}
                 </div>
+
+                {isFsOpen && (
+                    <FsImageContainer image={project.project_assets[currentImage]} isFsOpen={isFsOpen} setIsFsOpen={setIsFsOpen} />
+                )}
 
             </div>
 

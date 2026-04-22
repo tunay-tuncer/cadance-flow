@@ -44,6 +44,7 @@
 }
 
 .inputContainer {
+    margin-top: 2rem;
     position: relative;
     width: 100%;
     display: flex;
@@ -85,6 +86,15 @@
 
 .deleteButton:hover {
     background: var(--accent);
+}
+
+.errorMessage {
+    position: absolute;
+    top: -2rem;
+    width: 100%;
+    color: red;
+    font-size: 0.75rem;
+    text-align: center;
 }
 
 .trackButton {

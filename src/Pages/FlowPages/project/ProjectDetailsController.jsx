@@ -15,6 +15,19 @@ const ProjectDetailsController = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        const handleContextMenu = (e) => {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        };
+        document.addEventListener('contextmenu', handleContextMenu);
+
+        return () => {
+            document.removeEventListener('contextmenu', handleContextMenu);
+        };
+    }, []);
+
+    useEffect(() => {
         const fetchProjectAndType = async () => {
             console.log("Fetching for ID:", projectId);
             setLoading(true);
@@ -31,7 +44,7 @@ const ProjectDetailsController = () => {
                             *,
                             project_comments (
                                 *,
-                                profiles (avatar_url)
+                                profiles (avatar_url, full_name)
                             )
                         )
                     `)

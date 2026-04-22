@@ -13,27 +13,35 @@ const DashboardHome = () => {
     useEffect(() => {
         if (isAuthenticated && user) {
             const syncProfile = async () => {
-                // 1. Check if profile exists
-                const supabase = await getClient();
-                const { data } = await supabase
-                    .from('profiles')
-                    .select('*')
-                    .eq('id', user.sub)
-                    .single();
+                try {
+                    const supabase = await getClient();
 
-                // 2. If it doesn't exist, create it (First-time login)
-                if (!data) {
-                    await supabase.from('profiles').insert({
-                        id: user.sub,
-                        email: user.email,
-                        full_name: user.name,
-                        avatar_url: user.picture
-                    });
+                    // .upsert() kullanarak: 
+                    // Eğer ID varsa mevcut satırı günceller (UPDATE)
+                    // Eğer ID yoksa yeni satır oluşturur (INSERT)
+                    const { error } = await supabase
+                        .from('profiles')
+                        .upsert({
+                            id: user.sub,
+                            email: user.email,
+                            full_name: user.name,
+                            avatar_url: user.picture, // Her girişte en güncel linki yazıyoruz
+                            updated_at: new Date()    // Güncellenme tarihini de tutmak iyidir
+                        }, {
+                            onConflict: 'id' // ID çakışması durumunda güncelleme yapacağını belirtiyoruz
+                        });
+
+                    if (error) {
+                        console.error("Profil senkronizasyon hatası:", error.message);
+                    }
+                } catch (err) {
+                    console.error("Senkronizasyon sırasında sistem hatası:", err);
                 }
             };
+
             syncProfile();
         }
-    }, [isAuthenticated, user]);
+    }, [isAuthenticated, user, getClient]);
 
 
     return (
