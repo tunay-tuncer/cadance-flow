@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import { useSupabase } from "../../../hooks/useSupabase";
-
+//COMPONENTS
 import VisualizationProject from './VisualizationProject';
 import DrawingProject from './DrawingProject';
 import RenovationProject from './RenovationProject';

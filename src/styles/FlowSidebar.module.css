@@ -220,4 +220,8 @@
         display: none;
     }
 
+    .logOutButton {
+        width: 100%;
+    }
+
 }

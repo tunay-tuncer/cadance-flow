@@ -28,3 +28,10 @@
         transform: translateX(0);
     }
 }
+
+@media (max-width:768px) {
+    .backButtonDiv {
+        left: 2rem;
+        top: 2rem;
+    }
+}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { MdFullscreen, MdFullscreenExit } from "react-icons/md";
-import styles from "../../styles/Project.module.css"
+import styles from "../../styles/Project.module.css";
+import { getWatermarkedUrl } from "../../hooks/cloudinaryHelpers";
 
 const FsImageContainer = ({ image, isFsOpen, setIsFsOpen }) => {
 
@@ -21,7 +22,7 @@ const FsImageContainer = ({ image, isFsOpen, setIsFsOpen }) => {
     return (
         <div className={styles.fullscreenContainer}>
             <MdFullscreenExit className={styles.fullscreenIcon} onClick={closeFullscreen} />
-            <img src={image.url} alt="" />
+            <img src={getWatermarkedUrl(image.url)} alt="" />
         </div>
     )
 }

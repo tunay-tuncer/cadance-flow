@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useSupabase } from "../../hooks/useSupabase";
 import FsImageContainer from "./FsImageContainer";
 import ToolsContainer from "./ToolsContainer";
-
+import { getWatermarkedUrl } from "../../hooks/cloudinaryHelpers"
 
 //REACT ICONS
 import { MdCheck, MdClose, MdFullscreen, MdFullscreenExit } from "react-icons/md";
@@ -39,6 +39,19 @@ const MediaContainer = ({ project, isPublic }) => {
         }
 
     }, [currentImage, project.project_assets]);
+
+    useEffect(() => {
+        if (project?.project_assets) {
+            project.project_assets.forEach((asset) => {
+                const fullResUrl = getWatermarkedUrl(asset.url);
+
+                // Arka planda görünmez bir Image nesnesi oluşturup yükletiyoruz
+                const img = new Image();
+                img.src = fullResUrl;
+
+            });
+        }
+    }, [project.project_assets]);
 
 
     const allComments = project.project_assets.flatMap(asset => asset.project_comments || []);
