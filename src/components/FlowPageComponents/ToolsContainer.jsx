@@ -11,7 +11,7 @@ import { ImFolderDownload } from "react-icons/im";
 import { BsFillShieldLockFill } from "react-icons/bs";
 
 const ToolsContainer = ({ project, isCommenting, setIsCommenting,
-    deleteAllComments, currentImage, setCurrentImage, getPhaseName }) => {
+    deleteAllComments, currentImage, setCurrentImage, getPhaseName, canUserComment, canDownloadAsset }) => {
 
     const { isAuthenticated } = useAuth0();
 
@@ -65,11 +65,33 @@ const ToolsContainer = ({ project, isCommenting, setIsCommenting,
     };
 
     const toolsContainerItems = [
-        { id: "comment", icon: <MdOutlineInsertComment />, name: "Add Comment", onclick: () => setIsCommenting((prev) => !prev) },
-        { id: "deleteComment", icon: <FaRegTrashAlt />, name: "Delete All Comments", onclick: () => deleteAllComments() },
-        { id: "download", icon: <FiDownload />, name: "Download Selected", onclick: () => downloadSingleImage(project.project_assets[currentImage].url, project.project_assets[currentImage].file_name) },
-        { id: "downloadAll", icon: <ImFolderDownload />, name: "Download All", onclick: () => handleDownloadAll() },
-    ]
+        ...(canUserComment ? [
+            {
+                id: "comment",
+                icon: <MdOutlineInsertComment />,
+                name: "Add Comment",
+                onclick: () => setIsCommenting((prev) => !prev)
+            },
+            {
+                id: "deleteComment",
+                icon: <FaRegTrashAlt />,
+                name: "Delete All Comments",
+                onclick: () => deleteAllComments()
+            }
+        ] : []),
+        {
+            id: "download",
+            icon: <FiDownload />,
+            name: "Download Selected",
+            onclick: () => downloadSingleImage(project.project_assets[currentImage].url, project.project_assets[currentImage].file_name)
+        },
+        {
+            id: "downloadAll",
+            icon: <ImFolderDownload />,
+            name: "Download All",
+            onclick: () => handleDownloadAll()
+        },
+    ];
 
     return (
         <div className={styles.rightContainer}>
@@ -91,7 +113,12 @@ const ToolsContainer = ({ project, isCommenting, setIsCommenting,
                 {project.project_assets.map((asset, index) => (
                     <div key={asset.id} className={styles.imageContainer} onClick={() => setCurrentImage(index)}>
 
-                        <img src={asset.url} alt="" />
+                        <img src={
+                            asset.url.endsWith(".pdf")
+                                ? asset.url.replace(".pdf", ".jpg")
+                                : asset.url
+                        }
+                            alt={asset.file_name} />
 
                         <p className={styles.imageName}>{`${asset.file_name} - ${getPhaseName(asset)}`}</p>
 

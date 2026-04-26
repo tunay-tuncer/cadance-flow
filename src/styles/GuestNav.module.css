@@ -60,4 +60,5 @@
     top: 100%;
     background: gray;
     padding: 1rem;
+    z-index: 10;
 }

@@ -2,9 +2,7 @@ import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import { useSupabase } from "../../../hooks/useSupabase";
 //COMPONENTS
-import VisualizationProject from './VisualizationProject';
-import DrawingProject from './DrawingProject';
-import RenovationProject from './RenovationProject';
+import ProjectPage from './ProjectPage';
 import Loader from '../../../components/Loader';
 
 const ProjectDetailsController = () => {
@@ -29,33 +27,50 @@ const ProjectDetailsController = () => {
 
     useEffect(() => {
         const fetchProjectAndType = async () => {
-            console.log("Fetching for ID:", projectId);
+            console.log("Fetching for Identifier:", projectId);
             setLoading(true);
 
             try {
                 const supabase = await getClient();
 
-                const { data, error: supabaseError } = await supabase
+                // 1. Gelen değerin UUID olup olmadığını kontrol eden Regex (Düzenli İfade)
+                const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(projectId);
+
+                // 2. Temel sorguyu oluştur
+                let query = supabase
                     .from('cadance_flow')
                     .select(`
+                    *,
+                    project_phases (*),
+                    project_assets (
                         *,
-                        project_phases (*),
-                        project_assets (
+                        can_download,
+                        project_comments (
                             *,
-                            project_comments (
-                                *,
-                                profiles (avatar_url, full_name)
-                            )
+                            profiles (avatar_url, full_name)
                         )
-                    `)
-                    .eq('id', projectId)
-                    .single();
+                    )
+                `);
+
+                // 3. Formatına göre filtreyi uygula
+                if (isUUID) {
+                    query = query.eq('id', projectId);
+                } else {
+                    // Eğer UUID değilse tracking_number kolonunda ara
+                    query = query.eq('tracking_number', projectId);
+                }
+
+                const { data, error: supabaseError } = await query.single();
 
                 if (supabaseError) {
                     console.error("Supabase Error:", supabaseError);
                     setError(supabaseError.message);
+                } else if (!data) {
+                    setError("Proje bulunamadı.");
                 } else {
-                    setProjectData(data);
+                    // Verinin tekil obje olduğundan emin olarak state'e aktar
+                    setProjectData(Array.isArray(data) ? data[0] : data);
+                    console.log("Fetched Project Data:", data);
                 }
             } catch (err) {
                 console.error("Sistem Hatası:", err);
@@ -72,20 +87,9 @@ const ProjectDetailsController = () => {
     if (error) return <div className="error">Error: {error}</div>;
     if (!projectData) return <div className="error">Project not found.</div>;
 
-    switch (projectData.project_type) {
-        case 'viz':
-            return <VisualizationProject project={projectData} />;
-        case 'drawing':
-            return <DrawingProject project={projectData} />;
-        case 'renovation':
-            return <RenovationProject project={projectData} />;
-        default:
-            return (
-                <div className="error">
-                    Unknown project type: {projectData.project_type}
-                </div>
-            );
-    }
+    return (
+        <ProjectPage project={projectData} />
+    )
 };
 
 export default ProjectDetailsController;

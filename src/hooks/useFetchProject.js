@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useSupabase } from './useSupabase'; // hook yolunu kontrol et
+import { useSupabase } from './useSupabase';
 
 export const useFetchProjects = (user) => {
-  const { getClient } = useSupabase(); // Yetkili client üreten fonksiyonu alıyoruz
+  const { getClient } = useSupabase();
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [role, setRole] = useState(null);
@@ -13,48 +13,57 @@ export const useFetchProjects = (user) => {
 
     const getData = async () => {
       setLoading(true);
-      
+
       try {
-        // 0. Her istekte taze bir authorized supabase instance alıyoruz
         const supabase = await getClient();
 
-        // 1. Get the role from the profiles table
-        const { data: profile } = await supabase
+        // 1. .single() yerine .limit(1) + array[0] kullan
+        const { data: profileData, error: profileError } = await supabase
           .from('profiles')
           .select('role')
-          .eq('id', user.sub) // user.sub'ın "google-oauth2|..." olduğundan eminiz
-          .single();
+          .eq('id', user.sub)
+          .limit(1);
 
-        const userRole = profile?.role || 'client';
+        const userRole = profileData?.[0]?.role || 'client';
+        console.log("userRole:", userRole);
         setRole(userRole);
 
-        // 2. Fetch Projects with Role-Based Filter
+        // 2. Projeleri çek
         let projectQuery = supabase
-          .from('cadance_flow') // <--- BURAYI KONTROL ET: 'cadance_flow'
+          .from('cadance_flow')
           .select('*');
 
 
-        // RLS olsa bile güvenli tarafta kalmak için filtreyi koruyoruz
         if (userRole !== 'admin') {
           projectQuery = projectQuery.eq('client_id', user.sub);
         }
 
-        const { data: projectData } = await projectQuery.order('created_at', { ascending: true });
-        if (projectData) setProjects(projectData);
+        const { data: projectData, error: projectError } = await projectQuery
+          .order('created_at', { ascending: true });
 
-        // 3. Fetch Logs with Role-Based Filter
+        if (projectError) {
+          console.error("Proje hatası:", projectError.message);
+        } else if (projectData) {
+          setProjects(projectData);
+        }
+
+        // 3. Activity logları çek
         let logsQuery = supabase
           .from('activity_logs')
           .select('*');
 
-        // SQL'de profile_id olarak kurduğumuz için burayı güncelledik
         if (userRole !== 'admin') {
-          logsQuery = logsQuery.eq('profile_id', user.sub); 
+          logsQuery = logsQuery.eq('profile_id', user.sub);
         }
 
-        const { data: logData, error: logError } = await logsQuery.order('created_at', { descending: true });
-        
-        if (!logError) setLogs(logData);
+        const { data: logData, error: logError } = await logsQuery
+          .order('created_at', { ascending: false });
+
+        if (logError) {
+          console.error("Log hatası:", logError.message);
+        } else {
+          setLogs(logData ?? []);
+        }
 
       } catch (err) {
         console.error("Fetch hatası:", err.message);
@@ -64,7 +73,7 @@ export const useFetchProjects = (user) => {
     };
 
     getData();
-  }, [user, getClient]); // getClient'ı dependency listesine eklemek güvenlidir
+  }, [user, getClient]);
 
   return { projects, loading, role, logs };
 };

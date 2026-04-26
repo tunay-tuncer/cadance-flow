@@ -6,19 +6,17 @@ import { useSupabase } from "../../../hooks/useSupabase";
 import { supabase } from "../../../config/supabaseClient"
 
 import FlowPageGuestWrapper from '../../../wrappers/FlowPageGuestWrapper';
-import VisualizationProject from './VisualizationProject';
-import DrawingProject from './DrawingProject';
-import RenovationProject from './RenovationProject';
+import ProjectPage from './ProjectPage';
 import Loader from '../../../components/Loader';
 
 const PublicProjectDetails = () => {
-    const { trackingCode } = useParams(); // URL'den :trackingCode parametresini alıyoruz
+    const { trackingCode } = useParams();
     const [projectData, setProjectData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     const { isAuthenticated } = useAuth0();
-    const { getClient } = useSupabase(); // Yetkili client
+    const { getClient } = useSupabase();
 
     useEffect(() => {
         const handleContextMenu = (e) => {
@@ -44,20 +42,23 @@ const PublicProjectDetails = () => {
                 const { data, error } = await client
                     .from('cadance_flow')
                     .select(`
-                    *,
-                    project_phases (*),
-                    project_assets (
-                        *,
-                        project_comments (
                             *,
-                            profiles (*)
-                        )
-                    )
-                `)
+                            project_phases (*),
+                            project_assets (
+                                *,
+                                project_comments (
+                                    *,
+                                    profiles (*)
+                                )
+                            )
+                        `)
                     .eq('tracking_number', trackingCode)
                     .single();
 
-                if (data) setProjectData(data);
+                if (data) {
+                    const finalData = Array.isArray(data) ? data[0] : data;
+                    setProjectData(finalData);
+                }
             } catch (err) {
                 console.error(err);
             } finally {
@@ -73,19 +74,8 @@ const PublicProjectDetails = () => {
     if (error) return <div className="error-container">{error}</div>;
     if (!projectData) return <div className="error-container">Proje verisi yüklenemedi.</div>;
 
-    // Proje tipine göre ilgili sayfayı render ediyoruz
-    switch (projectData.project_type) {
-        case 'viz':
-            return <FlowPageGuestWrapper content={<VisualizationProject project={projectData} isPublic={true} />} />
+    return (<FlowPageGuestWrapper content={<ProjectPage project={projectData} isPublic={true} />} />)
 
-
-        case 'drawing':
-            return <DrawingProject project={projectData} isPublic={true} />;
-        case 'renovation':
-            return <RenovationProject project={projectData} isPublic={true} />;
-        default:
-            return <div className="error">Bilinmeyen proje tipi.</div>;
-    }
 };
 
 export default PublicProjectDetails;

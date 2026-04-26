@@ -1,38 +1,55 @@
 import { createClient } from '@supabase/supabase-js';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useCallback } from 'react';
+import { useCallback, useRef } from 'react';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-// DİKKAT: Değişkeni fonksiyonun dışında tanımlıyoruz.
-// Böylece component render olsa bile bu değişken hafızada kalır.
-let memoizedSupabase = null;
-
 export const useSupabase = () => {
   const { getAccessTokenSilently } = useAuth0();
+  const clientRef = useRef(null);
+  const tokenRef = useRef(null);
 
   const getClient = useCallback(async () => {
     try {
-      const token = await getAccessTokenSilently();
+      const token = await getAccessTokenSilently({
+        authorizationParams: {
+          audience: supabaseUrl,
+        },
+      });
 
-      // Eğer daha önce yaratılmadıysa yarat, yaratıldıysa mevcut olanı kullan
-      if (!memoizedSupabase) {
-        memoizedSupabase = createClient(supabaseUrl, supabaseAnonKey, {
+      tokenRef.current = token;
+
+      if (!clientRef.current) {
+        clientRef.current = createClient(supabaseUrl, supabaseAnonKey, {
+          auth: {
+            persistSession: false,
+            autoRefreshToken: false,
+            detectSessionInUrl: false,
+          },
           global: {
-            headers: {
-              Authorization: `Bearer ${token}`,
+            fetch: async (url, options = {}) => {
+              const { headers: existingHeaders, ...restOptions } = options;
+              
+              // Supabase'in set ettiği Content-Type'ı koru,
+              // sadece Authorization ve apikey'i ekle/override et
+              return fetch(url, {
+                ...restOptions,
+                headers: {
+                  'Content-Type': 'application/json', // default, Supabase override edebilir
+                  ...existingHeaders,                  // Supabase'in header'ları (Content-Type dahil) üstten gelir
+                  apikey: supabaseAnonKey,
+                  Authorization: `Bearer ${tokenRef.current}`,
+                },
+              });
             },
           },
         });
       } else {
-        // Mevcut istemcinin sadece header'ını (token) güncelliyoruz
-        // Bu sayede "Multiple Instance" uyarısı tetiklenmez
-        memoizedSupabase.realtime.setAuth(token); // Realtime kullanıyorsan
-        memoizedSupabase.auth.setSession({ access_token: token, refresh_token: '' }); // Auth session güncelleme
+        tokenRef.current = token;
       }
 
-      return memoizedSupabase;
+      return clientRef.current;
     } catch (error) {
       console.error("Supabase client hatası:", error);
       throw error;
