@@ -13,8 +13,10 @@ const LogoutButton = ({ isMinimized }) => {
 
     return (
         isAuthenticated && (
-
-            <button className={styles.logOutButton} onClick={() => logout()}>
+            <button
+                className={styles.logOutButton}
+                onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
+            >
                 {!isMinimized ?
                     (<><BiExit /> {currentLang.flowPageNavbarItems.logOutButton} </>) : <BiExit />}
             </button>
