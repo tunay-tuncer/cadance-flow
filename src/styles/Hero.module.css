@@ -19,7 +19,7 @@
     width: 45%;
     display: flex;
     flex-direction: column;
-    height: 30rem;
+    height: auto;
 }
 
 .leftContainer h1 {
@@ -45,7 +45,6 @@
     justify-content: center;
     margin-top: 2rem;
     height: 5rem;
-    border-radius: 1rem;
     background: var(--textWhite);
     font-size: 1.75rem;
     font-weight: 500;
@@ -104,17 +103,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /*
-     * Fixed gradient: only two stops — accent fills from 0 to --degree,
-     * then the track color fills the rest. The previous 3-stop version
-     * created a double-edge artifact.
-     */
     background: conic-gradient(var(--accent) 0deg, var(--accent) var(--degree), #333 var(--degree));
-    /*
-     * Transition the registered custom property directly.
-     * Because @property declares it as <angle>, the browser can interpolate it.
-     * Duration matches the JS interval (4s) so the arc animates the full step.
-     */
     transition: --degree 1.8s ease-in-out;
 }
 
@@ -175,11 +164,6 @@
     padding-inline: 1rem 2rem;
 }
 
-/*
- * Border animation only on the first phaseContainer (current phase).
- * animation-fill-mode: forwards so it holds the final box-shadow state
- * instead of snapping back, giving a cleaner look between intervals.
- */
 .phaseContainer:first-child {
     border: 3px solid var(--textWhite);
     border-right: 0;
@@ -197,11 +181,6 @@
     }
 }
 
-/*
- * svgAnimation: pulse in and hold — synced to the 4s interval.
- * animation-fill-mode: forwards keeps it at the highlighted state
- * until the key prop change retriggers it on the next step.
- */
 
 .svgContainer {
     height: calc(100% - 2rem);
@@ -246,4 +225,85 @@
 
 .phaseTextContainer h3 {
     font-size: 1.25rem;
+}
+
+@media (max-width:768px) {
+    .heroMainContainer {
+        flex-direction: column;
+        justify-content: unset;
+        padding: 2rem 3rem;
+        gap: 4rem;
+    }
+
+    .leftContainer {
+        width: 100%;
+        height: auto;
+    }
+
+    .leftContainer h1,
+    .leftContainer span {
+        font-size: 2.5rem;
+    }
+
+    .leftContainerButton {
+        height: 4rem;
+    }
+
+    .rightContainer {
+        width: 100%;
+        height: auto;
+        border-right: 6px solid var(--textWhite);
+        border-radius: 1rem;
+        text-align: center;
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    .contentContainer {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .progressBar {
+        min-height: 200px;
+    }
+
+    .outerDiv {
+        height: 90%;
+    }
+
+    .innerDiv {
+        transform: translate(1.25rem, 1.25rem);
+        height: calc(90% - 2.5rem);
+    }
+
+    .progressTextContainer {
+        height: 90%;
+        aspect-ratio: 1;
+    }
+
+    .progressTextContainer p {
+        font-size: 2rem;
+    }
+
+    .stepsContainer {
+        width: 100%;
+    }
+
+    .phaseContainer {
+        padding: 0.75rem;
+        border-radius: 1rem;
+        text-align: start;
+    }
+
+    .phaseContainer:first-child {
+        border-right: 3px solid var(--textWhite);
+    }
+}
+
+@media (max-width:450px) {
+    .rightContainer {
+        height: 100%;
+    }
 }

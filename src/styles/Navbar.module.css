@@ -1,7 +1,4 @@
 .navContainer {
-    /* position: fixed;
-    top: 0;
-    left: 0; */
     width: 100%;
     height: 6rem;
     display: flex;
@@ -12,7 +9,7 @@
     text-decoration: none;
     list-style: none;
     background: none;
-    z-index: 10;
+    z-index: 1001;
 }
 
 .navContainer span {
@@ -23,6 +20,8 @@
 .navContainer .logo {
     font-weight: 300;
     font-size: 2rem;
+    color: var(--textWhite);
+    z-index: 1002;
 }
 
 .navContainer a {
@@ -40,6 +39,7 @@
 
 .rightNavContainer {
     display: flex;
+    align-items: center;
     gap: 1.5rem;
 }
 
@@ -55,4 +55,57 @@
     font-size: 1rem;
     font-weight: 600;
     transition: 0.4s ease;
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--textWhite);
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+@media (max-width: 768px) {
+    .navContainer {
+        padding-top: 1rem;
+        padding-inline: 3rem;
+    }
+
+    .navContainer .logo,
+    .navContainer span {
+        font-size: 1.5rem;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .rightNavContainer {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: var(--bgDark);
+        flex-direction: column;
+        justify-content: center;
+        transition: 0.4s ease-in-out;
+        z-index: 1001;
+    }
+
+    .rightNavContainer button {
+        font-size: 1.5rem;
+        height: auto;
+    }
+
+    .showMenu {
+        right: 0;
+    }
+
+    .rightNavContainer a {
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
 }
