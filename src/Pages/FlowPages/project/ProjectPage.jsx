@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef, use } from "react";
 import MediaContainer from "../../../components/FlowPageComponents/MediaContainer";
 import styles from "../../../styles/Project.module.css"
+import { useSupabase } from "../../../hooks/useSupabase";
 import { useAuth0 } from "@auth0/auth0-react";
 //REACT ICONS
 import { FaCheck } from "react-icons/fa";
@@ -10,9 +11,12 @@ import { LiaPencilRulerSolid } from "react-icons/lia";
 
 const ProjectPage = ({ project, isPublic }) => {
     console.log(project);
+    const { getClient } = useSupabase();
     const { user, isAuthenticated } = useAuth0();
+
     const [phases, setPhases] = useState(project.project_phases);
     const [projectPrivacy, setProjectPrivacy] = useState(project?.is_public);
+    const [isUpdating, setIsUpdating] = useState(false);
 
     const scrollRef = useRef(null);
 
@@ -33,7 +37,6 @@ const ProjectPage = ({ project, isPublic }) => {
         const sorted = [...rawPhases].sort((a, b) => a.order_index - b.order_index);
         setPhases(sorted);
 
-        // Center active phase on load
         setTimeout(() => {
             const activeEl = scrollRef.current?.querySelector(`.${styles.activePhase}`);
             if (activeEl) {
@@ -54,11 +57,33 @@ const ProjectPage = ({ project, isPublic }) => {
         }
     };
 
-    const handlePrivacyToggle = () => {
-        if (!isAuthenticated) return
-        setProjectPrivacy((prev) => !prev)
-        console.log(projectPrivacy)
-    }
+    const handlePrivacyToggle = async () => {
+        if (!isAuthenticated || isUpdating) return;
+
+        const newStatus = !projectPrivacy;
+
+        setProjectPrivacy(newStatus);
+        setIsUpdating(true);
+
+        try {
+            const supabase = await getClient();
+
+            const { error } = await supabase
+                .from('cadance_flow')
+                .update({ is_public: newStatus })
+                .eq('id', project.id);
+
+            if (error) throw error;
+
+            console.log("Database updated successfully to:", newStatus);
+        } catch (err) {
+            console.error("Database update failed:", err.message);
+            setProjectPrivacy(!newStatus);
+            alert("Gizlilik ayarı güncellenemedi: " + err.message);
+        } finally {
+            setIsUpdating(false);
+        }
+    };
 
     const copyToClipboard = (number) => {
         const baseUrl = window.location.origin;

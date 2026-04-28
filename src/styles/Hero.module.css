@@ -300,10 +300,18 @@
     .phaseContainer:first-child {
         border-right: 3px solid var(--textWhite);
     }
+
+    .svgContainer {
+        height: 100%;
+    }
 }
 
 @media (max-width:450px) {
     .rightContainer {
         height: 100%;
+    }
+
+    .svgContainer {
+        height: 3rem;
     }
 }

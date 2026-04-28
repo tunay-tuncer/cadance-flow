@@ -164,10 +164,16 @@ const MediaContainer = ({ project, isPublic }) => {
             const { data, error } = await supabase
                 .from('project_comments')
                 .insert(newComment)
-                .select('*, profiles(avatar_url, full_name)')
-                .single();
+                .select('*, profiles(avatar_url, full_name)');
             if (error) throw error;
-            setComments((prev) => [...prev, data]);
+            const inserted = data?.[0] ?? {
+                ...newComment,
+                profiles: {
+                    avatar_url: user.picture,
+                    full_name: user.name,
+                }
+            };
+            setComments((prev) => [...prev, inserted]);
             setDraftText("");
             setIsDrafting(false);
             setIsCommenting(false);
@@ -245,8 +251,8 @@ const MediaContainer = ({ project, isPublic }) => {
                                     style={{
                                         ...getPinStyle(previewPos.x, previewPos.y),
                                         pointerEvents: isDrafting ? 'auto' : 'none',
-                                        flexDirection: previewPos.x > 65 ? "row-reverse" : "row",
-                                        transform: previewPos.x > 65 ? "translateX(-100%)" : "",
+                                        flexDirection: previewPos.x > 55 ? "row-reverse" : "row",
+                                        transform: `translate(${previewPos.x > 55 ? "-100%" : "0"}, ${previewPos.y > 60 ? "-100%" : "0"})`,
                                     }}
                                 >
                                     {user?.picture
@@ -280,7 +286,7 @@ const MediaContainer = ({ project, isPublic }) => {
                                 .filter((c) => c.asset_id === currentImageId)
                                 .map((c) => {
                                     const isOpen = openCommentIds.includes(c.id);
-                                    const isRightEdge = parseFloat(c.left) > 75;
+                                    const isRightEdge = parseFloat(c.left) > 65;
                                     return (
                                         <div
                                             key={c.id}
@@ -318,8 +324,6 @@ const MediaContainer = ({ project, isPublic }) => {
                 </div>
             )}
 
-
-            {/* The ToolsContainer should likely be outside the leftContainer but inside the main wrapper */}
             {project?.project_assets?.length > 0 && (
                 <ToolsContainer
                     project={project}

@@ -35,7 +35,7 @@ export const useFetchProjects = (user) => {
 
 
         if (userRole !== 'admin') {
-          projectQuery = projectQuery.eq('client_id', user.sub);
+           projectQuery = projectQuery.or(`client_id.eq.${user.sub},is_sample.eq.true`);
         }
 
         const { data: projectData, error: projectError } = await projectQuery
