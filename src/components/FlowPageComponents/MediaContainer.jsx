@@ -63,8 +63,9 @@ const MediaContainer = ({ project, isPublic }) => {
         if (!assets.length) return;
         const currentAsset = assets[currentImage];
         if (currentAsset) {
-            if (currentAssetType === "image" && !project.is_sample) {
+            if (currentAssetType === "image" && isAuthenticated) {
                 setCanUserComment(true);
+
             } else {
                 setCanUserComment(false);
                 setIsCommenting(false);

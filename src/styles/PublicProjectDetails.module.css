@@ -1,0 +1,75 @@
+.errorStateContainer {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.errorIcon {
+    font-size: 5rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    animation: glowPulse 3s infinite alternate;
+}
+
+.errorStateContainer h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--textWhite);
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+.errorStateContainer p {
+    color: var(--lightGray);
+    max-width: 400px;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.actionGroup {
+    display: flex;
+    gap: 1rem;
+}
+
+.primaryButton {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.secondaryButton {
+    background: transparent;
+    color: var(--textWhite);
+    border: 1px solid var(--gridWhite);
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.primaryButton:hover {
+    box-shadow: 0 0 20px rgba(41, 114, 245, 0.4);
+    transform: translateY(-2px);
+}
+
+@keyframes glowPulse {
+    from {
+        filter: drop-shadow(0 0 5px var(--accent));
+        opacity: 0.8;
+    }
+
+    to {
+        filter: drop-shadow(0 0 20px var(--accent));
+        opacity: 1;
+    }
+}

@@ -28,8 +28,6 @@
     gap: 1rem;
 }
 
-.logoContainer {}
-
 .logoContainer:hover>.logo {
     scale: 1.1;
 }
@@ -61,4 +59,18 @@
     background: gray;
     padding: 1rem;
     z-index: 10;
+}
+
+@media (max-width: 768px) {
+    .guestNav {
+        margin-bottom: 0;
+    }
+
+    .logoContainer h1 {
+        display: none;
+    }
+
+    .logoContainer {
+        flex: 1;
+    }
 }

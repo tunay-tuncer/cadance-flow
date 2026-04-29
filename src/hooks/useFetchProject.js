@@ -17,7 +17,6 @@ export const useFetchProjects = (user) => {
       try {
         const supabase = await getClient();
 
-        // 1. .single() yerine .limit(1) + array[0] kullan
         const { data: profileData, error: profileError } = await supabase
           .from('profiles')
           .select('role')

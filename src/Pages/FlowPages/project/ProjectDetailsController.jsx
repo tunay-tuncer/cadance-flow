@@ -33,7 +33,6 @@ const ProjectDetailsController = () => {
             try {
                 const supabase = await getClient();
 
-                // 1. Gelen değerin UUID olup olmadığını kontrol eden Regex (Düzenli İfade)
                 const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(projectId);
 
                 // 2. Temel sorguyu oluştur
