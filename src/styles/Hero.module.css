@@ -270,17 +270,19 @@
     }
 
     .outerDiv {
-        height: 90%;
+        width: 16rem !important;
+        height: 16rem !important;
     }
 
     .innerDiv {
         transform: translate(1.25rem, 1.25rem);
-        height: calc(90% - 2.5rem);
+        height: calc(16rem - 2.5rem) !important;
+        width: calc(16rem - 2.5rem) !important;
     }
 
     .progressTextContainer {
-        height: 90%;
-        aspect-ratio: 1;
+        width: 16rem;
+        height: 16rem;
     }
 
     .progressTextContainer p {

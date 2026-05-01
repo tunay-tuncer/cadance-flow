@@ -42,7 +42,7 @@ const PublicProjectDetails = () => {
             setLoading(true);
             try {
                 // EĞER giriş yapmışsa yetkili client, yapmamışsa standart client kullan
-                const client = isAuthenticated ? await getClient() : supabase;
+                const client = supabase; // Always use anon client — RLS allows public projects via tracking_number
 
                 const { data, error } = await client
                     .from('cadance_flow')

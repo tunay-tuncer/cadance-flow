@@ -16,8 +16,6 @@ import { TbExclamationCircle } from "react-icons/tb";
 const PAUSE_AT_100_MS = 2000; // how long to hold at 100% before resetting
 const INTERVAL_MS = 3000;
 
-
-
 const HeroRightContainer = () => {
     const { currentLang } = useContext(ProjectContext);
 
