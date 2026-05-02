@@ -1,8 +1,9 @@
-import { useEffect, useState, useRef, use } from "react";
+import { useEffect, useState, useRef, use, useContext } from "react";
 import MediaContainer from "../../../components/FlowPageComponents/MediaContainer";
 import styles from "../../../styles/Project.module.css"
 import { useSupabase } from "../../../hooks/useSupabase";
 import { useAuth0 } from "@auth0/auth0-react";
+import { ProjectContext } from "../../../context/ProjectContext";
 //REACT ICONS
 import { FaCheck } from "react-icons/fa";
 import { MdArrowLeft, MdArrowRight, MdPublic, MdLock, MdContentCopy } from "react-icons/md";
@@ -11,6 +12,7 @@ import { LiaPencilRulerSolid } from "react-icons/lia";
 
 const ProjectPage = ({ project, isPublic }) => {
     console.log(project);
+    const { currentLang, langCode } = useContext(ProjectContext);
     const { getClient } = useSupabase();
     const { user, isAuthenticated } = useAuth0();
 
@@ -30,6 +32,10 @@ const ProjectPage = ({ project, isPublic }) => {
 
         return `${day}/${month}/${year}`;
     }
+
+    const getPhaseName = (phase) => {
+        return (langCode === 'tr' ? phase.name_tr : phase.name) || phase.name;
+    };
 
     useEffect(() => {
         const actualProject = Array.isArray(project) ? project[0] : project;
@@ -79,7 +85,7 @@ const ProjectPage = ({ project, isPublic }) => {
         } catch (err) {
             console.error("Database update failed:", err.message);
             setProjectPrivacy(!newStatus);
-            alert("Gizlilik ayarı güncellenemedi: " + err.message);
+            alert("Database update failed: " + err.message);
         } finally {
             setIsUpdating(false);
         }
@@ -91,7 +97,7 @@ const ProjectPage = ({ project, isPublic }) => {
 
         navigator.clipboard.writeText(constructedUrl)
             .then(() => {
-                alert("Link copied to clipboard!");
+                alert(currentLang.project.projectInfo.alertText);
             })
             .catch(err => {
                 console.error("Link kopyalanamadı:", err);
@@ -110,7 +116,7 @@ const ProjectPage = ({ project, isPublic }) => {
                         <div className={styles.privacySection}>
                             <div className={`${styles.statusIndicator} ${projectPrivacy ? styles.statusLive : styles.statusPrivate}`}>
                                 {projectPrivacy ? <MdPublic /> : <MdLock />}
-                                <span>{projectPrivacy ? "LIVE" : "PRIVATE"}</span>
+                                <span>{projectPrivacy ? currentLang.project.projectInfo.liveText : currentLang.project.projectInfo.privateText}</span>
                             </div>
 
                             <button
@@ -129,7 +135,7 @@ const ProjectPage = ({ project, isPublic }) => {
                         {/* Takip Kodu Bölümü */}
                         <div className={styles.trackingSection}>
                             <div className={styles.codeWrapper}>
-                                <span className={styles.codeLabel}>TRACKING CODE:</span>
+                                <span className={styles.codeLabel}>{currentLang.project.projectInfo.trackingCodeText}</span>
                                 <code className={styles.codeValue}>{project.tracking_number}</code>
                             </div>
                             <button
@@ -144,11 +150,11 @@ const ProjectPage = ({ project, isPublic }) => {
                 </div>
 
                 <div className={styles.projectInfo}>
-                    <p className={styles.dateText}>Project Start </p>
+                    <p className={styles.dateText}>{currentLang.project.projectInfo.projectStartText}</p>
                     <p className={styles.dateValue}>{formatTime(project.created_at)}</p>
                 </div>
                 <div className={styles.projectInfo}>
-                    <p className={styles.dateText}>Estimated Submition: </p>
+                    <p className={styles.dateText}>{currentLang.project.projectInfo.submitionText}</p>
                     <p className={styles.dateValue}>{formatTime(project.created_at)}</p>
                 </div>
 
@@ -167,9 +173,9 @@ const ProjectPage = ({ project, isPublic }) => {
                         >
                             {phase.is_complete && <FaCheck className={styles.checkIcon} />}
                             <div className={styles.textContainer}>
-                                {phase.is_complete && <p className={styles.completeText}>Completed Phase</p>}
-                                {phase.is_active && <p className={styles.completeText}>Work In Progress</p>}
-                                <p className={styles.phaseName}>{phase.name}</p>
+                                {phase.is_complete && <p className={styles.completeText}>{currentLang.project.carousel.completedPhaseText}</p>}
+                                {phase.is_active && <p className={styles.completeText}>{currentLang.project.carousel.wipText}</p>}
+                                <p className={styles.phaseName}>{getPhaseName(phase)}</p>
                             </div>
                         </li>
                     ))}
@@ -179,8 +185,8 @@ const ProjectPage = ({ project, isPublic }) => {
                             <LiaPencilRulerSolid />
                         </div>
                         <div className={styles.emptyPhasesText}>
-                            <h3>Roadmap is being prepared</h3>
-                            <p>We are currently outlining the project stages. Your timeline will appear here shortly.</p>
+                            <h3>{currentLang.project.carousel.emptyPhaseHeading}</h3>
+                            <p>{currentLang.project.carousel.emptyPhaseText}</p>
                         </div>
                         <div className={styles.ghostTimeline}></div>
                     </ul>

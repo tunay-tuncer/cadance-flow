@@ -1,15 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useFetchProjects } from "../../hooks/useFetchProject";
+import { ProjectContext } from "../../context/ProjectContext";
+//STYLES
 import styles from "../../styles/FlowDashboard.module.css"
+//REACT ICONS
 import { FiLoader } from "react-icons/fi";
-import { FaCheck } from "react-icons/fa";
+import { FaCheck, FaRegClock } from "react-icons/fa";
 import { TbExclamationCircle } from "react-icons/tb";
-import { FaRegClock } from "react-icons/fa";
 
 const DashboardInfo = () => {
     const { user } = useAuth0();
     const { projects, loading, logs } = useFetchProjects(user);
+
+    const { currentLang } = useContext(ProjectContext);
 
     const [completion, setCompletion] = useState(0);
     const [finishedProjectCount, setFinishedProjectCount] = useState(0);
@@ -56,25 +60,25 @@ const DashboardInfo = () => {
 
     return (
         <>
-            <h1>PROJECT DASHBOARD</h1>
+            <h1>{currentLang.projectDashboard.heading}</h1>
             <ul className={styles.infoContainer}>
                 <li className={styles.infoElement} key="greeting">
-                    <p>WELCOME BACK, <span>{user?.name.toUpperCase()}</span></p>
+                    <p>{currentLang.projectDashboard.welcomeText}, <span>{user?.name.toUpperCase()}</span></p>
                 </li>
                 <li className={styles.infoElement} key="totalCompletion">
                     <p className={styles.infoValue}>{completion}%</p>
-                    <p className={styles.infoName}>TOTAL COMPLETION</p>
+                    <p className={styles.infoName}>{currentLang.projectDashboard.completionText}</p>
                 </li>
                 <li className={styles.infoElement} key="finishedProjectCount">
                     <p className={styles.infoValue}>{finishedProjectCount}</p>
-                    <p className={styles.infoName}>FINISHED PROJECTS</p>
+                    <p className={styles.infoName}>{currentLang.projectDashboard.finishedProjectsText}</p>
                 </li>
                 <li className={styles.infoElement} key="approvalCount">
                     <p className={styles.infoValue}>{approvalCount}</p>
-                    <p className={styles.infoName}>APPROVAL REQUIRED</p>
+                    <p className={styles.infoName}>{currentLang.projectDashboard.approvalRequiredText}</p>
                 </li>
                 <li className={styles.infoElement} key="logs">
-                    <p className={styles.infoName}>HISTORY</p>
+                    <p className={styles.infoName}>{currentLang.projectDashboard.historyText}</p>
                     {projectLogs.length === 0 ? (
                         <p>No history found.</p>
                     ) : (

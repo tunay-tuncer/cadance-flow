@@ -1,9 +1,10 @@
 //DEPENDENCIES
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import styles from "../../styles/Project.module.css"
 import { useAuth0 } from "@auth0/auth0-react";
 import { v4 as uuidv4 } from 'uuid';
 import { useSupabase } from "../../hooks/useSupabase";
+import { ProjectContext } from "../../context/ProjectContext";
 //COMPONENTS
 import FsImageContainer from "./FsImageContainer";
 import ToolsContainer from "./ToolsContainer";
@@ -17,6 +18,8 @@ import { RiUserLine } from "react-icons/ri";
 import { TbCube3dSphere } from "react-icons/tb";
 
 const MediaContainer = ({ project, isPublic }) => {
+    const { currentLang } = useContext(ProjectContext);
+
     const containerRef = useRef(null);
     const imgElRef = useRef(null);
     const textAreaRef = useRef(null);
@@ -225,9 +228,9 @@ const MediaContainer = ({ project, isPublic }) => {
                         <div className={styles.emptyMediaIllustration}>
                             <TbCube3dSphere className={styles.floatingIcon} />
                         </div>
-                        <h2>Initial Renders are on the way!</h2>
-                        <p>Our team is currently working on your visualizations. Once the first drafts are ready, you'll be able to view and comment on them here.</p>
-                        <div className={styles.pulseBadge}>Creative Process in Progress</div>
+                        <h2>{currentLang.project.mediaContainer.emptyMediaHeading}</h2>
+                        <p>{currentLang.project.mediaContainer.emptyMediaText}</p>
+                        <div className={styles.pulseBadge}>{currentLang.project.mediaContainer.emptyBadge}</div>
                     </div>
                 </div>
             ) : (

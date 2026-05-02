@@ -49,6 +49,33 @@
     },
 
     "projectDashboard": {
-        "heading": "PROJECT DASHBOARD"
+        "heading": "PROJECT DASHBOARD",
+        "welcomeText": "WELCOME BACK",
+        "completionText": "TOTAL COMPLETION",
+        "finishedProjectsText": "FINISHED PROJECTS",
+        "approvalRequiredText": "APPROVAL REQUIRED",
+        "historyText": "HISTORY"
+    },
+
+    "project": {
+        "projectInfo" :{
+            "liveText": "LIVE",
+            "privateText": "PRIVATE",
+            "trackingCodeText": "TRACKING CODE:",
+            "alertText": "Link copied to clipboard!",
+            "projectStartText": "Project Start",
+            "submitionText": "Estiamted Submition"
+        },
+        "carousel": {
+            "completedPhaseText": "COMPLETED PHASE",
+            "wipText": "WORK IN PROGRESS",
+            "emptyPhaseHeading": "Roadmap is being prepared",
+            "emptyPhaseText": "We are currently outlining the project stages. Your timeline will appear here shortly."
+        },
+        "mediaContainer" :{
+            "emptyMediaHeading" : "Initial Renders are on the way!",
+            "emptyMediaText" : "Our team is currently working on your visualizations. Once the first drafts are ready, you'll be able to view and comment on them here.",
+            "emptyBadge": "Creative Process in Progress"
+        }
     }
 }

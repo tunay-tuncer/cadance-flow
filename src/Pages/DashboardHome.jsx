@@ -17,24 +17,35 @@ const DashboardHome = () => {
             try {
                 const supabase = await getClient();
 
-                const { error } = await supabase
+                // Check if profile already exists
+                const { data: existing } = await supabase
                     .from('profiles')
-                    .upsert({
-                        id: user.sub,
-                        email: user.email,
-                        full_name: user.name,
-                        avatar_url: user.picture,
-                        role: 'client', // new users default to client
-                    }, {
-                        onConflict: 'id',
-                        ignoreDuplicates: false, // update avatar/name if user already exists
-                    });
+                    .select('id')
+                    .eq('id', user.sub)
+                    .limit(1);
 
-                if (error) {
-                    console.error("Profil senkronizasyon hatası:", error.message);
+                if (existing && existing.length > 0) {
+                    // Profile exists — only update non-sensitive fields
+                    await supabase
+                        .from('profiles')
+                        .update({
+                            full_name: user.name,
+                            avatar_url: user.picture,
+                        })
+                        .eq('id', user.sub);
                 } else {
-                    hasSynced.current = true;
+                    // New user — insert with default role
+                    await supabase
+                        .from('profiles')
+                        .insert({
+                            id: user.sub,
+                            email: user.email,
+                            full_name: user.name,
+                            avatar_url: user.picture,
+                        });
                 }
+
+                hasSynced.current = true;
             } catch (err) {
                 console.error("Senkronizasyon hatası:", err);
             }

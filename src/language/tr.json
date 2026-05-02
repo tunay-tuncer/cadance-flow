@@ -50,6 +50,33 @@
     },
 
     "projectDashboard": {
-        "heading": "İSTATİSTİKLER"
+        "heading": "İSTATİSTİKLER",
+        "welcomeText": "HOŞGELDİN",
+        "completionText": "TOTAL İLERLEME",
+        "finishedProjectsText": "BİTMİŞ PROJELER",
+        "approvalRequiredText": "ONAY GEREKEN",
+        "historyText": "GEÇMİŞ"
+    },
+
+    "project": 
+        {"projectInfo" :{
+            "liveText": "AÇIK",
+            "privateText": "GİZLİ",
+            "trackingCodeText": "TAKİP KODU:",
+            "alertText": "Link panoya kopyalandı!",
+            "projectStartText": "Proje Başlangıcı",
+            "submitionText": "Tahmini Teslim"
+        },
+        "carousel": {
+            "completedPhaseText": "TAMAMLANDI",
+            "wipText": "DEVAM EDIYOR",
+            "emptyPhaseHeading": "Süreciniz hazırlanıyor",
+            "emptyPhaseText": "Şu anda projenin aşamalarını belirliyoruz. Zaman çizelgeniz kısa süre içinde burada görünecektir."
+        },
+        "mediaContainer" :{
+            "emptyMediaHeading" : "İlk görseller yakında geliyor!",
+            "emptyMediaText" : "Ekibimiz şu anda görselleştirmeleriniz üzerinde çalışıyor. İlk taslaklar hazır olduğunda, bunları buradan görüntüleyip yorum yapabileceksiniz.",
+            "emptyBadge": "Süreç Devam Ediyor"
+        }
     }
 }
