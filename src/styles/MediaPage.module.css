@@ -1,0 +1,475 @@
+.mediaMainContainer {
+    width: 100%;
+    min-height: 100vh;
+    padding: 2rem 4rem;
+    background: var(--bgDark);
+    color: var(--textWhite);
+}
+
+.mediaHeader {
+    margin-bottom: 4rem;
+    border-bottom: 1px solid var(--gridWhite);
+    padding-bottom: 1.5rem;
+}
+
+.headerTitle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.headerIcon {
+    font-size: 2.5rem;
+    color: var(--accent);
+}
+
+.mediaHeader h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* Project Groups */
+.projectSection {
+    margin-bottom: 4rem;
+}
+
+.projectHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 1rem 0;
+    border-bottom: 1px solid transparent;
+    transition: 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.projectHeader:hover {
+    border-bottom-color: var(--accent);
+}
+
+.projectTitle {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--lightGray);
+    margin-bottom: 0 !important;
+    /* Reset previous margin */
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.assetCount {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.collapseBtn {
+    background: none;
+    border: none;
+    color: var(--lightGray);
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.projectHeader:hover .collapseBtn {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+/* Ensure the grid has an entry animation when expanding */
+.assetGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.projectTitle {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--lightGray);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.projectTitle::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--gridWhite);
+}
+
+/* Grid Layout */
+.assetGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.assetCard {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--gridWhite);
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.assetCard:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+}
+
+.imageWrapper {
+    position: relative;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+}
+
+.assetImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.assetCard:hover .overlay {
+    opacity: 1;
+}
+
+.viewBtn {
+    padding: 0.5rem 1rem;
+    background: var(--accent);
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.assetInfo {
+    padding: 1rem;
+}
+
+.fileName {
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* MODAL STYLES */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    z-index: 10002;
+}
+
+.modalContent {
+    width: 100%;
+    max-width: 1200px;
+    height: 85vh;
+    background: var(--bgDark);
+    display: flex;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--gridWhite);
+}
+
+.viewerSection {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+
+.largeImage {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.navBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 2rem;
+    border-radius: 50%;
+    display: flex;
+    transition: 0.3s;
+}
+
+.navBtn:first-child {
+    left: 1rem;
+}
+
+.navBtn:last-child {
+    right: 1rem;
+}
+
+.navBtn:hover {
+    background: var(--accent);
+}
+
+.detailSidebar {
+    width: 350px;
+    background: #111;
+    border-left: 1px solid var(--gridWhite);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebarHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.sidebarHeader h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.badge {
+    background: var(--accent);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.infoList {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.infoItem {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.infoIcon {
+    font-size: 1.4rem;
+    color: var(--accent);
+    margin-top: 2px;
+}
+
+.infoItem label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--lightGray);
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+}
+
+.infoItem p {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.sidebarActions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.downloadAction,
+.projectAction {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.downloadAction {
+    background: var(--textWhite);
+    color: var(--bgDark);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.projectAction {
+    background: transparent;
+    border: 1px solid var(--gridWhite);
+    color: white;
+}
+
+.downloadAction:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.projectAction:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.headerActions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.selectionControls {
+    display: flex;
+    gap: 1rem;
+}
+
+.selectionModeBtn,
+.downloadSelectedBtn,
+.cancelSelectionBtn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: 0.3s;
+}
+
+.selectionModeBtn {
+    background: transparent;
+    border: 1px solid var(--gridWhite);
+    color: var(--textWhite);
+}
+
+.downloadSelectedBtn {
+    background: var(--accent);
+    color: white;
+    border: none;
+}
+
+.downloadSelectedBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.cancelSelectionBtn {
+    background: rgba(255, 0, 0, 0.1);
+    color: red;
+    border: 1px solid red;
+}
+
+.assetCardSelected {
+    border-color: var(--accent) !important;
+    background: rgba(41, 114, 245, 0.1) !important;
+}
+
+.selectionIcon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    color: white;
+    z-index: 5;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .modalContent {
+        flex-direction: column;
+        height: 95vh;
+    }
+
+    .detailSidebar {
+        width: 100%;
+        height: auto;
+        border-left: none;
+        border-top: 1px solid var(--gridWhite);
+    }
+
+    .mediaMainContainer {
+        padding: 2rem;
+    }
+}
+
+@media (max-width:768px) {
+    .mediaMainContainer {
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .mediaHeader h1 {
+        font-size: 1.8rem;
+    }
+
+    .assetGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .navBtn {
+        padding: 0.5rem;
+        font-size: 1.5rem;
+    }
+}
