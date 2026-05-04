@@ -1,0 +1,231 @@
+.settingsContainer {
+    width: 100%;
+    min-height: 100vh;
+    padding: 3rem 5rem;
+    background: var(--bgDark);
+    color: var(--textWhite);
+}
+
+.settingsHeader {
+    display: flex;
+    padding-bottom: 2rem;
+    align-items: center;
+    gap: 1rem;
+}
+
+.settingsHeader h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.mainIcon {
+    font-size: 2.5rem;
+    color: var(--accent);
+}
+
+
+/* Grid layout */
+.settingsGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 900px;
+}
+
+.settingsSection {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--gridWhite);
+    padding: 2.5rem;
+}
+
+.sectionTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+    color: var(--accent);
+}
+
+.sectionTitle h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--textWhite);
+}
+
+/* Profile Box */
+.profileBox {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.avatarWrapper img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    padding: 3px;
+}
+
+.profileInfo h3 {
+    font-size: 1.4rem;
+}
+
+.profileInfo p {
+    color: var(--lightGray);
+    font-size: 0.9rem;
+    margin: 0.25rem 0 0.75rem 0;
+}
+
+.auth0Link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Setting Items */
+.settingItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.settingItem:last-child {
+    border: none;
+}
+
+.settingText label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.settingText span {
+    font-size: 0.85rem;
+    color: var(--lightGray);
+}
+
+/* Controls */
+.themeToggleGroup {
+    display: flex;
+    background: #111;
+    padding: 4px;
+    border-radius: 10px;
+    border: 1px solid var(--gridWhite);
+}
+
+.themeToggleGroup button {
+    background: none;
+    border: none;
+    color: var(--lightGray);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.activeTab {
+    background: var(--accent) !important;
+    color: white !important;
+}
+
+.selectInput {
+    background: #111;
+    color: white;
+    border: 1px solid var(--gridWhite);
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+.timezoneWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--lightGray);
+}
+
+/* Toggle Switch */
+.toggleSwitch {
+    width: 50px;
+    height: 26px;
+    background: #333;
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.toggleActive {
+    background: var(--accent);
+}
+
+.toggleCircle {
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    transition: 0.4s;
+}
+
+.toggleActive .toggleCircle {
+    left: 26px;
+}
+
+/* Footer */
+.settingsFooter {
+    margin-top: 4rem;
+    max-width: 900px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.saveButton {
+    background: var(--textWhite);
+    color: var(--bgDark);
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.saveButton:hover {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .settingsContainer {
+        margin-top: 4rem;
+        padding: 2rem;
+    }
+
+    .settingItem {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .profileBox {
+        flex-direction: column;
+        text-align: center;
+    }
+}

@@ -85,6 +85,8 @@ const Media = () => {
         if (selectedAssetIds.length === 0) return;
         setIsZipping(true);
         const zip = new JSZip();
+        // Keep track of how many times we've seen a filename
+        const nameCounts = {};
 
         try {
             const promises = assets
@@ -92,7 +94,30 @@ const Media = () => {
                 .map(async (asset) => {
                     const response = await fetch(asset.url);
                     const blob = await response.blob();
-                    zip.file(asset.file_name || `${asset.id}.jpg`, blob);
+
+                    // 1. Determine Extension
+                    const urlExtension = asset.url.split(/[#?]/)[0].split('.').pop().trim();
+                    const mimeExtension = blob.type.split('/')[1] || 'jpg';
+                    const extension = urlExtension.length > 1 && urlExtension.length < 5
+                        ? urlExtension
+                        : mimeExtension;
+
+                    // 2. Base Filename (strip existing extension if present to avoid file.jpg.jpg)
+                    let baseName = asset.file_name || `asset-${asset.id}`;
+                    if (baseName.toLowerCase().endsWith(`.${extension.toLowerCase()}`)) {
+                        baseName = baseName.substring(0, baseName.lastIndexOf('.'));
+                    }
+
+                    // 3. De-duplication Logic
+                    let finalName = `${baseName}.${extension}`;
+                    if (nameCounts[finalName] !== undefined) {
+                        nameCounts[finalName] += 1;
+                        finalName = `${baseName} (${nameCounts[finalName]}).${extension}`;
+                    } else {
+                        nameCounts[finalName] = 0;
+                    }
+
+                    zip.file(finalName, blob);
                 });
 
             await Promise.all(promises);
@@ -152,7 +177,7 @@ const Media = () => {
             <header className={styles.mediaHeader}>
                 <div className={styles.headerTitle}>
                     <MdCollections className={styles.headerIcon} />
-                    <h1>MEDIA ARCHIVE</h1>
+                    <h1>MEDIA</h1>
                 </div>
 
                 <div className={styles.headerActions}>

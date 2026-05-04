@@ -148,109 +148,148 @@
 
 /* RECENT PROJECTS */
 
+/* Container Düzeni */
 .projectMainContainer {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 4rem;
+    column-gap: 3rem;
 }
 
+/* Proje Kartı (Link) */
 .projectMainContainer a {
-    /* border-radius: 1rem; */
-    border: 2px solid var(--gridWhite);
-
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--gridWhite);
     overflow: hidden;
-    transition: 0.4s ease;
-    cursor: pointer;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     flex-direction: column;
-    gap: 0;
     color: var(--textWhite);
-    padding: 0;
+    text-decoration: none;
 }
 
 .projectMainContainer a:hover {
-    scale: 1.05;
-    border: 2px solid var(--textWhite);
-    box-shadow: var(--boxShadow1);
+    transform: translateY(-8px);
+    border-color: var(--accent);
+    box-shadow: 0 15px 45px rgba(41, 114, 245, 0.15);
 }
 
+/* Görsel Alanı */
 .imageContainer {
-    height: 100%;
-    padding: 0;
-    margin: 0;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/10;
+    overflow: hidden;
 }
 
 .projectPicture {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s ease;
 }
 
-.projectNameContainer {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.projectMainContainer a:hover .projectPicture {
+    transform: scale(1.1);
 }
 
-.projectTypeIcon {
-    font-size: 1.5rem;
+/* Arşiv Butonu */
+.archiveIcon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 0.25rem;
+    border-radius: 8px;
+    z-index: 5;
+    transition: 0.3s ease;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.archiveIcon:hover {
+    background: #ff4b4b;
+    transform: scale(1.1);
+    color: white;
+}
+
+/* Bilgi Alanı */
 .projectInfoContainer {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
     padding: 1rem;
-    background: var(--bgDark);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
-.progressContainer {
-    width: 100%;
+.projectNameContainer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+}
+
+.projectNameContainer h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.projectTypeIcon {
+    font-size: 1.4rem;
+    color: var(--textWhite);
+    opacity: 0.8;
+}
+
+/* Progress Bar Yenileme */
+.progressContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.progressContainer p {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-align: right;
 }
 
 .projectProgressOuter {
-    position: relative;
     width: 100%;
-    height: 0.75rem;
-    background: var(--lightGray);
-    border: 1px solid var(--textWhite);
+    height: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    border: none;
 }
 
 .progressInner {
-    position: absolute;
-    height: 0.75rem;
-    width: 80%;
+    height: 100%;
     background: var(--accent);
-    border: 2px solid var(--textWhite);
-    box-shadow: var(--boxShadow2);
+    box-shadow: 0 0 10px var(--accent);
+    border: none;
+    border-radius: 10px;
 }
 
 .projectLastUpdate {
-    width: 100%;
-    text-align: center;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--lightGray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-@media (max-width: 1024px) {
-    .projectMainContainer {
-        display: flex;
-        flex-direction: column;
-        gap: 4rem;
-    }
-
-}
-
+/* Mobil Uyumluluk[cite: 5] */
 @media (max-width: 768px) {
     .projectMainContainer {
-        display: flex;
-        flex-direction: column;
-        gap: 4rem;
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
+    .projectNameContainer h2 {
+        font-size: 1rem;
+    }
 }

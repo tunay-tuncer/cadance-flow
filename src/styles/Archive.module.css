@@ -1,0 +1,146 @@
+.archiveMainContainer {
+    width: 100%;
+    min-height: 100vh;
+    padding: 3rem 4rem;
+    background: var(--bgDark);
+}
+
+.archiveHeader {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--gridWhite);
+    padding-bottom: 1.5rem;
+}
+
+.titleGroup {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.mainIcon {
+    font-size: 2.5rem;
+    color: var(--lightGray);
+    /* Arşivde neon yerine daha soluk renk */
+}
+
+.archiveHeader h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--textWhite);
+}
+
+.archiveHeader p {
+    color: var(--lightGray);
+    font-size: 0.95rem;
+}
+
+/* Grid System */
+.archiveGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.archiveCard {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--gridWhite);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.4s ease;
+}
+
+.archiveCard:hover {
+    border-color: var(--lightGray);
+    transform: translateY(-5px);
+}
+
+.imageOverlay {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    filter: grayscale(0.6);
+    /* Arşiv hissi için görselleri solduruyoruz */
+    transition: 0.4s ease;
+}
+
+.archiveCard:hover .imageOverlay {
+    filter: grayscale(0);
+}
+
+.imageOverlay img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.statusTag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--lightGray);
+    padding: 0.3rem 0.8rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 4px;
+    letter-spacing: 1px;
+}
+
+.cardContent {
+    padding: 1.5rem;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.cardHeader h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--textWhite);
+}
+
+.unarchiveBtn {
+    background: transparent;
+    border: 1px solid var(--gridWhite);
+    color: var(--lightGray);
+    padding: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    transition: 0.3s;
+}
+
+.unarchiveBtn:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.cardMeta {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.metaItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--lightGray);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .archiveMainContainer {
+        padding: 2rem;
+    }
+
+    .archiveGrid {
+        grid-template-columns: 1fr;
+    }
+}

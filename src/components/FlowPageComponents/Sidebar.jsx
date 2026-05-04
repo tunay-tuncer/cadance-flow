@@ -69,7 +69,9 @@ const Sidebar = () => {
             </ul>
             <ul className={styles.navGroup}>
                 {flowPageNavbarBottomItems.map((navItem) => (
-                    <NavLink key={navItem.id} to={navItem.path}>
+                    <NavLink key={navItem.id} to={navItem.path} className={({ isActive }) =>
+                        isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+                    }>
                         {navItem.icon}
                         {!isMinimized && <p>{navItem.name}</p>}
                     </NavLink>

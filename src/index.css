@@ -15,6 +15,15 @@
     0 0 15px 2px rgba(66, 135, 245, 0.4);
 }
 
+[data-theme='light'] {
+  --bgDark: hsl(216, 33%, 95%);
+  --textWhite: #1a1a1a;
+  --gridWhite: rgba(0, 0, 0, 0.1);
+  --accent: #0056e0;
+  /* Işıkta biraz daha doygun bir mavi */
+  --lightGray: #555;
+}
+
 * {
   padding: 0;
   margin: 0;
