@@ -37,7 +37,7 @@
 
     "flowPageNavbarItems":{
         "topNavItems": {
-            "dashboard":"KONTROL PANELİ",
+            "dashboard":"PANEL",
             "archive":"ARŞİV",
             "media": "MEDYA"
         },

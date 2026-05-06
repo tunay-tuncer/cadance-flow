@@ -5,8 +5,9 @@
   --textWhite: #ffffff;
   --gridWhite: rgba(255, 255, 255, 0.1);
   --accent: #2972f5;
+  --red: red;
+  --containerGray: #121217;
   --lightGray: #808080;
-  --grayDark: #373737;
   --boxShadow1: 0 0 20px 4px rgba(66, 135, 245, 0.8),
     0 0 30px 5px rgba(66, 135, 245, 0.4);
   --boxShadow1Hover: 0 0 25px 8px rgba(66, 135, 245, 0.9),
@@ -17,10 +18,10 @@
 
 [data-theme='light'] {
   --bgDark: hsl(216, 33%, 95%);
-  --textWhite: #1a1a1a;
+  --containerGray: rgb(233, 236, 252);
+  --textWhite: #1a1f2d;
   --gridWhite: rgba(0, 0, 0, 0.1);
   --accent: #0056e0;
-  /* Işıkta biraz daha doygun bir mavi */
   --lightGray: #555;
 }
 

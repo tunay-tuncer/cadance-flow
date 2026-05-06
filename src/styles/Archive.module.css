@@ -1,6 +1,6 @@
 .archiveMainContainer {
     width: 100%;
-    min-height: 100vh;
+    min-height: calc(100vh - 4rem);
     padding: 3rem 4rem;
     background: var(--bgDark);
 }
@@ -21,7 +21,6 @@
 .mainIcon {
     font-size: 2.5rem;
     color: var(--lightGray);
-    /* Arşivde neon yerine daha soluk renk */
 }
 
 .archiveHeader h1 {
@@ -43,9 +42,8 @@
 }
 
 .archiveCard {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--containerGray);
     border: 1px solid var(--gridWhite);
-    border-radius: 12px;
     overflow: hidden;
     transition: 0.4s ease;
 }
@@ -60,7 +58,6 @@
     width: 100%;
     aspect-ratio: 16/9;
     filter: grayscale(0.6);
-    /* Arşiv hissi için görselleri solduruyoruz */
     transition: 0.4s ease;
 }
 
@@ -137,7 +134,13 @@
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .archiveMainContainer {
+        margin-top: 2rem;
         padding: 2rem;
+    }
+
+    .archiveHeader h1,
+    .mainIcon {
+        font-size: 1.8rem;
     }
 
     .archiveGrid {

@@ -1,6 +1,6 @@
 .mediaMainContainer {
     width: 100%;
-    min-height: 100vh;
+    min-height: calc(100vh - 4rem);
     padding: 2rem 4rem;
     background: var(--bgDark);
     color: var(--textWhite);
@@ -53,9 +53,8 @@
     font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--lightGray);
+    color: var(--textWhite);
     margin-bottom: 0 !important;
-    /* Reset previous margin */
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -64,7 +63,7 @@
 .assetCount {
     font-size: 0.8rem;
     color: var(--accent);
-    font-weight: 400;
+    font-weight: 800;
     letter-spacing: 0;
 }
 
@@ -108,7 +107,7 @@
     font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--lightGray);
+    color: var(--textWhite);
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
@@ -130,7 +129,7 @@
 }
 
 .assetCard {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--containerGray);
     border: 1px solid var(--gridWhite);
     cursor: pointer;
     overflow: hidden;
@@ -414,7 +413,7 @@
 
 .cancelSelectionBtn {
     background: rgba(255, 0, 0, 0.1);
-    color: red;
+    color: var(--red);
     border: 1px solid red;
 }
 

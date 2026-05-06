@@ -39,7 +39,7 @@ img {
 .projectInfo,
 .projectName {
     width: 100%;
-    background: var(--bgDark);
+    background: var(--containerGray);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -228,7 +228,7 @@ img {
     border: 1px solid var(--gridWhite);
     cursor: pointer;
     padding-inline: 1.5rem;
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--containerGray);
     cursor: pointer;
     transition: transform 0.4s ease, border-color 0.3s ease;
 }
@@ -295,7 +295,7 @@ img {
     height: calc(100% - 3rem);
     gap: 2rem;
     padding: 1.5rem;
-    background: var(--bgDark);
+    background: var(--containerGray);
     border: 1px dashed var(--gridWhite);
     position: relative;
     overflow: hidden;
@@ -498,11 +498,11 @@ img {
     display: flex;
     flex-direction: column;
     height: 100%;
-    background: var(--bgDark);
+    background: var(--containerGray);
 }
 
 .assetName {
-    background: var(--bgDark);
+    background: var(--containerGray);
     width: 100%;
     display: flex;
     align-items: center;
@@ -569,7 +569,7 @@ img {
 }
 
 .toolsContainerItem {
-    background: var(--bgDark);
+    background: var(--containerGray);
     height: 3rem;
     width: 100%;
     display: flex;
@@ -603,7 +603,7 @@ img {
 
 .disabledTool:hover {
     scale: 1 !important;
-    background: var(--bgDark) !important;
+    background: var(--containerGray) !important;
 }
 
 .lockIcon {

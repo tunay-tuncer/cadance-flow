@@ -60,7 +60,6 @@ const DashboardInfo = () => {
 
     return (
         <>
-            <h1>{currentLang.projectDashboard.heading}</h1>
             <ul className={styles.infoContainer}>
                 <li className={styles.infoElement} key="greeting">
                     <p>{currentLang.projectDashboard.welcomeText}, <span>{user?.name.toUpperCase()}</span></p>

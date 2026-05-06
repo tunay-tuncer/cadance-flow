@@ -47,7 +47,7 @@ const Archive = () => {
             <header className={styles.archiveHeader}>
                 <div className={styles.titleGroup}>
                     <MdOutlineInventory2 className={styles.mainIcon} />
-                    <h1>PROJECT ARCHIVE</h1>
+                    <h1>ARCHIVE</h1>
                 </div>
                 <p>You have {archivedList.length} completed projects in your vault.</p>
             </header>
