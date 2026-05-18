@@ -6,9 +6,9 @@
     },
     "hero":{ 
         "leftContainerText":{
-        "header": "Visualize the Future of Design",
-        "span": "in Real Time",
-        "paragraph": "Your architectural visualization, from wireframe to 4K, tracked and delivered in our streamlined client ecosystem",
+        "header": "A new era in Architecture",
+        "span": "Live Tracking System",
+        "paragraph": "Eliminate uncertainty as you turn your ideas into reality. Log in to the system using your project tracking number and manage the process transparently.",
         "button":"GET YOUR FLOW"
         },
     "rightContainerText":{
@@ -25,6 +25,37 @@
         "postProductionText":"Post Production",
         "submitionText":"Submition"
         }
+    },
+
+    "process" :{
+        "processSubTitle":"HOW DOES THE PROCESS WORK?",
+        "processMainTitle": "Forget",
+        "processMainTitleSpan": "Traditional Workflow",
+        "steps":{
+            "stepTitle1":"Start Your Project",
+            "stepTitle2":"Manage the Workflow",
+            "stepTitle3":"Download the Final",
+            "stepDesc1": "Log in to the system instantly using your unique Project Tracking Number (Track ID) and join the ecosystem.",
+            "stepDesc2": "Monitor rendering processes in real time. Manage revisions with zero errors by leaving notes directly on the visuals.",
+            "stepDesc3": "After approving each stage, securely download your high-resolution 4K outputs and technical files with a single click."
+        }
+    },
+
+    "gallery":{
+        "gallerySubTitle":"PORTFOLIO",
+        "galleryMainTitle": "Featured Projects",
+        "galleryMainTitleSpan": "Gallery",
+        "galleryItems": {
+            "title1": "KÖZ MEYHANE",
+            "title2": "KADIKÖY MUNICIPALITY COMPETITION",
+            "title3": "JAPANESE ZEN ROOM",
+            "title4": "MARKET DESIGN",
+            "type1": "Interior / Parametric",
+            "type2": "Exterior / Competition",
+            "type3": "Interior / Concept",
+            "type4": "Interior / Implementation"
+        },
+        "redirectCard" :  "View All Projects"  
     },
 
     "login":{

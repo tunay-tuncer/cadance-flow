@@ -1,0 +1,136 @@
+.reviewsSection {
+    position: relative;
+    width: 100%;
+    padding: 6rem 2rem;
+    background: transparent;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.subTitle {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+}
+
+.mainTitle {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--textWhite);
+    letter-spacing: -0.5px;
+}
+
+.mainTitle span {
+    font-weight: 300;
+    font-style: italic;
+    color: var(--textWhite);
+    opacity: 0.5;
+    /* Tipografi 3 kontrast stili */
+}
+
+/* 3 Kolonlu Yorum Grid'i */
+.reviewsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    width: 100%;
+}
+
+.reviewCard {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    backdrop-filter: blur(4px);
+    transition: all 0.4s ease;
+}
+
+.reviewCard:hover {
+    border-color: rgba(41, 114, 245, 0.3);
+    background: rgba(41, 114, 245, 0.02);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(41, 114, 245, 0.05);
+}
+
+.commentText {
+    color: var(--lightGray);
+    font-size: 1rem;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+/* Kullanıcı Bilgi Alanı */
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    padding-top: 1.5rem;
+}
+
+.avatarWrapper {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--gridWhite);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.avatarWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.defaultAvatar {
+    font-size: 1.2rem;
+    color: var(--lightGray);
+}
+
+.userMeta h3 {
+    color: var(--textWhite);
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+}
+
+.userMeta p {
+    color: var(--lightGray);
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* Mobil için Düzenleme */
+@media (max-width: 968px) {
+    .reviewsGrid {
+        grid-template-columns: 1fr;
+        /* Mobilde tek kolon alt alta */
+        gap: 1.5rem;
+    }
+
+    .reviewCard {
+        padding: 2rem;
+    }
+}

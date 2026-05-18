@@ -7,9 +7,9 @@
 
     "hero":{
         "leftContainerText":{
-            "header": "Tasarımın Geleceğine Tanıklık Edin",
-            "span": "Anlık  Verilerle",
-            "paragraph": "Mimari görselleştirme çalışmalarınız, eskizden 4K çözünürlüğe kadar, modern müşteri ekosistemimiz içinde takip edilip teslim edilir",
+            "header": "Mimaride Yeni Dönem",
+            "span": "Canlı Takip Sistemi",
+            "paragraph": "Fikirlerinizi gerçeğe dönüştürürken belirsizlikleri ortadan kaldırın. Proje takip numaranızla sisteme bağlanın, süreci şeffafça yönetin.",
             "button":"AKIŞA KATILIN"
         },
         "rightContainerText":{
@@ -26,6 +26,37 @@
             "postProductionText":"Post-Prodüksiyon",
             "submitionText":"Teslimat"
         }
+    },
+
+    "process" :{
+        "processSubTitle":"SÜREÇ NASIL İŞLER?",
+        "processMainTitle": "Geleneksel İş Akışını",
+        "processMainTitleSpan": "Unutun",
+        "steps":{
+            "stepTitle1":"Projenizi Başlatın",
+            "stepTitle2":"Akışı Yönetin",
+            "stepTitle3":"Finali İndirin",
+            "stepDesc1": "Size özel üretilen Proje Takip Numarası (Track ID) ile sisteme anında giriş yapın ve ekosisteme dahil olun.",
+            "stepDesc2": "Render süreçlerini anlık olarak izleyin. Görsellerin üzerine doğrudan notlar bırakarak revizyonları sıfır hata ile yönetin.",
+            "stepDesc3": "Her aşamayı onayladıktan sonra, yüksek çözünürlüklü 4K çıktılarınızı ve teknik dosyalarınızı tek tıkla güvenle indirin."
+        }
+    },
+    
+    "gallery":{
+        "gallerySubTitle":"PORTFOLYO",
+        "galleryMainTitle": "Seçkin Projeler",
+        "galleryMainTitleSpan": "Galerisi",
+        "galleryItems": {
+            "title1": "KÖZ MEYHANE",
+            "title2": "KADIKÖY BELEDİYE YARIŞMASI",
+            "title3": "JAPON ZEN ODASI",
+            "title4": "MARKET TASARIMI",
+            "type1": "İç Mekan / Parametrik",
+            "type2": "Dış Mekan / Yarışma",
+            "type3": "İç Mekan / Konsept",
+            "type4": "İç Mekan / Uygulama"
+        },
+        "redirectCard" :  "Tüm Projeleri İnceleyin"  
     },
 
     "login":{

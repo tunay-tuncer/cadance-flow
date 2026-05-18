@@ -86,14 +86,18 @@ const Login = () => {
                 {isAuthenticated && (
                     <div className={styles.loggedInUserContainer}>
 
-                        <div className={styles.continueDashboardContainer}>
-                            <p>Continue as: </p>
-                            <Link to={"/dashboard"}>{user.name}</Link>
+                        <div className={styles.userAvatarWrapper}>
+                            <img src={user.picture} alt={user.name} />
                         </div>
-
-                        <div className={styles.logOutContainer}>
-                            <p>Change account </p>
-                            <LogoutButton />
+                        <div className={styles.userDetails}>
+                            <p className={styles.welcomeText}>Hoş geldin,</p>
+                            <h3 className={styles.userName}>{user.name}</h3>
+                            <div className={styles.userActionButtonsContainer}>
+                                <Link to={"/dashboard"} className={styles.continueLink}>
+                                    Dashboard'a Devam Et
+                                </Link>
+                                <LogoutButton />
+                            </div>
                         </div>
 
                     </div>

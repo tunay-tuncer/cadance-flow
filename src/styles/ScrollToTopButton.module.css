@@ -1,0 +1,42 @@
+.scrollButton {
+    display: none;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3rem;
+    aspect-ratio: 1;
+    background-color: var(--containerGray);
+    color: var(--textWhite);
+    border: none;
+    transition: 0.4s ease;
+    cursor: pointer;
+}
+
+.scrollButton svg {
+    scale: 1.75;
+    transition: 0.2s ease;
+}
+
+.scrollButton:hover {
+    background-color: var(--accent);
+}
+
+.scrollButton:hover>svg {
+    /* animation: jump 0.75s infinite ease-in; */
+    display: block;
+    margin-bottom: 25%;
+}
+
+@keyframes jump {
+    0% {
+        margin-bottom: 0;
+        /* scale: 1.5; */
+    }
+
+    100% {
+        margin-bottom: 0.75rem;
+        /* scale: 2; */
+    }
+}

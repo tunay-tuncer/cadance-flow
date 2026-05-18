@@ -152,9 +152,83 @@
 
 .loggedInUserContainer {
     width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+    border: 1px solid var(--gridWhite);
+    backdrop-filter: blur(10px);
+    align-items: center;
+}
+
+.userAvatarWrapper img {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    padding: 3px;
+    object-fit: cover;
+}
+
+.userDetails {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.userActionButtonsContainer {
+    width: 100%;
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.welcomeText {
+    font-size: 0.85rem;
+    color: var(--lightGray);
+    margin: 0;
+}
+
+.userName {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--textWhite);
+    margin-bottom: 0.5rem;
+}
+
+.continueLink {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.continueLink:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+}
+
+/* Alt Kısım (Çıkış Yap) */
+.accountActions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+}
+
+.accountActions p {
+    font-size: 0.8rem;
+    color: var(--lightGray);
 }
 
 .loggedInUserContainer p {

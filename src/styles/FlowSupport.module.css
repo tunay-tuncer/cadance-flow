@@ -1,0 +1,182 @@
+.supportContainer {
+    padding: 3rem 5rem;
+    color: var(--textWhite);
+}
+
+.supportHeader {
+    margin-bottom: 3rem;
+}
+
+.supportHeader h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.statusBanner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(37, 211, 102, 0.1);
+    color: #25D366;
+    padding: 1rem 1.5rem;
+    border: 1px solid rgba(37, 211, 102, 0.2);
+    margin-bottom: 3rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.contactGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.contactCard {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--gridWhite);
+    padding: 2.5rem;
+    text-decoration: none;
+    color: var(--textWhite);
+    transition: 0.3s ease;
+}
+
+.contactCard:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.iconBox {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.contactCard h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.contactCard p {
+    color: var(--lightGray);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.actionText {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+/* ... Önceki Header ve ContactCard stilleri aynı kalacak ... */
+
+.faqSection {
+    border-top: 1px solid var(--gridWhite);
+    padding-top: 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.sectionTitle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sectionIcon {
+    font-size: 1.8rem;
+}
+
+.accordionContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.accordionItem {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--gridWhite);
+    ;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.accordionItem:hover {
+    border-color: var(--accent);
+}
+
+.accordionHeader {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+    color: var(--textWhite);
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.arrowIcon {
+    font-size: 1.5rem;
+    color: var(--lightGray);
+    transition: transform 0.4s ease;
+}
+
+.active .arrowIcon {
+    transform: rotate(180deg);
+    color: var(--accent);
+}
+
+.accordionContent {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.active .accordionContent {
+    max-height: 200px;
+    padding: 0 2rem 2rem 2rem;
+}
+
+.accordionContent p {
+    color: var(--lightGray);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+[data-theme='light'] .accordionItem {
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+@media (max-width: 768px) {
+
+    .contactGrid,
+    .faqGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .supportContainer {
+        margin-top: 4rem;
+        padding: 2rem;
+    }
+}

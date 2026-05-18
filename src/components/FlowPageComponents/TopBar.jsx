@@ -2,12 +2,10 @@ import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import styles from "../../styles/FlowTopBar.module.css";
 import LogoutButton from "../LogoutButton";
-//REACT ICONS
-import { BiExit } from "react-icons/bi";
-import { BiSupport } from "react-icons/bi";
-import { RiUserLine } from "react-icons/ri";
-import { RiExpandUpDownLine } from "react-icons/ri";
 import { Link } from "react-router";
+//REACT ICONS
+import { BiExit, BiHomeAlt, BiSupport } from "react-icons/bi";
+import { RiUserLine, RiExpandUpDownLine } from "react-icons/ri";
 
 const TopBar = () => {
     const { user, isAuthenticated } = useAuth0();
@@ -18,8 +16,9 @@ const TopBar = () => {
     }
 
     const userDivComponents = [
-        { id: "logOut", text: "Log Out", icon: <BiExit />, path: "/" },
+        { id: "exit", text: "Ana Sayfa", icon: <BiHomeAlt />, path: "/" },
         { id: "support", text: "Support", icon: <BiSupport />, path: "/dashboard/support" },
+        { id: "logOut", text: "Log Out", icon: <BiExit />, path: "/" }
     ]
 
 
