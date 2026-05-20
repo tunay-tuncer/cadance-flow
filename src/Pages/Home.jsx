@@ -4,7 +4,9 @@ import GridBackground from "../components/GridBackground";
 import Process from "../components/HomePageComponents/Process";
 import Gallery from "../components/HomePageComponents/Gallery";
 import Reviews from "../components/HomePageComponents/Reviews";
+import CallToAction from "../components/HomePageComponents/CallToAction";
 import ScrollToTopButton from "../components/ScrollToTopButton";
+import Footer from "../components/Footer";
 
 const Home = () => {
     return (
@@ -15,7 +17,9 @@ const Home = () => {
             <Process />
             <Gallery />
             <Reviews />
+            <CallToAction />
             <ScrollToTopButton />
+            <Footer />
         </>
     )
 }

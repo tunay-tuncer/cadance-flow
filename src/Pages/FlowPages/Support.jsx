@@ -50,7 +50,7 @@ const Support = () => {
 
             <div className={styles.contactGrid}>
                 <a
-                    href={`https://wa.me/${WHATSAPP_NUMBER}?text=Merhaba%20Tunay,%20Cadance%20Flow%20üzerinden%20ulaşıyorum.`}
+                    href={`https://wa.me/${WHATSAPP_NUMBER}?text=Merhaba,%20Cadance%20Flow%20üzerinden%20ulaşıyorum.`}
                     target="_blank" rel="noreferrer" className={styles.contactCard}
                 >
                     <div className={styles.iconBox} style={{ background: '#25D366' }}><MdWhatsapp /></div>

@@ -6,12 +6,14 @@
     bottom: 2rem;
     right: 2rem;
     width: 3rem;
+    border-radius: 0.5rem;
     aspect-ratio: 1;
     background-color: var(--containerGray);
     color: var(--textWhite);
     border: none;
     transition: 0.4s ease;
     cursor: pointer;
+    z-index: 100;
 }
 
 .scrollButton svg {
@@ -24,7 +26,6 @@
 }
 
 .scrollButton:hover>svg {
-    /* animation: jump 0.75s infinite ease-in; */
     display: block;
     margin-bottom: 25%;
 }
@@ -32,11 +33,9 @@
 @keyframes jump {
     0% {
         margin-bottom: 0;
-        /* scale: 1.5; */
     }
 
     100% {
         margin-bottom: 0.75rem;
-        /* scale: 2; */
     }
 }

@@ -59,6 +59,66 @@
         "redirectCard" :  "Tüm Projeleri İnceleyin"  
     },
 
+    "reviews":{
+        "reviewSubTitle": "KULLANICI DENEYİMLERİ",
+        "reviewMainTitle": "Onların Gözünden",
+        "reviewMainTitleSpan": "Cadance"
+    },
+
+    "cta":{
+        "ctaSubTitle" : "HAZIR MISINIZ?",
+        "ctaMainTitle" : "Tasarım süreçlerinizi",
+        "ctaMainTitleSpan" : "canlı takip edin.",
+        "ctaParagraph": "WhatsApp gruplarında kaybolan revizyonlara ve belirsiz teslim tarihlerine veda edin. Cadance Flow ile bir sonraki projenizde şeffaf ve kusursuz iş akışını deneyimleyin.",
+        "flowButton":"Akışa Katılın",
+        "offerButton": "Proje Başlat / Teklif Al"
+    },
+
+    "footer":{
+        "footerDescp" : "Mimarlıkta yeni nesil iş akışı ve canlı takip sistemi",
+        "copyrightText": "Tüm hakları saklıdır."
+    },
+
+    "support" : {
+        "supportSubTitle": "CADANCE DESTEK",
+        "supportMainTitle": "Size Nasıl",
+        "supportMainTitleSpan": "Yardımcı Olabiliriz?",
+        "inputContainer": {
+            "heading": "Hızlı İletişim & Teklif Formu",
+            "name": "Adınız Soyadınız",
+            "email": "E-posta Adresiniz",
+            "textArea": "Projenizden kısaca bahsedin...",
+            "sendButton": "Mesajı Gönder"
+        },
+        "emailText": "E-Mail",
+        "studioText": "Studio",
+        "faqContainer": {
+            "faqTitle": "Frequently Asked Questions",
+
+            "q1": "Fiyatlandırma modeliniz nasıl çalışıyor?",
+            "a1": "Cadance Flow'da sabit bir abonelik ücreti yoktur. Projenizin ölçeğine, render sayısına ve animasyon taleplerine göre tamamen size özel bir fiyatlandırma çıkartılır.",
+            
+            "q2": "Tasarım süreçlerinde revizyon sınırınız var mı?",
+            "a2": "Her projemizde standart olarak 2 revizyon hakkınız oluyor ancak isteğe ve proje ölçeğine göre arttırılabilmektedir.",
+            
+            "q3": "Verilerimiz ve mimari projelerimiz güvende mi?",
+            "a3": "Kesinlikle. Yüklediğiniz tüm teknik çizimler ve ara renderlar endüstri standardı şifreleme yöntemleriyle korunur ve 3. şahıslarla siz izin vermedikçe asla paylaşılmaz.",
+            
+            "q4": "Proje takip numarası (Track ID) ne zaman ve nasıl iletiliyor?",
+            "a4": "Bizimle el sıkışıp proje detaylarını netleştirdikten sonra, sistem tarafından adınıza özel bir Track ID oluşturulur ve kayıtlı e-posta adresinize gönderilir. Bu kodla şifre belirlemeye gerek kalmadan anında akışa dahil olabilirsiniz.",
+            
+            "q5": "Aynı anda birden fazla projeyi tek hesaptan takip edebilir miyim?",
+            "a5": "Evet. Eğer kurumsal bir üyelikle giriş yapıyorsanız, dashboard üzerindeki 'Mevcut Projeler' alanından tüm aktif ve arşivlenmiş projelerinizi tek bir panelden, karmaşa yaşamadan yönetebilirsiniz.",
+            
+            "q6": "Render süreçlerindeki acil revizyonlar için teslim süresi ne kadar uzar?",
+            "a6": "Cadance Flow'un en büyük avantajı anlık geri bildirimdir. Siz görsel üzerine not bıraktığınız an bildirim mimarımıza düşer. Küçük revizyonlar (renk, malzeme değişimi vb.) aynı gün içinde işlenir ve teslim süresini neredeyse hiç etkilemez.",
+            
+            "q7": "Proje teslim edildikten sonra geçmiş verilere ve renderlara ulaşabilir miyim?",
+            "a7": "Evet. Tamamlanan tüm projeleriniz otomatik olarak 'Arşiv' bölümüne aktarılır. Sözleşmeniz kapsamına göre, final çıktılarınız ve ara revizyon geçmişiniz 12 ay boyunca bulut sunucularımızda güvenle saklanır ve dilediğiniz an tekrar indirilebilir."
+            
+        }
+    },
+
     "login":{
         "placeholder":"Proje takip numaranızı girin",
         "flowButton":"AKIŞA KATIL",

@@ -1,0 +1,137 @@
+.footerSection {
+    position: relative;
+    width: 100%;
+    padding: 4rem 2rem 3rem 2rem;
+    background: transparent;
+    /* GridBackground alttan akmaya devam etsin */
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* Üst Bar */
+.topBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.logoArea h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--textWhite);
+    letter-spacing: -0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.logoArea h2 span {
+    color: var(--accent);
+    font-weight: 300;
+}
+
+.logoArea p {
+    color: var(--lightGray);
+    font-size: 0.85rem;
+    max-width: 320px;
+    line-height: 1.5;
+}
+
+/* Sosyal Medya İkonları */
+.socialLinks {
+    display: flex;
+    gap: 1rem;
+}
+
+.socialLinks a {
+    font-size: 1.4rem;
+    color: var(--lightGray);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--gridWhite);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.socialLinks a:hover {
+    color: var(--textWhite);
+    border-color: var(--accent);
+    background: rgba(41, 114, 245, 0.1);
+    box-shadow: 0 0 15px rgba(41, 114, 245, 0.3);
+    transform: translateY(-2px);
+}
+
+/* İnce Bölücü Çizgi */
+.divider {
+    width: 100%;
+    height: 1px;
+    background: var(--gridWhite);
+    margin: 3rem 0 2rem 0;
+}
+
+/* Alt Bar */
+.bottomBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.copyright {
+    color: var(--lightGray);
+    font-size: 0.8rem;
+}
+
+.footerNav {
+    display: flex;
+    gap: 2rem;
+}
+
+.footerNav a {
+    color: var(--lightGray);
+    font-size: 0.8rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footerNav a:hover {
+    color: var(--textWhite);
+}
+
+/* Mobil Ekranlar İçin Düzenleme */
+@media (max-width: 768px) {
+    .topBar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .logoArea p {
+        max-width: 100%;
+    }
+
+    .divider {
+        margin: 2rem 0;
+    }
+
+    .bottomBar {
+        flex-direction: column-reverse;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .footerNav {
+        gap: 1.5rem;
+    }
+}
