@@ -12,6 +12,3 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
         detectSessionInUrl: false,
     },
 });
-
-// KALDIRILDI: getSupabase() → her çağrıda yeni instance yaratıyordu.
-// Yerine useSupabase hook'undaki getClient() kullan.

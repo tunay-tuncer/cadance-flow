@@ -1,49 +1,49 @@
 {
-    "navbar":{ 
+    "navbar": {
         "studioText": "STÜDYOYA DÖN",
         "helpText": "DESTEK",
         "loginText": "GİRİŞ YAP"
     },
 
-    "hero":{
-        "leftContainerText":{
+    "hero": {
+        "leftContainerText": {
             "header": "Mimaride Yeni Dönem",
             "span": "Canlı Takip Sistemi",
             "paragraph": "Fikirlerinizi gerçeğe dönüştürürken belirsizlikleri ortadan kaldırın. Proje takip numaranızla sisteme bağlanın, süreci şeffafça yönetin.",
-            "button":"AKIŞA KATILIN"
+            "button": "AKIŞA KATILIN"
         },
-        "rightContainerText":{
+        "rightContainerText": {
             "projectDashboardText": "Proje Kontrol Paneliniz",
             "projectPhaseText": "Proje Aşaması:",
             "nextStepText": "Sonraki Hedef:",
             "approvalText": "Onay Gereken:",
-            "clientInputText":"Müşteri Doneleri",
-            "strategyAndMoodText":"Müşteri Doneleri",
-            "drawingText":"2D Çizimler",
-            "modellingText":"3D Modelleme",
-            "texturingAndLightingText":"Doku ve Işıklandırma",
-            "renderingText":"Render Süreci",
-            "postProductionText":"Post-Prodüksiyon",
-            "submitionText":"Teslimat"
+            "clientInputText": "Müşteri Doneleri",
+            "strategyAndMoodText": "Müşteri Doneleri",
+            "drawingText": "2D Çizimler",
+            "modellingText": "3D Modelleme",
+            "texturingAndLightingText": "Doku ve Işıklandırma",
+            "renderingText": "Render Süreci",
+            "postProductionText": "Post-Prodüksiyon",
+            "submitionText": "Teslimat"
         }
     },
 
-    "process" :{
-        "processSubTitle":"SÜREÇ NASIL İŞLER?",
+    "process": {
+        "processSubTitle": "SÜREÇ NASIL İŞLER?",
         "processMainTitle": "Geleneksel İş Akışını",
         "processMainTitleSpan": "Unutun",
-        "steps":{
-            "stepTitle1":"Projenizi Başlatın",
-            "stepTitle2":"Akışı Yönetin",
-            "stepTitle3":"Finali İndirin",
+        "steps": {
+            "stepTitle1": "Projenizi Başlatın",
+            "stepTitle2": "Akışı Yönetin",
+            "stepTitle3": "Finali İndirin",
             "stepDesc1": "Size özel üretilen Proje Takip Numarası (Track ID) ile sisteme anında giriş yapın ve ekosisteme dahil olun.",
             "stepDesc2": "Render süreçlerini anlık olarak izleyin. Görsellerin üzerine doğrudan notlar bırakarak revizyonları sıfır hata ile yönetin.",
             "stepDesc3": "Her aşamayı onayladıktan sonra, yüksek çözünürlüklü 4K çıktılarınızı ve teknik dosyalarınızı tek tıkla güvenle indirin."
         }
     },
-    
-    "gallery":{
-        "gallerySubTitle":"PORTFOLYO",
+
+    "gallery": {
+        "gallerySubTitle": "PORTFOLYO",
         "galleryMainTitle": "Seçkin Projeler",
         "galleryMainTitleSpan": "Galerisi",
         "galleryItems": {
@@ -56,30 +56,30 @@
             "type3": "İç Mekan / Konsept",
             "type4": "İç Mekan / Uygulama"
         },
-        "redirectCard" :  "Tüm Projeleri İnceleyin"  
+        "redirectCard": "Tüm Projeleri İnceleyin"
     },
 
-    "reviews":{
+    "reviews": {
         "reviewSubTitle": "KULLANICI DENEYİMLERİ",
         "reviewMainTitle": "Onların Gözünden",
         "reviewMainTitleSpan": "Cadance"
     },
 
-    "cta":{
-        "ctaSubTitle" : "HAZIR MISINIZ?",
-        "ctaMainTitle" : "Tasarım süreçlerinizi",
-        "ctaMainTitleSpan" : "canlı takip edin.",
+    "cta": {
+        "ctaSubTitle": "HAZIR MISINIZ?",
+        "ctaMainTitle": "Tasarım süreçlerinizi",
+        "ctaMainTitleSpan": "canlı takip edin.",
         "ctaParagraph": "WhatsApp gruplarında kaybolan revizyonlara ve belirsiz teslim tarihlerine veda edin. Cadance Flow ile bir sonraki projenizde şeffaf ve kusursuz iş akışını deneyimleyin.",
-        "flowButton":"Akışa Katılın",
+        "flowButton": "Akışa Katılın",
         "offerButton": "Proje Başlat / Teklif Al"
     },
 
-    "footer":{
-        "footerDescp" : "Mimarlıkta yeni nesil iş akışı ve canlı takip sistemi",
+    "footer": {
+        "footerDescp": "Mimarlıkta yeni nesil iş akışı ve canlı takip sistemi",
         "copyrightText": "Tüm hakları saklıdır."
     },
 
-    "support" : {
+    "support": {
         "supportSubTitle": "CADANCE DESTEK",
         "supportMainTitle": "Size Nasıl",
         "supportMainTitleSpan": "Yardımcı Olabiliriz?",
@@ -97,39 +97,38 @@
 
             "q1": "Fiyatlandırma modeliniz nasıl çalışıyor?",
             "a1": "Cadance Flow'da sabit bir abonelik ücreti yoktur. Projenizin ölçeğine, render sayısına ve animasyon taleplerine göre tamamen size özel bir fiyatlandırma çıkartılır.",
-            
+
             "q2": "Tasarım süreçlerinde revizyon sınırınız var mı?",
             "a2": "Her projemizde standart olarak 2 revizyon hakkınız oluyor ancak isteğe ve proje ölçeğine göre arttırılabilmektedir.",
-            
+
             "q3": "Verilerimiz ve mimari projelerimiz güvende mi?",
             "a3": "Kesinlikle. Yüklediğiniz tüm teknik çizimler ve ara renderlar endüstri standardı şifreleme yöntemleriyle korunur ve 3. şahıslarla siz izin vermedikçe asla paylaşılmaz.",
-            
+
             "q4": "Proje takip numarası (Track ID) ne zaman ve nasıl iletiliyor?",
             "a4": "Bizimle el sıkışıp proje detaylarını netleştirdikten sonra, sistem tarafından adınıza özel bir Track ID oluşturulur ve kayıtlı e-posta adresinize gönderilir. Bu kodla şifre belirlemeye gerek kalmadan anında akışa dahil olabilirsiniz.",
-            
+
             "q5": "Aynı anda birden fazla projeyi tek hesaptan takip edebilir miyim?",
             "a5": "Evet. Eğer kurumsal bir üyelikle giriş yapıyorsanız, dashboard üzerindeki 'Mevcut Projeler' alanından tüm aktif ve arşivlenmiş projelerinizi tek bir panelden, karmaşa yaşamadan yönetebilirsiniz.",
-            
+
             "q6": "Render süreçlerindeki acil revizyonlar için teslim süresi ne kadar uzar?",
             "a6": "Cadance Flow'un en büyük avantajı anlık geri bildirimdir. Siz görsel üzerine not bıraktığınız an bildirim mimarımıza düşer. Küçük revizyonlar (renk, malzeme değişimi vb.) aynı gün içinde işlenir ve teslim süresini neredeyse hiç etkilemez.",
-            
+
             "q7": "Proje teslim edildikten sonra geçmiş verilere ve renderlara ulaşabilir miyim?",
             "a7": "Evet. Tamamlanan tüm projeleriniz otomatik olarak 'Arşiv' bölümüne aktarılır. Sözleşmeniz kapsamına göre, final çıktılarınız ve ara revizyon geçmişiniz 12 ay boyunca bulut sunucularımızda güvenle saklanır ve dilediğiniz an tekrar indirilebilir."
-            
         }
     },
 
-    "login":{
-        "placeholder":"Proje takip numaranızı girin",
-        "flowButton":"AKIŞA KATIL",
-        "signInText":"Tüm projelere erişmek için giriş yapın!",
-        "loginButton":"GİRİŞ YAP / ÜYE OL"
+    "login": {
+        "placeholder": "Proje takip numaranızı girin",
+        "flowButton": "AKIŞA KATIL",
+        "signInText": "Tüm projelere erişmek için giriş yapın!",
+        "loginButton": "GİRİŞ YAP / ÜYE OL"
     },
 
-    "flowPageNavbarItems":{
+    "flowPageNavbarItems": {
         "topNavItems": {
-            "dashboard":"PANEL",
-            "archive":"ARŞİV",
+            "dashboard": "PANEL",
+            "archive": "ARŞİV",
             "media": "MEDYA"
         },
         "bottomNavItems": {
@@ -149,8 +148,31 @@
         "historyText": "GEÇMİŞ"
     },
 
-    "project": 
-        {"projectInfo" :{
+    "joyrideSteps": {
+        "dashboard": {
+            "tour": {
+                "step1_title": "Cadance Flow'a Hoş Geldiniz!",
+                "step1_content": "Projelerinizi ve canlı render süreçlerinizi buradan yönetebilirsiniz.",
+                "step2_title": "Proje Detayları",
+                "step2_content": "Bu alanda aktif projenizin anlık durumunu, tamamlanma yüzdesini ve kritik aşamaları görebilirsiniz.",
+                "step3_title": "Son Projeler",
+                "step3_content": "Son çalışmalarınız, revizyon geçmişiniz ve arşivlenmiş eski projeleriniz burada listelenir."
+            }
+        },
+        "project": {
+            "tour": {
+                "step1_title": "Proje Kontrol Paneli",
+                "step1_content": "Projenizin adı, gizlilik durumu, takip kodu ve önemli tarihler burada gösterilir. Projeyi herkese açık ya da gizli yapabilirsiniz.",
+                "step2_title": "Proje Aşamaları",
+                "step2_content": "Projenizin ilerleme sürecini görsel olarak takip edin. Tamamlanan aşamalar işaretlenmiş, mevcut aşama vurgulanmış şekilde gösterilir.",
+                "step3_title": "Medya İçeriği",
+                "step3_content": "Render görselleri, tasarım dosyaları ve medya dosyalarınız burada listelenir. Dosyaları indirebilir, üzerine yorum yapabilirsiniz."
+            }
+        }
+    },
+
+    "project": {
+        "projectInfo": {
             "liveText": "AÇIK",
             "privateText": "GİZLİ",
             "trackingCodeText": "TAKİP KODU:",
@@ -164,9 +186,9 @@
             "emptyPhaseHeading": "Süreciniz hazırlanıyor",
             "emptyPhaseText": "Şu anda projenin aşamalarını belirliyoruz. Zaman çizelgeniz kısa süre içinde burada görünecektir."
         },
-        "mediaContainer" :{
-            "emptyMediaHeading" : "İlk görseller yakında geliyor!",
-            "emptyMediaText" : "Ekibimiz şu anda görselleştirmeleriniz üzerinde çalışıyor. İlk taslaklar hazır olduğunda, bunları buradan görüntüleyip yorum yapabileceksiniz.",
+        "mediaContainer": {
+            "emptyMediaHeading": "İlk görseller yakında geliyor!",
+            "emptyMediaText": "Ekibimiz şu anda görselleştirmeleriniz üzerinde çalışıyor. İlk taslaklar hazır olduğunda, bunları buradan görüntüleyip yorum yapabileceksiniz.",
             "emptyBadge": "Süreç Devam Ediyor"
         }
     }

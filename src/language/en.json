@@ -1,48 +1,48 @@
 {
-    "navbar":{
+    "navbar": {
         "studioText": "BACK TO STUDIO",
         "helpText": "SUPPORT",
         "loginText": "LOG IN"
     },
-    "hero":{ 
-        "leftContainerText":{
-        "header": "A new era in Architecture",
-        "span": "Live Tracking System",
-        "paragraph": "Eliminate uncertainty as you turn your ideas into reality. Log in to the system using your project tracking number and manage the process transparently.",
-        "button":"GET YOUR FLOW"
+    "hero": {
+        "leftContainerText": {
+            "header": "A new era in Architecture",
+            "span": "Live Tracking System",
+            "paragraph": "Eliminate uncertainty as you turn your ideas into reality. Log in to the system using your project tracking number and manage the process transparently.",
+            "button": "GET YOUR FLOW"
         },
-    "rightContainerText":{
-        "projectDashboardText": "Your Project Dashboard",
-        "projectPhaseText": "Project Phase:",
-        "nextStepText": "Next Milestone:",
-        "approvalText": "Approval Required:",
-        "clientInputText":"Client Input",
-        "strategyAndMoodText":"Strategy and Mood",
-        "drawingText":"2D Drawings",
-        "modellingText":"3D Modelling",
-        "texturingAndLightingText":"Texturing and Lighting",
-        "renderingText":"Rendering",
-        "postProductionText":"Post Production",
-        "submitionText":"Submition"
+        "rightContainerText": {
+            "projectDashboardText": "Your Project Dashboard",
+            "projectPhaseText": "Project Phase:",
+            "nextStepText": "Next Milestone:",
+            "approvalText": "Approval Required:",
+            "clientInputText": "Client Input",
+            "strategyAndMoodText": "Strategy and Mood",
+            "drawingText": "2D Drawings",
+            "modellingText": "3D Modelling",
+            "texturingAndLightingText": "Texturing and Lighting",
+            "renderingText": "Rendering",
+            "postProductionText": "Post Production",
+            "submitionText": "Submition"
         }
     },
 
-    "process" :{
-        "processSubTitle":"HOW DOES THE PROCESS WORK?",
+    "process": {
+        "processSubTitle": "HOW DOES THE PROCESS WORK?",
         "processMainTitle": "Forget",
         "processMainTitleSpan": "Traditional Workflow",
-        "steps":{
-            "stepTitle1":"Start Your Project",
-            "stepTitle2":"Manage the Workflow",
-            "stepTitle3":"Download the Final",
+        "steps": {
+            "stepTitle1": "Start Your Project",
+            "stepTitle2": "Manage the Workflow",
+            "stepTitle3": "Download the Final",
             "stepDesc1": "Log in to the system instantly using your unique Project Tracking Number (Track ID) and join the ecosystem.",
             "stepDesc2": "Monitor rendering processes in real time. Manage revisions with zero errors by leaving notes directly on the visuals.",
             "stepDesc3": "After approving each stage, securely download your high-resolution 4K outputs and technical files with a single click."
         }
     },
 
-    "gallery":{
-        "gallerySubTitle":"PORTFOLIO",
+    "gallery": {
+        "gallerySubTitle": "PORTFOLIO",
         "galleryMainTitle": "Featured Projects",
         "galleryMainTitleSpan": "Gallery",
         "galleryItems": {
@@ -55,30 +55,30 @@
             "type3": "Interior / Concept",
             "type4": "Interior / Implementation"
         },
-        "redirectCard" :  "View All Projects"  
+        "redirectCard": "View All Projects"
     },
 
-    "reviews":{
+    "reviews": {
         "reviewSubTitle": "USER EXPERIENCES",
         "reviewMainTitle": "Through Their Eyes",
         "reviewMainTitleSpan": "Cadance"
     },
 
-    "cta":{
+    "cta": {
         "ctaSubTitle": "ARE YOU READY?",
         "ctaMainTitle": "Track your design processes",
         "ctaMainTitleSpan": "in real time.",
         "ctaParagraph": "Say goodbye to revisions lost in WhatsApp groups and unclear deadlines. Experience a transparent and seamless workflow on your next project with Cadance Flow.",
-        "flowButton":"Join the Flow",
+        "flowButton": "Join the Flow",
         "offerButton": "Start a Project / Get an Offer"
     },
 
-    "footer":{
-        "footerDescp" : "A next-generation workflow and real-time tracking system for architecture.",
+    "footer": {
+        "footerDescp": "A next-generation workflow and real-time tracking system for architecture.",
         "copyrightText": "All rights reserved."
     },
 
-    "support" : {
+    "support": {
         "supportSubTitle": "CADANCE SUPPORT",
         "supportMainTitle": "How Can We",
         "supportMainTitleSpan": "Help You?",
@@ -95,39 +95,39 @@
             "faqTitle": "Sıkça Sorulan Sorular",
             "q1": "How does your pricing model work?",
             "a1": "There is no fixed subscription fee in Cadance Flow. A completely customized quote is generated for you based on the scale of your project, the number of renders, and animation requirements.",
-            
+
             "q2": "Is there a limit on revisions during the design process?",
             "a2": "As a standard, you have 2 revision rights in each project; however, this can be increased upon request and depending on the project scale.",
-            
+
             "q3": "Are our data and architectural projects safe?",
             "a3": "Absolutely. All technical drawings and intermediate renders you upload are protected with industry-standard encryption methods and are never shared with third parties without your explicit permission.",
-            
+
             "q4": "When and how is the project tracking number (Track ID) delivered?",
             "a4": "After we finalize the project details together, a customized Track ID is automatically generated by the system and sent to your registered email address. With this code, you can immediately join the flow without needing to create a password.",
-            
+
             "q5": "Can I track multiple projects simultaneously from a single account?",
             "a5": "Yes. If you log in with a corporate membership, you can manage all your active and archived projects smoothly from a single panel under the 'Current Projects' section on the dashboard.",
-            
+
             "q6": "How much does the delivery time extend for urgent revisions during the render process?",
             "a6": "The biggest advantage of Cadance Flow is real-time feedback. The moment you leave a note on an image, a notification drops directly to our architect. Minor revisions (color, material changes, etc.) are processed on the same day and barely affect the final delivery time.",
-            
+
             "q7": "Can I access past data and renders after the project is delivered?",
             "a7": "Yes. All your completed projects are automatically moved to the 'Archive' section. Depending on the scope of your contract, your final outputs and revision history are securely stored on our cloud servers for 12 months and can be downloaded again at any time."
         }
     },
 
-    "login":{
-        "placeholder":"Enter your project tracking number",
-        "flowButton":"GET YOUR FLOW",
-        "signInText":"Sign in to access all projects!",
-        "loginButton":"LOGIN / SIGN UP"
+    "login": {
+        "placeholder": "Enter your project tracking number",
+        "flowButton": "GET YOUR FLOW",
+        "signInText": "Sign in to access all projects!",
+        "loginButton": "LOGIN / SIGN UP"
     },
 
-    "flowPageNavbarItems":{
+    "flowPageNavbarItems": {
         "topNavItems": {
-            "dashboard":"DASHBOARD",
-            "archive":"ARCHIVE",
-            "media":"MEDIA"
+            "dashboard": "DASHBOARD",
+            "archive": "ARCHIVE",
+            "media": "MEDIA"
         },
         "bottomNavItems": {
             "support": "SUPPORT",
@@ -146,8 +146,31 @@
         "historyText": "HISTORY"
     },
 
+    "joyrideSteps": {
+        "dashboard": {
+            "tour": {
+                "step1_title": "Welcome to Cadance Flow!",
+                "step1_content": "You can manage your projects and live render processes from here.",
+                "step2_title": "Project Details",
+                "step2_content": "In this area, you can see the instant status of your active project, completion percentage, and critical phases.",
+                "step3_title": "Recent Projects",
+                "step3_content": "Your recent works, revision history, and archived past projects are listed here."
+            }
+        },
+        "project": {
+            "tour": {
+                "step1_title": "Project Control Panel",
+                "step1_content": "Your project name, privacy status, tracking code, and important dates are displayed here. You can make the project public or private.",
+                "step2_title": "Project Phases",
+                "step2_content": "Track the progress of your project visually. Completed phases are marked, and the current phase is highlighted for easy monitoring.",
+                "step3_title": "Media Content",
+                "step3_content": "Render images, design files, and your media content are listed here. You can download files and leave comments on them."
+            }
+        }
+    },
+
     "project": {
-        "projectInfo" :{
+        "projectInfo": {
             "liveText": "LIVE",
             "privateText": "PRIVATE",
             "trackingCodeText": "TRACKING CODE:",
@@ -161,9 +184,9 @@
             "emptyPhaseHeading": "Roadmap is being prepared",
             "emptyPhaseText": "We are currently outlining the project stages. Your timeline will appear here shortly."
         },
-        "mediaContainer" :{
-            "emptyMediaHeading" : "Initial Renders are on the way!",
-            "emptyMediaText" : "Our team is currently working on your visualizations. Once the first drafts are ready, you'll be able to view and comment on them here.",
+        "mediaContainer": {
+            "emptyMediaHeading": "Initial Renders are on the way!",
+            "emptyMediaText": "Our team is currently working on your visualizations. Once the first drafts are ready, you'll be able to view and comment on them here.",
             "emptyBadge": "Creative Process in Progress"
         }
     }

@@ -24,9 +24,7 @@ const MobileNav = () => {
         { name: currentLang.flowPageNavbarItems.topNavItems.dashboard, id: "nav-dashboard", path: "/dashboard", icon: <RxDashboard /> },
         { name: currentLang.flowPageNavbarItems.topNavItems.archive, id: "nav-archive", path: "/dashboard/archive", icon: <FiArchive /> },
         { name: currentLang.flowPageNavbarItems.topNavItems.media, id: "nav-media", path: "/dashboard/media", icon: <MdOutlinePermMedia /> },
-        // { name: currentLang.flowPageNavbarItems.bottomNavItems.support, id: "nav-support", path: "/dashboard/support", icon: <BiSupport /> },
         { name: currentLang.flowPageNavbarItems.bottomNavItems.settings, id: "nav-settings", path: "/dashboard/settings", icon: <LuSettings /> },
-        // { name: currentLang.flowPageNavbarItems.bottomNavItems.exit, id: "nav-exit", path: "/", icon: <BiExit /> }
     ]
 
     return (

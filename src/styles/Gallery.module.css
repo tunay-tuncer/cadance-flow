@@ -189,7 +189,6 @@
 
     .bentoGrid::-webkit-scrollbar {
         display: none;
-        /* Chrome/Safari için scrollbar gizleme */
     }
 
     .galleryCard {

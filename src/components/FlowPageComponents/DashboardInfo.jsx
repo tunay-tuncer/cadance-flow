@@ -33,6 +33,52 @@ const DashboardInfo = () => {
         }
     }, [loading, logs]);
 
+    const SkeletonLoader = () => (
+        <style>{`
+            @keyframes shimmer {
+                0% { background-position: -1000px 0; }
+                100% { background-position: 1000px 0; }
+            }
+            .skeleton {
+                background: linear-gradient(
+                    90deg,
+                    var(--containerGray) 0%,
+                    rgba(41, 114, 245, 0.1) 50%,
+                    var(--containerGray) 100%
+                );
+                background-size: 1000px 100%;
+                animation: shimmer 2s infinite;
+                border-radius: 0.5rem;
+            }
+            .skeletonGreeting {
+                height: 1.2rem;
+                width: 60%;
+                margin: 0 auto;
+            }
+            .skeletonValue {
+                height: 2rem;
+                width: 80%;
+                margin: 0 auto;
+                margin-bottom: 0.5rem;
+            }
+            .skeletonLabel {
+                height: 0.75rem;
+                width: 70%;
+                margin: 0 auto;
+            }
+            .skeletonLogItem {
+                height: 0.9rem;
+                width: 90%;
+                margin-bottom: 0.5rem;
+            }
+            .skeletonLogTime {
+                height: 0.7rem;
+                width: 60%;
+                margin-bottom: 1rem;
+            }
+        `}</style>
+    );
+
     const handleCompletion = () => {
         if (projects && projects.length > 0) {
             const total = projects.reduce((sum, p) => sum + (p.project_progress || 0), 0);
@@ -57,6 +103,40 @@ const DashboardInfo = () => {
         const minutes = String(date.getMinutes()).padStart(2, '0');
         return `${hours}:${minutes} - ${day}/${month}/${year}`;
     };
+
+    if (loading) {
+        return (
+            <>
+                <SkeletonLoader />
+                <ul className={styles.infoContainer}>
+                    <li className={styles.infoElement} key="greeting">
+                        <div className="skeleton skeletonGreeting"></div>
+                    </li>
+                    <li className={styles.infoElement} key="totalCompletion">
+                        <div className="skeleton skeletonValue"></div>
+                        <div className="skeleton skeletonLabel"></div>
+                    </li>
+                    <li className={styles.infoElement} key="finishedProjectCount">
+                        <div className="skeleton skeletonValue"></div>
+                        <div className="skeleton skeletonLabel"></div>
+                    </li>
+                    <li className={styles.infoElement} key="approvalCount">
+                        <div className="skeleton skeletonValue"></div>
+                        <div className="skeleton skeletonLabel"></div>
+                    </li>
+                    <li className={styles.infoElement} key="logs">
+                        <div className="skeleton skeletonLabel" style={{ marginBottom: "1rem" }}></div>
+                        <div className="skeleton skeletonLogItem"></div>
+                        <div className="skeleton skeletonLogTime"></div>
+                        <div className="skeleton skeletonLogItem"></div>
+                        <div className="skeleton skeletonLogTime"></div>
+                        <div className="skeleton skeletonLogItem"></div>
+                        <div className="skeleton skeletonLogTime"></div>
+                    </li>
+                </ul>
+            </>
+        );
+    }
 
     return (
         <>

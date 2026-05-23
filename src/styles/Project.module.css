@@ -3,7 +3,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    /* gap: 1rem; */
+    position: relative;
 }
 
 img {
@@ -18,7 +18,6 @@ img {
     user-select: none;
 }
 
-
 /* projectDetailsContainer */
 
 .projectDetailsContainer {
@@ -26,9 +25,8 @@ img {
     height: 4rem;
     display: flex;
     justify-content: space-between;
-    background: var(--gridWhite);
     padding: 1px;
-    gap: 1px;
+    gap: 1rem;
 }
 
 .projectName {
@@ -40,11 +38,13 @@ img {
 .projectName {
     width: 100%;
     background: var(--containerGray);
+    border: 1px solid var(--gridWhite);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    border-radius: 0.5rem;
 }
 
 .dateText {
@@ -55,7 +55,6 @@ img {
 .dateValue {
     font-weight: 700;
 }
-
 
 .accessControlPanel {
     display: flex;
@@ -207,7 +206,10 @@ img {
     justify-content: center;
     cursor: pointer;
     z-index: 10;
-    transition: opacity 0.3s ease, background 0.3s ease;
+    border-radius: 0.25rem;
+    transition:
+        opacity 0.3s ease,
+        background 0.3s ease;
 }
 
 .arrowBtn:hover {
@@ -230,12 +232,16 @@ img {
     padding-inline: 1.5rem;
     background: var(--containerGray);
     cursor: pointer;
-    transition: transform 0.4s ease, border-color 0.3s ease;
+    transition:
+        transform 0.4s ease,
+        border-color 0.3s ease;
+    border-radius: 0.5rem;
 }
 
 .phaseItem:hover {
     transform: scale(1.03);
-    border-color: var(--textWhite);
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.04);
 }
 
 .phaseItem::after {
@@ -256,10 +262,12 @@ img {
 
 .activePhase {
     justify-content: center;
-    background: var(--accent);
-    border: 1px solid #5897ff;
     z-index: 2;
-    animation: pulse 1.5s ease-in-out infinite alternate;
+    background: rgba(41, 114, 245, 0.03) !important;
+    border: 1px solid rgba(41, 114, 245, 0.4) !important;
+    border-left: 4px solid var(--accent, #2972f5) !important;
+
+    animation: neonPulse 2s infinite alternate ease-in-out;
 }
 
 .activePhase p {
@@ -347,6 +355,52 @@ img {
     opacity: 0.3;
 }
 
+.phaseApproveBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    padding: 0.6rem 1rem;
+    background: rgba(41, 114, 245, 0.1);
+    border: 1px solid rgba(41, 114, 245, 0.4);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+    /* Padding'in genişliği patlatmasını engeller */
+}
+
+.phaseApproveBtn svg {
+    font-size: 1rem;
+    color: #2972f5;
+    /* Cadance neon mavisi */
+}
+
+.phaseApproveBtn:hover:not(:disabled) {
+    background: var(--accent);
+    border-color: var(--accent, #2972f5);
+    box-shadow: 0 0 12px rgba(41, 114, 245, 0.4);
+}
+
+.phaseApproveBtn:hover:not(:disabled) svg {
+    color: var(--textWhite);
+}
+
+.phaseApproveBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Onaylanmış faz kartını biraz daha opak/soluk yapmak istersen (isteğe bağlı) */
+.completedPhaseCard {
+    opacity: 0.85;
+}
+
 @keyframes pulse {
     0% {
         box-shadow: 0 0 0px var(--accent);
@@ -378,7 +432,9 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: radial-gradient(circle at center, rgba(26, 26, 36, 0.8) 0%, var(--bgDark) 100%);
+    background: radial-gradient(circle at center,
+            rgba(26, 26, 36, 0.8) 0%,
+            var(--bgDark) 100%);
     border: 1px dashed var(--gridWhite);
     border-radius: 12px;
     position: relative;
@@ -492,6 +548,44 @@ img {
     .floatingIcon {
         font-size: 3.5rem;
     }
+}
+
+/* Proje How it Works Butonu */
+.projectHowItWorksBtn {
+    position: fixed;
+    bottom: 3rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(10, 10, 15, 0.6);
+    border: 1px solid rgba(41, 114, 245, 0.3);
+    padding: 0.75rem 1.2rem;
+    border-radius: 100px;
+    color: var(--textWhite, #fff);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    z-index: 999;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.projectHowItWorksBtn:hover {
+    border-color: var(--accent, #2972f5);
+    background: rgba(41, 114, 245, 0.1);
+    box-shadow: 0 0 20px rgba(41, 114, 245, 0.3);
+    transform: translateY(-2px);
+}
+
+.projectHowItWorksBtn span {
+    font-weight: 700;
+}
+
+.projectHowItWorksBtn svg {
+    font-size: 1.2rem;
+    color: var(--accent, #2972f5);
 }
 
 .leftContainer {
@@ -788,7 +882,7 @@ img {
 .deleteComment {
     color: red;
     transition: 0.4s ease;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .deleteComment:hover {
@@ -834,9 +928,30 @@ img {
         padding: 0.25rem;
     }
 
+    .carouselWrapper {
+        height: auto;
+    }
+
     .phaseItem {
-        flex: 0 0 45%;
-        padding-inline: 1rem;
+        min-height: 140px;
+        height: auto !important;
+        min-width: 15rem;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .phaseApproveBtn {
+        margin-top: 0.75rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    .phaseApproveBtn svg {
+        font-size: 0.9rem;
     }
 
     .textContainer {
@@ -894,5 +1009,15 @@ img {
 
     .toolsContainerItem {
         width: 100%;
+    }
+}
+
+@media (max-width: 380px) {
+    .phaseApproveBtn span {
+        font-size: 0.7rem;
+    }
+
+    .phaseApproveBtn {
+        padding: 0.4rem 0.5rem;
     }
 }

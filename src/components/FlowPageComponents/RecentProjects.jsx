@@ -12,7 +12,7 @@ import { MdOutlineEngineering, MdArchive } from "react-icons/md";
 
 const RecentProjects = () => {
     const { user } = useAuth0();
-    const { projects } = useFetchProjects(user);
+    const { projects, loading } = useFetchProjects(user);
     const { getClient } = useSupabase();
     const [unArchivedProjects, setUnArchivedProjects] = useState([])
 
@@ -53,6 +53,77 @@ const RecentProjects = () => {
         }
     }
 
+    const SkeletonLoader = () => (
+        <style>{`
+            @keyframes shimmer {
+                0% { background-position: -1000px 0; }
+                100% { background-position: 1000px 0; }
+            }
+            .projectSkeleton {
+                background: linear-gradient(
+                    90deg,
+                    var(--containerGray) 0%,
+                    rgba(41, 114, 245, 0.1) 50%,
+                    var(--containerGray) 100%
+                );
+                background-size: 1000px 100%;
+                animation: shimmer 2s infinite;
+                border-radius: 0.5rem;
+            }
+            .skeletonImageContainer {
+                width: 100%;
+                aspect-ratio: 16/9;
+            }
+            .skeletonProjectName {
+                height: 1.2rem;
+                width: 80%;
+                margin-bottom: 0.5rem;
+            }
+            .skeletonProgressBar {
+                height: 5px;
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+            .skeletonProgressText {
+                height: 0.8rem;
+                width: 30%;
+                margin-bottom: 0.5rem;
+            }
+            .skeletonLastUpdate {
+                height: 0.7rem;
+                width: 60%;
+            }
+        `}</style>
+    );
+    if (loading) {
+        return (
+            <>
+                <SkeletonLoader />
+                <h1>RECENT PROJECTS</h1>
+                <ul className={styles.projectMainContainer}>
+                    {[1, 2, 3].map((idx) => (
+                        <li key={idx} className={styles.projectListItem} style={{ pointerEvents: 'none' }}>
+                            <div style={{ cursor: 'not-allowed' }}>
+                                <div className={styles.imageContainer}>
+                                    <div className="projectSkeleton skeletonImageContainer"></div>
+                                </div>
+                                <div className={styles.projectInfoContainer}>
+                                    <div className={styles.projectNameContainer}>
+                                        <div className="projectSkeleton skeletonProjectName"></div>
+                                    </div>
+                                    <div className={styles.progressContainer}>
+                                        <div className="projectSkeleton skeletonProgressBar"></div>
+                                        <div className="projectSkeleton skeletonProgressText"></div>
+                                    </div>
+                                    <div className="projectSkeleton skeletonLastUpdate"></div>
+                                </div>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </>
+        );
+    }
 
     return (
         <>
