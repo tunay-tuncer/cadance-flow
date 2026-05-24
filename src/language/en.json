@@ -16,14 +16,22 @@
             "projectPhaseText": "Project Phase:",
             "nextStepText": "Next Milestone:",
             "approvalText": "Approval Required:",
-            "clientInputText": "Client Input",
-            "strategyAndMoodText": "Strategy and Mood",
+            "clientInputText": "Client Data",
+            "clientInputApproval": "Sketches and Decisions",
+            "strategyAndMoodText": "Material Board",
+            "strategyAndMoodApproval": "Material Selections",
             "drawingText": "2D Drawings",
-            "modellingText": "3D Modelling",
+            "drawingApproval": "Plans",
+            "modellingText": "3D Modeling",
+            "modellingApproval": "Model Visualizations",
             "texturingAndLightingText": "Texturing and Lighting",
-            "renderingText": "Rendering",
-            "postProductionText": "Post Production",
-            "submitionText": "Submition"
+            "texturingAndLightingApproval": "Lighting Tone",
+            "renderingText": "Rendering Process",
+            "renderingApproval": "Panoramic Renders",
+            "postProductionText": "Post-Production",
+            "postProductionApproval": "LUT Settings",
+            "submitionText": "Delivery",
+            "submitionApproval": "Delivery Files"
         }
     },
 

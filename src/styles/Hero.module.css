@@ -1,5 +1,5 @@
 @property --degree {
-    syntax: '<angle>';
+    syntax: "<angle>";
     initial-value: 0deg;
     /* match JS initial degree (0%) */
     inherits: false;
@@ -13,7 +13,6 @@
     align-items: center;
     justify-content: space-between;
 }
-
 
 .leftContainer {
     width: 45%;
@@ -103,8 +102,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: conic-gradient(var(--accent) 0deg, var(--accent) var(--degree), #333 var(--degree));
-    transition: --degree 1.8s ease-in-out;
+    background: conic-gradient(
+        var(--accent) 0deg,
+        var(--accent) var(--degree),
+        #333 var(--degree)
+    );
+    transition: --degree 2s linear;
 }
 
 .innerDiv {
@@ -139,6 +142,11 @@
     font-size: 3.5rem;
     font-weight: 600;
     color: var(--accent);
+    transition: font-size 0.3s ease;
+}
+
+.percentageText.incrementing {
+    font-size: 2.8rem;
 }
 
 .progressTextContainer span {
@@ -181,7 +189,6 @@
     }
 }
 
-
 .svgContainer {
     height: calc(100% - 2rem);
     aspect-ratio: 1;
@@ -193,7 +200,6 @@
     justify-content: center;
     animation: none;
 }
-
 
 @keyframes svgAnimation {
     0% {
@@ -227,7 +233,7 @@
     font-size: 1.25rem;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
     .heroMainContainer {
         flex-direction: column;
         justify-content: unset;
@@ -308,7 +314,7 @@
     }
 }
 
-@media (max-width:450px) {
+@media (max-width: 450px) {
     .rightContainer {
         height: 100%;
     }

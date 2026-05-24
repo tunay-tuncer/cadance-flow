@@ -18,13 +18,21 @@
             "nextStepText": "Sonraki Hedef:",
             "approvalText": "Onay Gereken:",
             "clientInputText": "Müşteri Doneleri",
-            "strategyAndMoodText": "Müşteri Doneleri",
+            "clientInputApproval": "Eskiz ve kararlar",
+            "strategyAndMoodText": "Materyal Board",
+            "strategyAndMoodApproval": "Materyal Seçimleri",
             "drawingText": "2D Çizimler",
+            "drawingApproval": "Planlar",
             "modellingText": "3D Modelleme",
+            "modellingApproval": "Model Görüntüleri",
             "texturingAndLightingText": "Doku ve Işıklandırma",
+            "texturingAndLightingApproval": "Işıklandırma tonu",
             "renderingText": "Render Süreci",
+            "renderingApproval": "Panoramik Rnederlar",
             "postProductionText": "Post-Prodüksiyon",
-            "submitionText": "Teslimat"
+            "postProductionApproval": "LUT ayarları",
+            "submitionText": "Teslimat",
+            "submitionApproval": "Teslim dosyaları"
         }
     },
 
