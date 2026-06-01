@@ -1,5 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { ProjectContext } from '../context/ProjectContext';
+import { PageHelmet } from '../hooks/usePageHelmet.jsx';
+import { metaTags } from '../config/metaTags';
 //COMPONENTS
 import Navbar from '../components/HomePageComponents/Navbar';
 import Footer from '../components/Footer';
@@ -10,7 +12,7 @@ import styles from '../styles/Support.module.css';
 import { MdOutlineHelpOutline, MdWhatsapp, MdOutlineMail, MdOutlineLocationOn, MdExpandMore } from 'react-icons/md';
 
 const MainSupport = () => {
-    const { currentLang } = useContext(ProjectContext);
+    const { currentLang, langCode } = useContext(ProjectContext);
     const [activeIndex, setActiveIndex] = useState(null);
 
     const WHATSAPP_NUMBER = "905532665804";
@@ -37,6 +39,7 @@ const MainSupport = () => {
 
     return (
         <>
+            <PageHelmet metaData={metaTags.support} language={langCode} />
             <GridBackground />
             <Navbar />
 
@@ -76,7 +79,7 @@ const MainSupport = () => {
                                 <MdWhatsapp style={{ color: "#25D366" }} />
                                 <div>
                                     <h4>Whats App</h4>
-                                    <p>info@cadancestudio.com</p>
+                                    <p>+90 553 266 58 04</p>
                                 </div>
                             </a>
                             <div className={styles.infoItem}>

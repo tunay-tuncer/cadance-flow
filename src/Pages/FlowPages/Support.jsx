@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styles from '../../styles/FlowSupport.module.css';
+import { PageHelmet } from '../../hooks/usePageHelmet.jsx';
+import { metaTags } from '../../config/metaTags';
+import { ProjectContext } from '../../context/ProjectContext';
 import { MdWhatsapp, MdMailOutline, MdHelpOutline, MdCheckCircle, MdExpandMore } from 'react-icons/md';
 
 const Support = () => {
+    const { langCode } = useContext(ProjectContext);
     const WHATSAPP_NUMBER = "905532665804";
     const SUPPORT_EMAIL = "info@cadancestudio.com";
 
@@ -38,6 +42,7 @@ const Support = () => {
 
     return (
         <div className={styles.supportContainer}>
+            <PageHelmet metaData={metaTags.dashboardSupport} language={langCode} />
             <header className={styles.supportHeader}>
                 <h1>DESTEK MERKEZİ</h1>
                 <p>Bir sorunuz mu var? Size yardımcı olmak için buradayız.</p>

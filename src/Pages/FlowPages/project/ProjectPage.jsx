@@ -4,6 +4,8 @@ import styles from "../../../styles/Project.module.css"
 import { useSupabase } from "../../../hooks/useSupabase";
 import { useAuth0 } from "@auth0/auth0-react";
 import { ProjectContext } from "../../../context/ProjectContext";
+import { ProjectHelmet } from "../../../hooks/usePageHelmet.jsx";
+import { metaTags } from "../../../config/metaTags";
 import { Joyride, STATUS } from 'react-joyride';
 import { getProjectTourSteps } from '../../../config/steps.js';
 //REACT ICONS
@@ -210,6 +212,7 @@ const ProjectPage = ({ project, isPublic }) => {
 
     return (
         <div className={styles.projectMainContainer}>
+            <ProjectHelmet projectName={project?.project_name || 'Project'} metaDataObj={metaTags.projectDetails} language={langCode} />
             <Joyride
                 key={tourKey}
                 steps={steps}

@@ -7,7 +7,7 @@ import { supabase } from '../../config/supabaseClient';
 const Reviews = () => {
     const { currentLang } = useContext(ProjectContext);
     const trackRef = useRef(null);
-    const [cloneCount, setCloneCount] = useState(2);
+    const [cloneCount, setCloneCount] = useState(4);
 
     const [reviewItems, setReviewItems] = useState([]);
     const [loading, setLoading] = useState(true);

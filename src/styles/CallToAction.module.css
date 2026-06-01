@@ -124,6 +124,10 @@
 
 /* Mobil Ekranlar İçin Tam Uyum */
 @media (max-width: 768px) {
+    .ctaSection {
+        padding-inline: 2rem;
+    }
+
     .ctaCard {
         padding: 3rem 2rem;
         text-align: center;

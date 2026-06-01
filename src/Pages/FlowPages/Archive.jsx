@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useFetchProjects } from "../../hooks/useFetchProject";
 import { useSupabase } from "../../hooks/useSupabase";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router";
+import { PageHelmet } from "../../hooks/usePageHelmet.jsx";
+import { metaTags } from "../../config/metaTags";
+import { ProjectContext } from "../../context/ProjectContext";
 import styles from "../../styles/Archive.module.css";
 import Loader from "../../components/Loader";
 
@@ -13,6 +16,7 @@ import { LiaPencilRulerSolid } from "react-icons/lia";
 const Archive = () => {
     const { user } = useAuth0();
     const { getClient } = useSupabase();
+    const { langCode } = useContext(ProjectContext);
     const { projects, loading } = useFetchProjects(user);
     const [archivedList, setArchivedList] = useState([]);
 
@@ -44,6 +48,7 @@ const Archive = () => {
 
     return (
         <div className={styles.archiveMainContainer}>
+            <PageHelmet metaData={metaTags.archive} language={langCode} />
             <header className={styles.archiveHeader}>
                 <div className={styles.titleGroup}>
                     <MdOutlineInventory2 className={styles.mainIcon} />

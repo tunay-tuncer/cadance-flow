@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
 import Loader from "../../components/Loader";
 import { useFetchProjects } from "../../hooks/useFetchProject";
 import { useSupabase } from "../../hooks/useSupabase";
 import { useAuth0 } from "@auth0/auth0-react";
+import { PageHelmet } from "../../hooks/usePageHelmet.jsx";
+import { metaTags } from "../../config/metaTags";
+import { ProjectContext } from "../../context/ProjectContext";
 //STYLES
 import styles from "../../styles/MediaPage.module.css";
 //REACT ICONS
@@ -27,6 +30,7 @@ import {
 const Media = () => {
     const { user } = useAuth0();
     const { getClient } = useSupabase();
+    const { langCode } = useContext(ProjectContext);
     const { projects, loading: projectsLoading } = useFetchProjects(user);
     const [assets, setAssets] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -174,6 +178,7 @@ const Media = () => {
 
     return (
         <div className={styles.mediaMainContainer}>
+            <PageHelmet metaData={metaTags.media} language={langCode} />
             <header className={styles.mediaHeader}>
                 <div className={styles.headerTitle}>
                     <MdCollections className={styles.headerIcon} />

@@ -3,6 +3,8 @@ import { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAuth0 } from "@auth0/auth0-react";
 import { ProjectContext } from "../context/ProjectContext";
+import { PageHelmet } from "../hooks/usePageHelmet.jsx";
+import { metaTags } from "../config/metaTags";
 
 //COMPONENTS
 import LoginBackButton from "../components/LoginPageBackButton";
@@ -24,7 +26,7 @@ const Login = () => {
     const [projectTrackingNumber, setProjectTrackingNumber] = useState("");
     const [error, setError] = useState(""); // Hata mesajı için yeni state
     const { user, isAuthenticated } = useAuth0();
-    const { currentLang } = useContext(ProjectContext);
+    const { currentLang, langCode } = useContext(ProjectContext);
     const navigate = useNavigate();
 
     const handleTrack = () => {
@@ -57,6 +59,7 @@ const Login = () => {
 
     return (
         <div className={styles.loginMainContainer}>
+            <PageHelmet metaData={metaTags.login} language={langCode} />
             <GridBackground />
             <LoginBackButton />
 

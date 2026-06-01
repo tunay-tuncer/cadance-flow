@@ -1,5 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import styles from "../../styles/Settings.module.css";
+import { PageHelmet } from "../../hooks/usePageHelmet.jsx";
+import { metaTags } from "../../config/metaTags";
+import { ProjectContext } from "../../context/ProjectContext";
 import {
     MdOutlineDarkMode,
     MdOutlineLightMode,
@@ -15,6 +18,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const Settings = () => {
     const { user } = useAuth0();
+    const { langCode } = useContext(ProjectContext);
     const [isSaving, setIsSaving] = useState(false);
 
     // 1. Ayarları Local Storage'dan başlat (Yoksa default değerler)
@@ -56,6 +60,7 @@ const Settings = () => {
 
     return (
         <div className={styles.settingsContainer}>
+            <PageHelmet metaData={metaTags.settings} language={langCode} />
             <header className={styles.settingsHeader}>
                 <MdSettings className={styles.mainIcon} />
                 <h1>{settings.language === "tr" ? "AYARLAR" : "SETTINGS"}</h1>

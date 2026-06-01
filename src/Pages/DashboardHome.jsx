@@ -4,6 +4,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect, useRef, useContext } from "react";
 import { useSupabase } from "../hooks/useSupabase";
 import { ProjectContext } from "../context/ProjectContext.jsx";
+import { PageHelmet } from "../hooks/usePageHelmet.jsx";
+import { metaTags } from "../config/metaTags";
 //STYLES
 import styles from "../styles/FlowDashboard.module.css";
 //COMPONENTS
@@ -18,7 +20,7 @@ const DashboardHome = () => {
     const { getClient } = useSupabase();
     const hasSynced = useRef(false);
 
-    const { currentLang } = useContext(ProjectContext);
+    const { currentLang, langCode } = useContext(ProjectContext);
 
     const [runTour, setRunTour] = useState(false);
     const [tourKey, setTourKey] = useState(0);
@@ -116,6 +118,7 @@ const DashboardHome = () => {
 
     return (
         <div className={styles.dashboardContainer}>
+            <PageHelmet metaData={metaTags.dashboard} language={langCode} />
             <Joyride
                 key={tourKey}
                 steps={steps}

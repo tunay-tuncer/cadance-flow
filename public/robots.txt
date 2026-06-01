@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /$
+Allow: /track$
+
+Disallow: /dashboard
+Disallow: /archive
+Disallow: /media
+Disallow: /project/
+Disallow: /api/

@@ -1,9 +1,12 @@
 import { useParams, useNavigate } from 'react-router';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 
 import { useSupabase } from "../../../hooks/useSupabase";
 import { supabase } from "../../../config/supabaseClient"
+import { ProjectHelmet } from "../../../hooks/usePageHelmet.jsx";
+import { metaTags } from "../../../config/metaTags";
+import { ProjectContext } from "../../../context/ProjectContext";
 
 import FlowPageGuestWrapper from '../../../wrappers/FlowPageGuestWrapper';
 import ProjectPage from './ProjectPage';
@@ -20,6 +23,7 @@ const PublicProjectDetails = () => {
 
     const { isAuthenticated } = useAuth0();
     const { getClient } = useSupabase(); // Yetkili client
+    const { langCode } = useContext(ProjectContext);
 
     const navigate = useNavigate();
 
@@ -103,7 +107,12 @@ const PublicProjectDetails = () => {
             } />
         );
     }
-    return (<FlowPageGuestWrapper content={<ProjectPage project={projectData} isPublic={true} />} />)
+    return (
+        <>
+            {projectData && <ProjectHelmet projectName={projectData?.project_name || 'Project'} metaDataObj={metaTags.publicProjectTracking} language={langCode} />}
+            <FlowPageGuestWrapper content={<ProjectPage project={projectData} isPublic={true} />} />
+        </>
+    )
 
 };
 
