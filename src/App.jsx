@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router'
 import { HelmetProvider } from 'react-helmet-async';
 import { ProjectContextProvider } from './context/ProjectContext';
 import { AuthContextProvider } from './context/AuthContext';
+import { Analytics } from '@vercel/analytics/react';
 //PAGES
 import Home from './Pages/Home';
 import Support from './Pages/Support';
@@ -24,6 +25,7 @@ function App() {
       <AuthContextProvider>
         <ProjectContextProvider>
           <CursorGlow />
+          <Analytics />
           <Routes>
             {/* --- 1. HERKESE AÇIK ROTALAR --- */}
             <Route path='/' element={<Home />} />
