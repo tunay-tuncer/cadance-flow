@@ -11,7 +11,7 @@ import { TbExclamationCircle } from "react-icons/tb";
 
 const DashboardInfo = () => {
     const { user } = useAuth0();
-    const { projects, loading, logs } = useFetchProjects(user);
+    const { projects, loading, approveCount, logs } = useFetchProjects(user);
 
     const { currentLang } = useContext(ProjectContext);
 
@@ -31,7 +31,10 @@ const DashboardInfo = () => {
         if (!loading && logs) {
             setProjectLogs(logs);
         }
-    }, [loading, logs]);
+        if (!loading && approveCount) {
+            setApprovalCount(approveCount);
+        }
+    }, [loading, logs, approveCount]);
 
     const SkeletonLoader = () => (
         <style>{`

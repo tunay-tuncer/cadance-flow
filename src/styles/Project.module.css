@@ -31,6 +31,7 @@ img {
 
 .projectName {
     padding-inline: 0.75rem;
+    font-size: 0.85rem;
     min-width: max-content;
 }
 
@@ -50,6 +51,7 @@ img {
 .dateText {
     color: var(--lightGray);
     font-weight: 300;
+    font-size: 0.75rem;
 }
 
 .dateValue {
@@ -1009,6 +1011,10 @@ img {
 
     .toolsContainerItem {
         width: 100%;
+    }
+
+    .projectHowItWorksBtn {
+        bottom: 7rem;
     }
 }
 

@@ -19,7 +19,7 @@ const Footer = () => {
                     </div>
 
                     <div className={styles.socialLinks}>
-                        <a href="https:/www.instagram.com/cadancestudio/" target="_blank" rel="noreferrer" aria-label="Instagram">
+                        <a href="https:/instagram.com/cadancestudio/" target="_blank" rel="noreferrer" aria-label="Instagram">
                             <RiInstagramLine />
                         </a>
                         <a href="https://pinterest.com/cadancestudio" target="_blank" rel="noreferrer" aria-label="Instagram">

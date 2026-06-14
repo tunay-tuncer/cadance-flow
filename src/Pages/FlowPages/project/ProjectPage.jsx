@@ -248,6 +248,7 @@ const ProjectPage = ({ project, isPublic }) => {
                     tooltipContent: {
                         color: '#94a3b8',
                         padding: '1rem 0',
+                        fontSize: "1rem"
                     },
                     buttonNext: {
                         backgroundColor: '#2972f5',

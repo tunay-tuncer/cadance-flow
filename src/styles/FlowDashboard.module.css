@@ -340,7 +340,6 @@
         bottom: 6rem;
         right: 1.5rem;
         padding: 0.5rem;
-
     }
 
     .tourTriggerBtn span {
@@ -350,6 +349,14 @@
 
     .tourTriggerBtn svg {
         font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 465px) {
+    .tourTriggerBtn {
+        bottom: 8rem;
+        right: 1.5rem;
+        padding: 0.5rem;
     }
 }
 
