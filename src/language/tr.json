@@ -14,6 +14,7 @@
         },
         "rightContainerText": {
             "projectDashboardText": "Proje Kontrol Paneliniz",
+            "completeText": "Tamamlandı",
             "projectPhaseText": "Proje Aşaması:",
             "nextStepText": "Sonraki Hedef:",
             "approvalText": "Onay Gereken:",

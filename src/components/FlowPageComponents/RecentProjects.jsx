@@ -17,9 +17,9 @@ const RecentProjects = () => {
     const [unArchivedProjects, setUnArchivedProjects] = useState([])
 
     const renderProjectIcon = (type) => {
-        if (type === "viz") return <LiaPencilRulerSolid />;
-        if (type === "renovation") return <TbCube3dSphere />;
-        if (type === "drawing") return <MdOutlineEngineering />;
+        if (type === "viz") return <TbCube3dSphere />;
+        if (type === "renovation") return <MdOutlineEngineering />;
+        if (type === "drawing") return <LiaPencilRulerSolid />;
         return null;
     };
 

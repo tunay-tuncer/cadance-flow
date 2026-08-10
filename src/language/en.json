@@ -13,6 +13,7 @@
         },
         "rightContainerText": {
             "projectDashboardText": "Your Project Dashboard",
+            "completeText": "Complete",
             "projectPhaseText": "Project Phase:",
             "nextStepText": "Next Milestone:",
             "approvalText": "Approval Required:",

@@ -136,7 +136,7 @@ const HeroRightContainer = () => {
                             {`${percentage}%`}
                         </p>
                         <span style={{ color: percentage === 100 ? 'var(--accent)' : 'inherit', transition: 'color 0.3s' }}>
-                            {percentage === 100 ? "Complete!" : "Complete"}
+                            {percentage === 100 ? `${textPath.completeText}!` : textPath.completeText}
                         </span>
                     </div>
                 </div>

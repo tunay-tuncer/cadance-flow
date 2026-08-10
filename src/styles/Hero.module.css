@@ -232,6 +232,234 @@
     font-size: 1.25rem;
 }
 
+@media (max-width: 1440px) {
+    .heroMainContainer {
+        padding: 3rem 0 3rem 3rem;
+        height: calc(100vh - 5rem);
+    }
+
+    .leftContainer {
+        width: 48%;
+    }
+
+    .leftContainer h1,
+    .leftContainer span {
+        font-size: 3.75rem;
+        line-height: 1.1;
+    }
+
+    .leftContainer p {
+        margin-top: 1.5rem;
+        font-size: 1.15rem;
+    }
+
+    .leftContainerButton {
+        margin-top: 1.75rem;
+        height: 4.25rem;
+        font-size: 1.5rem;
+    }
+
+    .rightContainer {
+        width: 46%;
+        height: 27rem;
+        padding: 2rem 0 2rem 2rem;
+        gap: 2rem;
+    }
+
+    .rightContainer h1 {
+        font-size: 1.5rem;
+    }
+
+    .contentContainer {
+        gap: 1.5rem;
+    }
+
+    .progressBar {
+        height: 100%;
+    }
+
+    .progressTextContainer p {
+        font-size: 2.8rem;
+    }
+
+    .percentageText.incrementing {
+        font-size: 2.2rem;
+    }
+
+    .progressTextContainer span {
+        font-size: 1.25rem;
+    }
+
+    .stepsContainer {
+        width: 62%;
+        gap: 0.75rem;
+    }
+
+    .phaseContainer {
+        gap: 1rem;
+        padding-inline: 0.75rem 1.25rem;
+    }
+
+    .svgContainer {
+        font-size: 1.1rem;
+    }
+
+    .phaseTextContainer p {
+        font-size: 0.875rem;
+    }
+
+    .phaseTextContainer h3 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 1100px) {
+    .heroMainContainer {
+        flex-direction: column;
+        justify-content: flex-start;
+        height: auto;
+        padding: 3rem 4rem 3rem 4rem;
+        gap: 4rem;
+    }
+
+    .leftContainer {
+        width: 100%;
+        height: auto;
+    }
+
+    .leftContainer h1,
+    .leftContainer span {
+        font-size: 3.5rem;
+    }
+
+    .leftContainerButton {
+        height: 4.5rem;
+        width: 100%;
+    }
+
+    .rightContainer {
+        width: 100%;
+        height: auto;
+        border: 4px solid white;
+        border-radius: 2rem;
+        padding: 2.5rem;
+        gap: 2rem;
+    }
+
+    .contentContainer {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+
+    .progressBar {
+        height: 14rem;
+        width: 14rem;
+        flex-shrink: 0;
+    }
+
+    .progressTextContainer p {
+        font-size: 2.8rem;
+    }
+
+    .stepsContainer {
+        width: 60%;
+        gap: 1.25rem;
+    }
+
+    .phaseContainer {
+        border-radius: 1.5rem;
+        padding: 0.75rem 1.25rem;
+    }
+
+    .phaseContainer:first-child {
+        border-right: 3px solid white;
+    }
+}
+
+@media (max-width: 768px) {
+    .heroMainContainer {
+        padding: 2rem;
+        gap: 3rem;
+    }
+
+    .leftContainer h1,
+    .leftContainer span {
+        font-size: 2.5rem;
+    }
+
+    .leftContainer p {
+        font-size: 1.1rem;
+        margin-top: 1.25rem;
+    }
+
+    .leftContainerButton {
+        height: 4rem;
+        font-size: 1.35rem;
+    }
+
+    .rightContainer {
+        padding: 1.5rem;
+        border-radius: 1.5rem;
+    }
+
+    .contentContainer {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .progressBar {
+        height: 13rem;
+        width: 13rem;
+    }
+
+    .outerDiv {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .innerDiv {
+        transform: translate(1rem, 1rem);
+        height: calc(100% - 2rem) !important;
+        width: calc(100% - 2rem) !important;
+    }
+
+    .progressTextContainer p {
+        font-size: 2.2rem;
+    }
+
+    .stepsContainer {
+        width: 100%;
+    }
+
+    .phaseContainer {
+        padding: 0.75rem;
+        border-radius: 1rem;
+        text-align: start;
+    }
+
+    .phaseContainer:first-child {
+        border-right: 3px solid white;
+    }
+
+    .svgContainer {
+        height: 2.75rem;
+    }
+}
+
+@media (max-width: 450px) {
+    .heroMainContainer {
+        padding: 1.5rem 1rem;
+    }
+
+    .rightContainer {
+        padding: 1.25rem 1rem;
+    }
+}
+
+
 @media (max-width: 768px) {
     .heroMainContainer {
         flex-direction: column;
